@@ -13,4 +13,9 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery3
 //= require_tree .
+
+function toggleMenu() {
+    $('#mainMenu').toggleClass('menu-hidden');
+}
