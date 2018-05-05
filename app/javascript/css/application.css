@@ -44,6 +44,17 @@
  *
  * @import "tailwindcss/utilities";
  */
+
+.menu {
+    @apply .fixed .overflow-hidden .z-10 .pin-r .pin-t .w-64 .h-auto .bg-grey-darkest .text-grey-lightest .p-8 .mt-8;
+    transition: all 200ms linear;
+}
+
+.menu-hidden {
+    @apply .h-0 .pt-0 .pb-0;
+}
+
+
 @tailwind utilities;
 
 /**
@@ -60,3 +71,15 @@
  * @import "utilities/background-patterns";
  * @import "utilities/skew-transforms";
  */
+
+input, h1, h2, h3, h4, h5, h6, p {
+    @apply .font-sans .font-normal;
+}
+
+.m-t-c {
+    margin-top: 6rem;
+}
+
+.h-0 {
+    height: 0;
+}
