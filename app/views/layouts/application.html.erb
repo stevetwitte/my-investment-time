@@ -18,6 +18,13 @@
   <body>
   <%= render 'shared/header' %>
   <%= render 'shared/main_menu' %>
-  <%= yield %>
+  <div class="container mx-auto m-t-c p-4">
+    <div id="flash">
+      <% flash.each do |key, value| -%>
+        <div id="flash_<%= key %>"><%= h value %></div>
+      <% end %>
+    </div>
+    <%= yield %>
+  </div>
   </body>
 </html>
