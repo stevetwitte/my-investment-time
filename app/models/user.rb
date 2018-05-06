@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  has_many :invests, dependent: :destroy
+
   validates :email,
             presence: true,
             uniqueness: { case_sensitive: false },
