@@ -10,6 +10,6 @@
 </form>
 
 
-<% 10.times do %>
-  <%= render 'invests/shared/invest_list' %>
+<% @invests.each do |invest| %>
+  <%= render 'invests/shared/invest_list', invest: invest %>
 <% end %>

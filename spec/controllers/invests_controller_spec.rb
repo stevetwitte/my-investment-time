@@ -9,4 +9,11 @@ RSpec.describe InvestsController, type: :controller do
     end
   end
 
+  describe "GET #new" do
+    it "returns http success" do
+      get :new
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
 end

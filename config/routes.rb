@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'invests/new'
+  get 'invests/update'
   resources :passwords, controller: "passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]
 
