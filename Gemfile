@@ -28,6 +28,7 @@ gem 'webpacker', '~> 3.4'
 gem 'jquery-rails'
 gem 'clearance'
 gem 'cancancan', '~> 2.0'
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

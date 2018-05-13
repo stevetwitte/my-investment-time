@@ -1,3 +1,7 @@
 <h1>Invests#new</h1>
 <p>Find me in app/views/invests/new.html.erb</p>
-<%= @invest %>
+<%= simple_form_for @invest do |f| %>
+  <%= f.input :title %>
+  <%= f.input :body %>
+  <%= f.button :submit %>
+<% end %>

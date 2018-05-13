@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  # TODO: Update routes to use resources as much as possible
   get 'invests/new'
+  post 'invests' => 'invests#create'
   get 'invests/update'
   resources :passwords, controller: "passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]
