@@ -11,4 +11,6 @@ en:
     search: "SEARCH"
     email_address: "email address"
     password: "password"
-
+  invests:
+    new:
+      title: "new investment"
