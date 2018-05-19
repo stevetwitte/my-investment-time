@@ -10,6 +10,7 @@ en:
   forms:
     search: "SEARCH"
     email_address: "email address"
+    username: "username"
     password: "password"
   invests:
     new:

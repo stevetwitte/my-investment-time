@@ -9,7 +9,6 @@ class InvestsController < ApplicationController
   end
 
   def create
-    puts @invest
     if @invest.save
       redirect_to root_url
     else

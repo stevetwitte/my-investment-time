@@ -44,6 +44,9 @@
  *
  * @import "tailwindcss/utilities";
  */
+body {
+    color: #22292f;
+}
 
 input, h1, h2, h3, h4, h5, h6, p {
     @apply .font-sans .font-normal;
@@ -77,7 +80,7 @@ a:active {
 }
 
 .w-full-input {
-    @apply .appearance-none .block .w-full .bg-white .text-grey-darker .border .border-grey-darker .py-3 .px-4;
+    @apply .appearance-none .block .w-full .bg-white .text-black .border .border-grey-darker .py-3 .px-4;
 }
 
 .btn-default {
