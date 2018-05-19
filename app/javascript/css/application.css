@@ -45,6 +45,28 @@
  * @import "tailwindcss/utilities";
  */
 
+input, h1, h2, h3, h4, h5, h6, p {
+    @apply .font-sans .font-normal;
+}
+
+a {
+    @apply .font-sans .font-normal;
+    color: #22292f;
+}
+
+a:hover {
+    @apply .font-sans .font-normal;
+    color: #3d4852;
+}
+
+a:visited {
+}
+
+a:active {
+    @apply .font-sans .font-normal;
+    color: #22292f;
+}
+
 .menu {
     @apply .fixed .overflow-hidden .z-10 .pin-r .pin-t .w-64 .h-auto .bg-grey-darkest .text-grey-lightest .p-8 .mt-8;
     transition: all 200ms linear;
@@ -54,6 +76,25 @@
     @apply .h-0 .pt-0 .pb-0;
 }
 
+.w-full-input {
+    @apply .appearance-none .block .w-full .bg-white .text-grey-darker .border .border-grey-darker .py-3 .px-4;
+}
+
+.btn-default {
+    @apply .bg-grey-dark .text-white .py-3 .px-4 .uppercase;
+}
+
+.btn-default:hover {
+    @apply .bg-grey-darker .cursor-pointer;
+}
+
+#flash {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
 
 @tailwind utilities;
 
@@ -71,10 +112,6 @@
  * @import "utilities/background-patterns";
  * @import "utilities/skew-transforms";
  */
-
-input, h1, h2, h3, h4, h5, h6, p {
-    @apply .font-sans .font-normal;
-}
 
 .m-t-c {
     margin-top: 6rem;

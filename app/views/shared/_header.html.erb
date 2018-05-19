@@ -1,13 +1,6 @@
 <div class="fixed z-20 pin-t pin-l pin-r flex justify-between bg-grey-lighter">
   <div class="p-4">
-    <a href="/"><h4 class="font-normal">MyInvestmentTime.com</h4></a>
-  </div>
-  <div>
-    <% if signed_in? -%>
-      <%= button_to t("layouts.application.sign_out"), sign_out_path, method: :delete %>
-    <% else -%>
-      <%= link_to t("layouts.application.sign_in"), sign_in_path %>
-    <% end -%>
+    <a class="text-black-darker lowercase no-underline" href="/"><h4 class="font-normal"><%= t("general.site_title") %></h4></a>
   </div>
   <div>
     <%= link_to invests_new_path do %>

@@ -13,7 +13,7 @@ class InvestsController < ApplicationController
     if @invest.save
       redirect_to root_url
     else
-
+      #TODO: Handle errors here
     end
   end
 

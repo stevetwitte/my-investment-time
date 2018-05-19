@@ -1,9 +1,7 @@
-<div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, type: 'email' %>
+<div class="text-field my-2">
+  <%= form.text_field :email, type: 'email', class: 'w-full-input', placeholder: t("forms.email_address") %>
 </div>
 
-<div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
+<div class="password-field my-2">
+  <%= form.password_field :password, class: 'w-full-input', placeholder: t("forms.password") %>
 </div>
