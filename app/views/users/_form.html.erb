@@ -1,6 +1,6 @@
 <div class="text-field my-2">
   <%= form.text_field :email, type: 'email', class: 'w-full-input', placeholder: t("forms.email_address") %>
-  <div class="text-sm text-red-dark">
+  <div class="error">
     <% @user.errors.messages[:email].each do |i| %>
       email <%= i %>
     <% end %>
@@ -9,7 +9,7 @@
 
 <div class="text-field my-2">
   <%= form.text_field :username, class: 'w-full-input', placeholder: t("forms.username") %>
-  <div class="text-sm text-red-dark">
+  <div class="error">
     <% @user.errors.messages[:username].each do |i| %>
       username <%= i %>
     <% end %>
@@ -18,7 +18,7 @@
 
 <div class="password-field my-2">
   <%= form.password_field :password, class: 'w-full-input', placeholder: t("forms.password") %>
-  <div class="text-sm text-red-dark">
+  <div class="error">
     <% @user.errors.messages[:password].each do |i| %>
       password <%= i %>
     <% end %>
