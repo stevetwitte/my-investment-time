@@ -21,7 +21,7 @@
   <div class="container mx-auto m-t-c p-4">
     <div id="flash">
       <% flash.each do |key, value| -%>
-        <div id="flash_<%= key %>"><%= h value %></div>
+        <div id="flash_<%= key %>" class="z-20 w-1/2 mx-auto p-2 bg-grey-darkest text-grey-light"><%= h value %></div>
       <% end %>
     </div>
     <%= yield %>

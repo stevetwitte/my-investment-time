@@ -1,0 +1,14 @@
+<div id="clearance" class="password-reset w-1/2 mx-auto bg-grey-lighter p-8">
+  <h2 class="mb-6"><%= t(".title") %></h2>
+  <%= simple_form_for @invest do |f| %>
+    <div class="text-field my-2">
+      <%= f.input :title, input_html: { class: 'w-full-input' }, placeholder: 'What are you working on?', label: false %>
+    </div>
+    <div class="text-field my-2">
+      <%= f.input :body, input_html: { class: 'w-full-input' }, placeholder: 'Care to elaborate?', label: false %>
+    </div>
+    <div class="submit-field my-4 text-center">
+      <%= f.button :submit, class: 'btn-default mx-auto px-8' %>
+    </div>
+  <% end %>
+</div>

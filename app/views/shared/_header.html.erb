@@ -1,15 +1,15 @@
 <div class="fixed z-20 pin-t pin-l pin-r flex justify-between bg-grey-lighter">
   <div class="p-4">
-    <h4 class="font-normal">MyInvestmentTime.com</h4>
+    <a class="text-black-darker lowercase no-underline" href="/"><h4 class="font-normal"><%= t("general.site_title") %></h4></a>
   </div>
   <div>
-    <% if signed_in? -%>
-      <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
-    <% else -%>
-      <%= link_to t(".sign_in"), sign_in_path %>
-    <% end -%>
-  </div>
-  <div class="p-2 m-2 bg-grey-light cursor-pointer" onclick="toggleMenu()">
-    <i class="fas fa-bars"></i>
+    <%= link_to invests_new_path do %>
+    <div class="float-left p-2 m-2 bg-grey-light cursor-pointer">
+        <i class="fas fa-plus"></i>
+    </div>
+    <% end %>
+    <div class="float-left p-2 m-2 bg-grey-light cursor-pointer" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
   </div>
 </div>

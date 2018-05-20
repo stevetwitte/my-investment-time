@@ -12,6 +12,10 @@ class User < ApplicationRecord
             presence: true,
             length: { minimum: 8 }
 
+  validates :username,
+            presence: true,
+            uniqueness: { case_sensitive: false }
+
   def should_validate?
     new_record? || email.present?
   end

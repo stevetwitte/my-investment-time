@@ -1,5 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe "invests/index.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "with 5 invests" do
+    before :each do
+      assign(:invests, [
+          create(:invest, title: "Some kinda Invest one"),
+          create(:invest, title: "Some kinda Invest two")
+      ])
+    end
+
+    it "displays all the invests" do
+      render
+
+      expect(rendered).to match /Some kinda Invest one/
+      expect(rendered).to match /Some kinda Invest two/
+    end
+  end
 end
