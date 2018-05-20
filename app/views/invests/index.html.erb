@@ -10,6 +10,6 @@
 </form>
 
 
-<% @invests.each do |invest| %>
+<% @invests.try(:each) do |invest| %>
   <%= render 'invests/shared/invest_list', invest: invest %>
 <% end %>
