@@ -5,18 +5,12 @@ class InvestsController < ApplicationController
     @invests.order!('created_at DESC')
   end
 
-  def new
-  end
-
   def create
     if @invest.save
       redirect_to root_url
     else
-      #TODO: Handle errors here
+      render :new
     end
-  end
-
-  def update
   end
 
   private
