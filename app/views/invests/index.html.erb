@@ -13,3 +13,7 @@
 <% @invests.try(:each) do |invest| %>
   <%= render 'invests/shared/invest_list', invest: invest %>
 <% end %>
+
+<div class="text-center m-6">
+  <%= paginate @invests %>
+</div>

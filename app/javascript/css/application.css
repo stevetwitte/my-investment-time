@@ -103,6 +103,25 @@ a:active {
     @apply .text-sm .text-red-dark;
 }
 
+.pagination span.disabled {
+    padding: 1.1em 1.3em !important;
+    margin: 0.2em !important;
+    border: 1px solid #eee !important;
+    color: #ddd !important;
+}
+
+.pagination a {
+    padding: 1.1em 1.3em !important;
+    margin: .2em !important;
+    border: 1px solid #22292f !important;
+    text-decoration: none !important;
+    color: #22292f !important;
+}
+
+.pagination a:hover {
+    background-color: #dae1e7 !important;
+}
+
 @tailwind utilities;
 
 /**
