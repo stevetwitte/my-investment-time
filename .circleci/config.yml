@@ -54,4 +54,4 @@ jobs:
 
       - run:
           name: Run tests
-          command: bin/rails test
+          command: bin/bundle exec rspec
