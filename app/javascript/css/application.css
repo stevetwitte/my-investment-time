@@ -99,6 +99,10 @@ a:active {
     text-align: center;
 }
 
+.error {
+    @apply .text-sm .text-red-dark;
+}
+
 @tailwind utilities;
 
 /**
