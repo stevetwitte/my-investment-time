@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied, with: :not_authorized
 
+  before_action :require_login
+
   def not_authorized
     redirect_to sign_in_path
   end

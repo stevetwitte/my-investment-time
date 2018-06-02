@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'accounts/show'
   # TODO: Update routes to use resources as much as possible
   get 'invests/new'
   post 'invests' => 'invests#create'
@@ -10,6 +11,11 @@ Rails.application.routes.draw do
     resource :password,
       controller: "passwords",
       only: [:create, :edit, :update]
+  end
+
+  namespace :settings do
+    resource :account, controller: "accounts", only: [:edit, :update]
+    resource :password, controller: "passwords", only: [:edit, :update]
   end
 
   get "/sign_in" => "sessions#new", as: "sign_in"

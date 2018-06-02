@@ -1,0 +1,31 @@
+<div id="clearance" class="password-reset flex w-full mx-auto bg-grey-lighter">
+  <div class="w-1/4 py-8 bg-grey">
+    <ul class="list-reset">
+      <li class="p-6 bg-grey-light">account</li>
+      <li class="p-6 hover:bg-grey-lighter cursor-pointer">profile</li>
+      <%= link_to edit_settings_password_path, class: 'no-underline' do %>
+        <li class="p-6 hover:bg-grey-lighter cursor-pointer">password</li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="w-3/4 p-8">
+    <h2 class="mb-6"><%= t(".title") %></h2>
+    <%= simple_form_for @user, url: settings_account_url, method: :patch do |f| %>
+      <div class="my-2">
+        <p class="text-sm">email address:</p>
+      </div>
+      <div class="text-field my-2">
+        <%= f.input :email, input_html: { class: 'w-full-input' }, label: false %>
+      </div>
+      <div class="my-2">
+        <p class="text-sm">username:</p>
+      </div>
+      <div class="text-field my-2">
+        <%= f.input :username, input_html: { class: 'w-full-input' }, label: false %>
+      </div>
+      <div class="submit-field my-4 text-center">
+        <%= f.button :submit, value: 'update account', class: 'btn-default mx-auto px-8' %>
+      </div>
+    <% end %>
+  </div>
+</div>
