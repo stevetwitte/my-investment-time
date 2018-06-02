@@ -6,17 +6,19 @@ class User < ApplicationRecord
   validates :email,
             presence: true,
             uniqueness: { case_sensitive: false },
-            email: true, if: :should_validate?
+            email: true,
+            if: -> { new_record? || email.present?}
+
 
   validates :password,
             presence: true,
-            length: { minimum: 8 }
+            length: { minimum: 8 },
+            if: -> { new_record? || password.present? }
+
 
   validates :username,
             presence: true,
-            uniqueness: { case_sensitive: false }
+            uniqueness: { case_sensitive: false },
+            if: -> { new_record? || username.present? }
 
-  def should_validate?
-    new_record? || email.present?
-  end
 end
