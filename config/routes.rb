@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :settings do
     resource :account, controller: "accounts", only: [:edit, :update]
     resource :password, controller: "passwords", only: [:edit, :update]
+    resource :profile, controller: "profiles", only: [:edit, :update]
   end
 
   get "/sign_in" => "sessions#new", as: "sign_in"

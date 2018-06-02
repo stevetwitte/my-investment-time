@@ -19,6 +19,9 @@ en:
     passwords:
       edit:
         title: "password"
+    profiles:
+      edit:
+        title: "profile"
     accounts:
       edit:
         title: "account"

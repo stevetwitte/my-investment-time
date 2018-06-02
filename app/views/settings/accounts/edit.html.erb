@@ -2,7 +2,9 @@
   <div class="w-1/4 py-8 bg-grey">
     <ul class="list-reset">
       <li class="p-6 bg-grey-light">account</li>
-      <li class="p-6 hover:bg-grey-lighter cursor-pointer">profile</li>
+      <%= link_to edit_settings_profile_path, class: 'no-underline' do %>
+        <li class="p-6 hover:bg-grey-lighter cursor-pointer">profile</li>
+      <% end %>
       <%= link_to edit_settings_password_path, class: 'no-underline' do %>
         <li class="p-6 hover:bg-grey-lighter cursor-pointer">password</li>
       <% end %>
