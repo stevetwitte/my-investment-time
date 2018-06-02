@@ -12,6 +12,7 @@ module Settings
         flash[:notice] = 'successfully updated password'
         redirect_to edit_settings_password_path
       else
+        flash[:error] = 'password update failed'
         render :edit
       end
     end
