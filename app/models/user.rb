@@ -1,7 +1,10 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  has_one :profile, dependent: :destroy
   has_many :invests, dependent: :destroy
+
+  after_create :create_profile
 
   validates :email,
             presence: true,
@@ -21,4 +24,9 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false },
             if: -> { new_record? || username.present? }
 
+  private
+
+  def create_profile
+    self.profile = Profile.create!(user: self)
+  end
 end

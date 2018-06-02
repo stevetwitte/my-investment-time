@@ -9,6 +9,8 @@ RSpec.describe User, type: :model do
 
   describe 'associations' do
     it { is_expected.to have_many(:invests) }
+
+    it { is_expected.to have_one(:profile) }
   end
 
   describe 'validations' do
@@ -42,7 +44,7 @@ RSpec.describe User, type: :model do
       end
 
       context 'with a good email address' do
-        let(:email) { 'bad@email.example.com' }
+        let(:email) { 'good@email.com' }
 
         it { is_expected.to be_valid }
       end

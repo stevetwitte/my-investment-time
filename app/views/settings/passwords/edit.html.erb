@@ -4,7 +4,9 @@
       <%= link_to edit_settings_account_path, class: 'no-underline' do %>
         <li class="p-6 hover:bg-grey-lighter cursor-pointer">account</li>
       <% end %>
-      <li class="p-6 hover:bg-grey-lighter cursor-pointer">profile</li>
+      <%= link_to edit_settings_profile_path, class: 'no-underline' do %>
+        <li class="p-6 hover:bg-grey-lighter cursor-pointer">profile</li>
+      <% end %>
       <li class="p-6 bg-grey-light">password</li>
     </ul>
   </div>
