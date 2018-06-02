@@ -1,6 +1,7 @@
 <div id="mainMenu" class="menu menu-hidden">
   <h3 class="m-6 mb-4"><%= link_to t("menu.search"), root_path, class: 'text-grey-light no-underline hover:text-grey-lightest' %></h3>
   <% if signed_in? -%>
+    <h3 class="m-6 mb-4"><%= link_to t("menu.settings"), edit_settings_account_path, class: 'text-grey-light no-underline hover:text-grey-lightest' %></h3>
     <h3 class="m-6 mb-4"><%= link_to t("menu.log_out"), sign_out_path, method: :delete, class: 'text-grey-light no-underline hover:text-grey-lightest' %></h3>
   <% else -%>
     <h3 class="m-6 mb-4"><%= link_to t("menu.log_in"), sign_in_path, class: 'text-grey-light no-underline hover:text-grey-lightest' %></h3>

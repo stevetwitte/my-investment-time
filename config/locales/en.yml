@@ -4,7 +4,7 @@ en:
   menu:
     home: "home"
     search: "search"
-    profile: "profile"
+    settings: "settings"
     log_in: "sign in"
     log_out: "log out"
   forms:
@@ -15,3 +15,10 @@ en:
   invests:
     new:
       title: "new investment"
+  settings:
+    passwords:
+      edit:
+        title: "password"
+    accounts:
+      edit:
+        title: "account"
