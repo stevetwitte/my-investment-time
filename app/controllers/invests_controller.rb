@@ -1,5 +1,6 @@
 class InvestsController < ApplicationController
   load_and_authorize_resource
+  skip_before_action :require_login, only: :index
 
   def index
     @invests = @invests.order('created_at DESC').page(params[:page])
