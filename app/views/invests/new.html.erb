@@ -1,12 +1,35 @@
 <div id="clearance" class="password-reset w-1/2 mx-auto bg-grey-lighter p-8">
   <h2 class="mb-6"><%= t(".title") %></h2>
   <%= simple_form_for @invest do |f| %>
-    <div class="text-field my-2">
-      <%= f.input :title, input_html: { class: 'w-full-input' }, placeholder: 'What are you working on?', label: false %>
+    <div class="my-2">
+      <p class="text-sm">title:</p>
     </div>
     <div class="text-field my-2">
-      <%= f.input :body, input_html: { class: 'w-full-input' }, placeholder: 'Care to elaborate?', label: false %>
+      <%= f.input :title, input_html: { class: 'w-full-input' }, label: false %>
     </div>
+    <div class="my-2">
+      <p class="text-sm">description:</p>
+    </div>
+    <div class="text-field my-2">
+      <%= f.input :body, input_html: { class: 'w-full-input' }, label: false %>
+    </div>
+
+    <%= f.simple_fields_for :links, OpenStruct.new(@invest.links) do |link| %>
+      <div class="my-2">
+        <p class="text-sm">homepage:</p>
+      </div>
+      <div class="text-field my-2">
+        <%= link.input :homepage, input_html: { class: 'w-full-input' }, label: false %>
+      </div>
+
+      <div class="my-2">
+        <p class="text-sm">github:</p>
+      </div>
+      <div class="text-field my-2">
+        <%= link.input :github, input_html: { class: 'w-full-input' }, label: false %>
+      </div>
+    <% end %>
+
     <div class="submit-field my-4 text-center">
       <%= f.button :submit, class: 'btn-default mx-auto px-8' %>
     </div>

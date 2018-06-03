@@ -18,6 +18,8 @@ class InvestsController < ApplicationController
 
   def invest_params
     params.require(:invest).permit(:title,
-                                   :body)
+                                   :body,
+                                   links: [:homepage,
+                                           :github])
   end
 end
