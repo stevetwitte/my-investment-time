@@ -10,7 +10,7 @@
 <div class="w-full-card">
   <div class="w-full">
     <h3 class="w-full border-b-2 border-grey-light mb-2">links</h3>
-    <% @invest.links.each do |i| %>
+    <% @invest.links.try(:each) do |i| %>
       <a href="<%= i.to_a[1] %>"><h3 class="pb-4"><%= i.to_a[0] + ': ' + i.to_a[1] %></h3></a>
     <% end %>
   </div>
