@@ -20,6 +20,27 @@ RSpec.describe InvestsController, type: :controller do
     end
   end
 
+  describe "GET #index with search params" do
+    before :each do
+      10.times do
+        create :invest
+      end
+
+      create(:invest, title: 'Testing One Two Three')
+
+      get :index, params: { search: 'testing one two three' }
+    end
+
+    it "returns http success" do
+      expect(response).to have_http_status :ok
+    end
+
+    it "returns one matching invest in invests instance variable" do
+      expect(assigns(:invests).length).to be 1
+      expect(assigns(:invests).first.title).to eql 'Testing One Two Three'
+    end
+  end
+
   describe "GET #show" do
     before :each do
       10.times do
