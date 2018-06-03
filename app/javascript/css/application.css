@@ -91,6 +91,10 @@ a:active {
     @apply .bg-grey-darker .cursor-pointer;
 }
 
+.w-full-card {
+    @apply .flex .justify-between .items-stretch .flex-wrap .bg-grey-lighter .p-4 .mt-4;
+}
+
 #flash {
     position: fixed;
     top: 50px;

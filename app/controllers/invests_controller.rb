@@ -6,6 +6,9 @@ class InvestsController < ApplicationController
     @invests = @invests.order('created_at DESC').page(params[:page])
   end
 
+  def show
+  end
+
   def create
     if @invest.save
       redirect_to root_url
