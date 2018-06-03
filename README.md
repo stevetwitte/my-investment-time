@@ -1,24 +1,16 @@
-# README
+# My Investment Time
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Development
+This app requires ruby 2.5.1 and Rails 5.2 as well as Postgres 9.6 and Redis.  
 
-Things you may want to cover:
+Setup the database and seed it with sample data with `rails db:setup sample:all`
 
-* Ruby version
+Run the app locally with `foreman start`
 
-* System dependencies
+### Testing
+This app uses rspec, factory bot and faker for testing.
 
-* Configuration
+Run the test suite locally with `rspec`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Deployment
+Pushes to master automatically deploy to Heroku and production updates are done using pipelines.
