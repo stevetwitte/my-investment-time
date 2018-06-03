@@ -149,6 +149,14 @@ a:active {
  * @import "utilities/skew-transforms";
  */
 
+.hover-grow {
+    transition: all .2s ease-in-out;
+}
+
+.hover-grow:hover {
+    transform: scale(1.01);
+}
+
 .m-t-c {
     margin-top: 6rem;
 }

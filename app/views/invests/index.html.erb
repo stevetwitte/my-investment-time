@@ -11,7 +11,9 @@
 
 
 <% @invests.try(:each) do |invest| %>
-  <%= render 'invests/shared/invest_list', invest: invest %>
+  <%= link_to invest, class: 'no-underline' do %>
+    <%= render 'invests/shared/invest_list', invest: invest %>
+  <% end %>
 <% end %>
 
 <div class="text-center m-6">
