@@ -20,6 +20,25 @@ RSpec.describe InvestsController, type: :controller do
     end
   end
 
+  describe "GET #show" do
+    before :each do
+      10.times do
+        create :invest
+      end
+
+      sign_in
+      get :show, params: { id: Invest.first.id }
+    end
+
+    it "returns http success" do
+      expect(response).to have_http_status :ok
+    end
+
+    it "returns invest in instance variable" do
+      expect(assigns(:invest)).to be_valid
+    end
+  end
+
   describe "GET #new" do
     before :each do
       sign_in
