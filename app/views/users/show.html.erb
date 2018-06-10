@@ -1,0 +1,29 @@
+<div class="password-reset flex w-full mx-auto bg-grey-lighter">
+  <div class="w-1/4 bg-grey">
+    <div class="m-4">
+      <%= image_tag 'avatar_placeholder.png', alt: 'Placeholder Avatar', class: 'p-2' %>
+      <div class="border-t-2 border-grey-dark">
+        <h3 class="m-2 ml-0"><%= @user.profile.try(:full_name) %></h3>
+        <h3 class="m-2 ml-0"><%= @user.username %></h3>
+      </div>
+
+      <% if @user.profile.bio %>
+        <div class="border-t-2 border-grey-dark">
+          <p class="m-2 ml-0"><%= @user.profile.try(:bio) %></p>
+        </div>
+      <% end %>
+
+      <% if @user.profile.links %>
+        <div class="border-t-2 border-grey-dark">
+          <% @user.profile.links.each do |i| %>
+            <a href="<%= i[1] %>">
+              <p class="m-2 ml-0"><%= i[0] %> <span class="text-xs"><%='(' + i[1] + ')' %></span></p>
+            </a>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="w-3/4 p-8">
+  </div>
+</div>
