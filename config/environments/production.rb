@@ -99,8 +99,8 @@ Rails.application.configure do
         address:              ENV['SMTP_ADDRESS'],
         port:                 ENV['SMTP_PORT'],
         domain:               'my-investment-time.com',
-        user_name:            ENV['SMTP_USERNAME'],
-        password:             ENV['SMTP_PASSWORD'],
+        user_name:            ENV['SENDGRID_USERNAME'],
+        password:             ENV['SENDGRID_PASSWORD'],
         authentication:       'plain',
         enable_starttls_auto: true }
 end
