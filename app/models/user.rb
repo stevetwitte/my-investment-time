@@ -24,6 +24,10 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false },
             if: -> { new_record? || username.present? }
 
+  def to_param
+    username
+  end
+
   private
 
   def create_profile

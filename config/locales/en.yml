@@ -12,6 +12,8 @@ en:
     email_address: "email address"
     username: "username"
     password: "password"
+  profile:
+    recent: "recent investments"
   invests:
     new:
       title: "new investment"
