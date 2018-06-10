@@ -2,6 +2,16 @@
   <div class="p-4">
     <a class="text-black-darker lowercase no-underline" href="/"><%= image_tag 'header-logo.svg', class: 'header-logo' %></h4></a>
   </div>
+  <div class="flex-grow max-w-sm">
+    <%= form_tag(invests_path, :method => 'get', id: 'search-form', class: 'flex justify-between items-center flex-wrap bg-grey-lighter m-2') do %>
+      <div class="flex-grow mr-4">
+        <%= text_field_tag :search, params[:search], placeholder: "Find an investment...", class: 'w-full-input p-2' %>
+      </div>
+<!--      <div class="flex-none">-->
+        <%#= submit_tag "Search", :name => nil, class: 'btn-default' %>
+<!--      </div>-->
+    <% end %>
+  </div>
   <div>
     <%= link_to new_invest_path do %>
     <div class="float-left p-2 m-2 bg-grey-light cursor-pointer">

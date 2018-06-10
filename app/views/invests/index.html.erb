@@ -1,12 +1,3 @@
-<%= form_tag(invests_path, :method => 'get', id: 'search-form', class: 'flex justify-between items-center flex-wrap bg-grey-lighter p-4') do %>
-  <div class="flex-grow mr-4">
-    <%= text_field_tag :search, params[:search], placeholder: "Find an investment...", class: 'w-full-input' %>
-  </div>
-  <div class="flex-none">
-    <%= submit_tag "Search", :name => nil, class: 'btn-default' %>
-  </div>
-<% end %>
-
 <% @invests.try(:each) do |invest| %>
   <%= link_to invest, class: 'no-underline' do %>
     <%= render 'invests/shared/invest_list', invest: invest %>

@@ -4,7 +4,7 @@
     <p><%= @invest.body %></p>
   </div>
   <div class="w-1/4 border-l-2 border-grey-light pl-4">
-    <p><%= @invest.user.username %></p>
+    <p><%= link_to @invest.user.username, user_url(@invest.user) %></p>
   </div>
 </div>
 <div class="w-full-card">
