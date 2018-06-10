@@ -1,5 +1,5 @@
 <div class="password-reset flex w-full mx-auto bg-grey-lighter">
-  <div class="w-1/4 bg-grey">
+  <div class="w-1/4 bg-white">
     <div class="m-4">
       <%= image_tag 'avatar_placeholder.png', alt: 'Placeholder Avatar', class: 'p-2' %>
       <div class="border-t-2 border-grey-dark">
@@ -24,6 +24,21 @@
       <% end %>
     </div>
   </div>
-  <div class="w-3/4 p-8">
+  <div class="w-3/4 p-0">
+    <div class="w-full m-0 p-0">
+      <ul class="list-reset float-none">
+        <li class="float-left w-1/2 p-4 bg-grey-lighter">latest activity</li>
+        <li class="float-left w-1/2 p-4 bg-grey-light">all investments</li>
+      </ul>
+    </div>
+    <br>
+    <div class="w-full p-8 mt-8">
+      <h2 class="mb-6"><%= t('profile.recent') %></h2>
+      <% @user.invests[0...3].try(:each) do |invest| %>
+        <%= link_to invest, class: 'no-underline' do %>
+          <%= render 'invests/shared/invest_small', invest: invest %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
