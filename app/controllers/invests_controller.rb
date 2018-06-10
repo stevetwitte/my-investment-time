@@ -21,6 +21,18 @@ class InvestsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @invest.update(invest_params)
+      flash[:notice] = 'successfully updated investment'
+      redirect_to invest_path(@invest)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def invest_params

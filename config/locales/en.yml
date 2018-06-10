@@ -17,6 +17,8 @@ en:
   invests:
     new:
       title: "new investment"
+    edit:
+      title: "edit investment"
   settings:
     passwords:
       edit:

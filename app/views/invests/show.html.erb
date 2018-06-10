@@ -1,3 +1,20 @@
+<% if @invest.user == current_user %>
+  <div class="w-full-card w-auto">
+    <div class="m-0 p-0">
+      <ul class="list-reset float-none">
+        <%= link_to(edit_invest_path(@invest)) do %>
+          <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">edit</li>
+        <% end %>
+        <%= link_to(edit_invest_path(@invest)) do %>
+          <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">update status</li>
+        <% end %>
+        <%= link_to(edit_invest_path(@invest)) do %>
+          <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">share</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
 <div class="w-full-card">
   <div class="w-3/4 pr-4">
     <h3 class="w-full border-b-2 border-grey-light mb-2"><%= @invest.title %></h3>
