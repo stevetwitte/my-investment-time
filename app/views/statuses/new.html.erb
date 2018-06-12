@@ -1,0 +1,43 @@
+<div class="w-full-card w-auto">
+  <div class="m-0 p-0">
+    <ul class="list-reset float-none">
+      <%= link_to(invest_path(@invest)) do %>
+        <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">cancel</li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div class="w-full-card">
+  <div class="w-full">
+    <h3 class="w-full border-b-2 border-grey-light mb-2">history</h3>
+    <% @invest.statuses.try(:each) do |i| %>
+      <div style="clear: both">
+        <h4 class="pb-4 float-left"><%= i.title %>:</h4>
+        <p class="pb-4 float-left ml-4"><%= i.detail %></p>
+        <p class="pb-4 float-right ml-4"><%= i.created_at.strftime('%H:%M - %b %e %Y') %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="w-full-card">
+  <div class="w-full">
+    <h3 class="w-full border-b-2 border-grey-light mb-2">new</h3>
+    <%= simple_form_for @status, url: invest_statuses_path do |f| %>
+      <div class="my-2">
+        <p class="text-sm">title:</p>
+      </div>
+      <div class="text-field my-2">
+        <%= f.input :title, input_html: { class: 'w-full-input' }, label: false %>
+      </div>
+      <div class="my-2">
+        <p class="text-sm">detail:</p>
+      </div>
+      <div class="text-field my-2">
+        <%= f.input :detail, input_html: { class: 'w-full-input' }, label: false %>
+      </div>
+      <div class="submit-field my-4 text-center">
+        <%= f.button :submit, class: 'btn-default mx-auto px-8' %>
+      </div>
+    <% end %>
+  </div>
+</div>

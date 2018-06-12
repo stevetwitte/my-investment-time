@@ -1,3 +1,17 @@
+<% if @invest.user == current_user %>
+  <div class="w-full-card w-auto">
+    <div class="m-0 p-0">
+      <ul class="list-reset float-none">
+        <%= link_to(edit_invest_path(@invest)) do %>
+          <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">edit</li>
+        <% end %>
+        <%= link_to(new_invest_status_path(@invest)) do %>
+          <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">update history</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
 <div class="w-full-card">
   <div class="w-3/4 pr-4">
     <h3 class="w-full border-b-2 border-grey-light mb-2"><%= @invest.title %></h3>
@@ -11,7 +25,19 @@
   <div class="w-full">
     <h3 class="w-full border-b-2 border-grey-light mb-2">links</h3>
     <% @invest.links.try(:each) do |i| %>
-      <a href="<%= i.to_a[1] %>"><h3 class="pb-4"><%= i.to_a[0] + ': ' + i.to_a[1] %></h3></a>
+      <a href="<%= i.to_a[1] %>"><h4 class="pb-4"><%= i.to_a[0] + ': ' + i.to_a[1] %></h4></a>
+    <% end %>
+  </div>
+</div>
+<div class="w-full-card">
+  <div class="w-full">
+    <h3 class="w-full border-b-2 border-grey-light mb-2">history</h3>
+    <% @invest.statuses.try(:each) do |i| %>
+      <div style="clear: both">
+        <h4 class="pb-4 float-left"><%= i.title %>:</h4>
+        <p class="pb-4 float-left ml-4"><%= i.detail %></p>
+        <p class="pb-4 float-right ml-4"><%= i.created_at.strftime('%H:%M - %b %e %Y') %></p>
+      </div>
     <% end %>
   </div>
 </div>

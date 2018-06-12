@@ -16,7 +16,9 @@ Rails.application.routes.draw do
              only: [:create, :edit, :update]
   end
 
-  resources :invests
+  resources :invests do
+    resources :statuses, only: [:new, :create]
+  end
 
   namespace :settings do
     resource :account, controller: "accounts", only: [:edit, :update]

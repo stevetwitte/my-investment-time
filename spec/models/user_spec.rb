@@ -11,6 +11,8 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:invests) }
 
     it { is_expected.to have_one(:profile) }
+
+    it { is_expected.to have_many(:statuses) }
   end
 
   describe 'validations' do
