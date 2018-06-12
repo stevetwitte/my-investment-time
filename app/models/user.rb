@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   has_many :invests, dependent: :destroy
+  has_many :statuses
 
   after_create :create_profile
 
