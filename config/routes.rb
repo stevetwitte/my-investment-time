@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root to: 'invests#index'
 
+  # Sidekiq Routes
+
+  constraints Clearance::Constraints::SignedIn.new { |user| user.email == "stevetwitte@gmail.com" } do
+    mount Sidekiq::Web, at: "/sidekiq"
+  end
+
   # Clearance Routes
 
   get "/sign_in" => "sessions#new", as: "sign_in"
