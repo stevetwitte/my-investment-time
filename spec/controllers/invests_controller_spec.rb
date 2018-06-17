@@ -91,5 +91,9 @@ RSpec.describe InvestsController, type: :controller do
     it 'creates an invest' do
       expect(Invest.all.length).to eql 1
     end
+
+    it 'creates the tags' do
+      expect(Tag.all.length).to eql 2
+    end
   end
 end
