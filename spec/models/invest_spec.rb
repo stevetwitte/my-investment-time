@@ -13,6 +13,8 @@ RSpec.describe Invest, type: :model do
     it { is_expected.to have_many(:tags) }
 
     it { is_expected.to have_many(:statuses) }
+
+    it { is_expected.to have_many(:likes) }
   end
 
   describe 'validations' do

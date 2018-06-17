@@ -3,6 +3,7 @@ class Invest < ApplicationRecord
   has_many :statuses, dependent: :destroy
   has_many :taggings
   has_many :tags, through: :taggings
+  has_many :likes
 
   before_save :process_tags
   after_create :create_initial_status

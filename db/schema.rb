@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_17_150320) do
+ActiveRecord::Schema.define(version: 2018_06_17_180255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 2018_06_17_150320) do
     t.bigint "user_id"
     t.jsonb "links"
     t.index ["user_id"], name: "index_invests_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "invest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invest_id"], name: "index_likes_on_invest_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -75,6 +84,8 @@ ActiveRecord::Schema.define(version: 2018_06_17_150320) do
   end
 
   add_foreign_key "invests", "users"
+  add_foreign_key "likes", "invests"
+  add_foreign_key "likes", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "statuses", "invests"
   add_foreign_key "statuses", "users"

@@ -18,7 +18,8 @@
     <p><%= @invest.body %></p>
   </div>
   <div class="w-1/4 border-l-2 border-grey-light pl-4">
-    <p><%= link_to @invest.user.username, user_url(@invest.user) %></p>
+    <h4><%= link_to @invest.user.username, user_url(@invest.user) %></h4>
+    <h4 class="mt-2">Likes: <%= @invest.likes.length %></h4>
   </div>
 </div>
 <div class="w-full-card">
