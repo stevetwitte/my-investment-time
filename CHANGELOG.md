@@ -8,4 +8,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.1.0] - 2018-6-17
 ### Added
-- 
+- User model with CRUD
+- Invest model with CRUD
+- Invest Details
+- Pagination on Invest Index view
+- Edit Users and profile
+- Readme file
+- Links to Invests
+- Search by Invest
+- Edit Invest
+- Configured Email
+- Update status on Invest
+- Tag an Invest
