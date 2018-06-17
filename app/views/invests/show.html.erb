@@ -19,7 +19,11 @@
   </div>
   <div class="w-1/4 border-l-2 border-grey-light pl-4">
     <h4><%= link_to @invest.user.username, user_url(@invest.user) %></h4>
-    <h4 class="mt-2">Likes: <%= @invest.likes.length %></h4>
+    <% if current_user.likes.where(invest: @invest).blank? %>
+      <h4 class="mt-2"><%= link_to "Likes: #{@invest.likes.length}", invest_likes_path(@invest), method: :post %></h4>
+    <% else %>
+      <h4 class="mt-2"><%= link_to "Likes: #{@invest.likes.length}", invest_like_path(@invest, Like.find_by(user: current_user, invest: @invest)), method: :delete %></h4>
+    <% end %>
   </div>
 </div>
 <div class="w-full-card">
