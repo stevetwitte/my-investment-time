@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :invests, dependent: :destroy
   has_many :statuses
+  has_many :likes
 
   after_create :create_profile
 

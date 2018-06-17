@@ -3,6 +3,17 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   root to: 'invests#index'
 
+  resources :invests do
+    resources :statuses, only: [:new, :create]
+    resources :likes, controller: "likes", only: [:create, :destroy]
+  end
+
+  namespace :settings do
+    resource :account, controller: "accounts", only: [:edit, :update]
+    resource :password, controller: "passwords", only: [:edit, :update]
+    resource :profile, controller: "profiles", only: [:edit, :update]
+  end
+
   # Sidekiq Routes
 
   constraints Clearance::Constraints::SignedIn.new { |user| user.email == "stevetwitte@gmail.com" } do
@@ -23,15 +34,4 @@ Rails.application.routes.draw do
              controller: "passwords",
              only: [:create, :edit, :update]
   end
-
-  resources :invests do
-    resources :statuses, only: [:new, :create]
-  end
-
-  namespace :settings do
-    resource :account, controller: "accounts", only: [:edit, :update]
-    resource :password, controller: "passwords", only: [:edit, :update]
-    resource :profile, controller: "profiles", only: [:edit, :update]
-  end
-
 end
