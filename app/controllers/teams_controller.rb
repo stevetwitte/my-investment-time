@@ -2,7 +2,8 @@ class TeamsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @teams = @teams.order('created_at DESC').page(params[:page])
+    @owned_teams = @teams.where(owner: current_user)
+    @member_teams = current_user.teams
   end
 
   def show

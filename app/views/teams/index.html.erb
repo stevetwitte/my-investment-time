@@ -1,9 +1,31 @@
-<% @teams.try(:each) do |team| %>
+<div class="w-full-card w-auto">
+  <div class="m-0 p-0">
+    <ul class="list-reset float-none">
+      <%= link_to(new_team_path) do %>
+        <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">new team</li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="w-full-card w-auto bg-white">
+  <div class="m-0 p-0">
+    <h3 class="float-left p-1 mx-1">owner of teams</h3>
+  </div>
+</div>
+<% @owned_teams.try(:each) do |team| %>
   <%= link_to team, class: 'no-underline' do %>
     <%= render 'teams/shared/team_list', team: team %>
   <% end %>
 <% end %>
 
-<div class="text-center m-6">
-  <%= paginate @teams %>
+<div class="w-full-card w-auto bg-white">
+  <div class="m-0 p-0">
+    <h3 class="float-left p-1 mx-1">member of teams</h3>
+  </div>
 </div>
+<% @member_teams.try(:each) do |team| %>
+  <%= link_to team, class: 'no-underline' do %>
+    <%= render 'teams/shared/team_list', team: team %>
+  <% end %>
+<% end %>

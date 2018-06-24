@@ -3,12 +3,17 @@ require 'rails_helper'
 RSpec.describe TeamsController, type: :controller do
 
   describe "GET #index" do
+    let!(:user) { create :user }
+    let!(:team_owned) { create :team, owner: user }
+
     before :each do
       10.times do
         create :team
       end
 
-      sign_in
+      user.teams << Team.last
+
+      sign_in_as(user)
       get :index
     end
 
@@ -16,8 +21,12 @@ RSpec.describe TeamsController, type: :controller do
       expect(response).to have_http_status :ok
     end
 
-    it "returns teams in instance variable" do
-      expect(assigns(:teams).length).to be 10
+    it "returns owned teams in instance variable" do
+      expect(assigns(:owned_teams).length).to be 1
+    end
+
+    it "returns joined teams in instance variable" do
+      expect(assigns(:member_teams).length).to be 1
     end
   end
 
