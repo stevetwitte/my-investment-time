@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resource :profile, controller: "profiles", only: [:edit, :update]
   end
 
+  resources :teams
+
   # Sidekiq Routes
 
   constraints Clearance::Constraints::SignedIn.new { |user| user.email == "stevetwitte@gmail.com" } do
