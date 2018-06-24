@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :invests, dependent: :destroy
   has_many :statuses
   has_many :likes
+  has_many :team_members
+  has_many :teams, through: :team_members
 
   after_create :create_profile
 

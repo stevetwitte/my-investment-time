@@ -82,9 +82,11 @@ ActiveRecord::Schema.define(version: 2018_06_17_201513) do
   create_table "teams", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", null: false
+    t.string "slug", null: false
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_teams_on_slug", unique: true
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
