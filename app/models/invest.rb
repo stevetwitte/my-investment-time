@@ -1,7 +1,7 @@
 class Invest < ApplicationRecord
   belongs_to :user
   has_many :statuses, dependent: :destroy
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   has_many :likes
 

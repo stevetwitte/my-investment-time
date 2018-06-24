@@ -9,6 +9,8 @@ class Ability
       can :read, Invest
       can [:create, :update, :destroy], Invest, user_id: user.id
       can :create, Status
+      can [:index, :show, :create], Team
+      can :update, Team, owner: user
     end
 
     # Public abilities

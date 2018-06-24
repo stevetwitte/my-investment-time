@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  has_many :profiles, dependent: :destroy
   has_one :profile, dependent: :destroy
   has_many :invests, dependent: :destroy
   has_many :statuses
