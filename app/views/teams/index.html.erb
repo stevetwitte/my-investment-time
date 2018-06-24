@@ -1,0 +1,9 @@
+<% @teams.try(:each) do |team| %>
+  <%= link_to team, class: 'no-underline' do %>
+    <%= render 'teams/shared/team_list', team: team %>
+  <% end %>
+<% end %>
+
+<div class="text-center m-6">
+  <%= paginate @teams %>
+</div>

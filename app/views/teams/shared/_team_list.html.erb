@@ -1,0 +1,9 @@
+<div class="w-full-card hover-grow">
+  <div class="w-3/4 pr-4">
+    <h3 class="w-full border-b-2 border-grey-light mb-2"><%= team.name %></h3>
+    <p><%= truncate team.description, length: 200, separator: /\w+/ %></p>
+  </div>
+  <div class="w-1/4 border-l-2 border-grey-light pl-4">
+    <p>owner: <%= team.owner.username %></p>
+  </div>
+</div>
