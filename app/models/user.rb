@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :team_members
   has_many :teams, through: :team_members
 
+  before_save :downcase_fields
   after_create :create_profile
 
   validates :email,
@@ -27,6 +28,8 @@ class User < ApplicationRecord
   validates :username,
             presence: true,
             uniqueness: { case_sensitive: false },
+            format: { with: /\A[a-zA-Z0-9\.\-\_]+\Z/,
+                      message: "only allows letters, numbers, underscores, periods and dashes" },
             if: -> { new_record? || username.present? }
 
   def to_param
@@ -37,5 +40,10 @@ class User < ApplicationRecord
 
   def create_profile
     self.profile = Profile.create!(user: self)
+  end
+
+  def downcase_fields
+    self.email.downcase!
+    self.username.downcase!
   end
 end

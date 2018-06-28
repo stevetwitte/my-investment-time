@@ -8,13 +8,19 @@ class Team < ApplicationRecord
 
   validates :slug,
             presence: true,
-            uniqueness: true, case_sensitive: false
+            uniqueness: true, case_sensitive: false,
+            format: { with: /\A[a-zA-Z0-9\.\-\_]+\Z/,
+                      message: "only allows letters, numbers, underscores, periods and dashes" }
 
-  before_create :create_slug
+  before_save :downcase_fields
+
+  def to_param
+    slug
+  end
 
   private
 
-  def create_slug
-    self.slug = name.strip().downcase.gsub(' ', '-')
+  def downcase_fields
+    self.slug.downcase!
   end
 end

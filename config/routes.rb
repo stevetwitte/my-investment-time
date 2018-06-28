@@ -16,13 +16,11 @@ Rails.application.routes.draw do
 
   resources :teams
 
-  # Sidekiq Routes
-
-  constraints Clearance::Constraints::SignedIn.new { |user| user.email == "stevetwitte@gmail.com" } do
-    mount Sidekiq::Web, at: "/sidekiq"
+  resources :users, controller: "users", only: [:create, :show] do
+    resource :password,
+             controller: "passwords",
+             only: [:create, :edit, :update]
   end
-
-  # Clearance Routes
 
   get "/sign_in" => "sessions#new", as: "sign_in"
   delete "/sign_out" => "sessions#destroy", as: "sign_out"
@@ -31,9 +29,9 @@ Rails.application.routes.draw do
   resources :passwords, controller: "passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]
 
-  resources :users, controller: "users", only: [:create, :show] do
-    resource :password,
-             controller: "passwords",
-             only: [:create, :edit, :update]
+  # Sidekiq Routes
+
+  constraints Clearance::Constraints::SignedIn.new { |user| user.email == "stevetwitte@gmail.com" } do
+    mount Sidekiq::Web, at: "/sidekiq"
   end
 end

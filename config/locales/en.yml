@@ -4,6 +4,7 @@ en:
   menu:
     home: "home"
     search: "search"
+    teams: "teams"
     settings: "settings"
     log_in: "sign in"
     log_out: "log out"
@@ -29,3 +30,9 @@ en:
     accounts:
       edit:
         title: "account"
+  teams:
+    new:
+      title: "new team"
+    edit:
+      title: "edit team"
+

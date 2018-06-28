@@ -37,7 +37,7 @@ RSpec.describe TeamsController, type: :controller do
       end
 
       sign_in
-      get :show, params: { id: Team.last.id }
+      get :show, params: { id: Team.last.slug }
     end
 
     it "returns http success" do
@@ -99,7 +99,7 @@ RSpec.describe TeamsController, type: :controller do
       end
 
       sign_in_as(user)
-      get :edit, params: { id: team.id }
+      get :edit, params: { id: team.slug }
     end
 
     it "returns http success" do
@@ -118,8 +118,12 @@ RSpec.describe TeamsController, type: :controller do
 
       before :each do
         sign_in_as(user)
-        patch :update, params: { id: team.id,
-                                 team: { description: "This is a test description." } }
+        patch :update, params: { id: team.slug,
+                                 team: { name: team.name,
+                                         slug: team.slug,
+                                         description: "This is a test description.",
+                                         links: { homepage: "test.com",
+                                                  github: "git.com" } } }
       end
 
       it "returns http found" do
