@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_28_194410) do
+ActiveRecord::Schema.define(version: 2018_06_28_223147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activity_invites", force: :cascade do |t|
+    t.bigint "team_id"
+    t.bigint "user_id"
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_activity_invites_on_team_id"
+    t.index ["user_id"], name: "index_activity_invites_on_user_id"
+  end
 
   create_table "invests", force: :cascade do |t|
     t.string "title", null: false
@@ -104,6 +114,8 @@ ActiveRecord::Schema.define(version: 2018_06_28_194410) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "activity_invites", "teams"
+  add_foreign_key "activity_invites", "users"
   add_foreign_key "invests", "users"
   add_foreign_key "likes", "invests"
   add_foreign_key "likes", "users"
