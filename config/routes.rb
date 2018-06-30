@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     resource :profile, controller: "profiles", only: [:edit, :update]
   end
 
-  resources :teams
+  resources :teams do
+    resources :invites, controller: "activities/invites"
+  end
 
   resources :users, controller: "users", only: [:create, :show] do
     resource :password,

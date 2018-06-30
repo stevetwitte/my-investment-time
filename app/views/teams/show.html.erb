@@ -5,6 +5,9 @@
         <%= link_to(edit_team_path(@team)) do %>
           <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">edit</li>
         <% end %>
+        <%= link_to(new_team_invite_path(@team, @invest)) do %>
+          <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">invite members</li>
+        <% end %>
       </ul>
     </div>
   </div>

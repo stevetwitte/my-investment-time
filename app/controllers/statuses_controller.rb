@@ -22,14 +22,14 @@ class StatusesController < ApplicationController
 
   private
 
+  def status_params
+    params.require(:status).permit(:title,
+                                   :detail)
+  end
+
   def authorize_status
     unless Invest.find_by_id!(params["invest_id"]).user == current_user
       raise CanCan::AccessDenied
     end
-  end
-
-  def status_params
-    params.require(:status).permit(:title,
-                                   :detail)
   end
 end
