@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get 'activities/index'
   root to: 'invests#index'
 
   resources :invests do
@@ -14,13 +15,17 @@ Rails.application.routes.draw do
     resource :profile, controller: "profiles", only: [:edit, :update]
   end
 
-  # Sidekiq Routes
-
-  constraints Clearance::Constraints::SignedIn.new { |user| user.email == "stevetwitte@gmail.com" } do
-    mount Sidekiq::Web, at: "/sidekiq"
+  resources :teams do
+    resources :invites, controller: "activities/invites"
   end
 
-  # Clearance Routes
+  resource :activites, controller: "activities", only: [:index]
+
+  resources :users, controller: "users", only: [:create, :show] do
+    resource :password,
+             controller: "passwords",
+             only: [:create, :edit, :update]
+  end
 
   get "/sign_in" => "sessions#new", as: "sign_in"
   delete "/sign_out" => "sessions#destroy", as: "sign_out"
@@ -29,9 +34,9 @@ Rails.application.routes.draw do
   resources :passwords, controller: "passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]
 
-  resources :users, controller: "users", only: [:create, :show] do
-    resource :password,
-             controller: "passwords",
-             only: [:create, :edit, :update]
+  # Sidekiq Routes
+
+  constraints Clearance::Constraints::SignedIn.new { |user| user.email == "stevetwitte@gmail.com" } do
+    mount Sidekiq::Web, at: "/sidekiq"
   end
 end

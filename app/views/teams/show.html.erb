@@ -1,0 +1,51 @@
+<% if @team.owner == current_user %>
+  <div class="w-full-card w-auto">
+    <div class="m-0 p-0">
+      <ul class="list-reset float-none">
+        <%= link_to(edit_team_path(@team)) do %>
+          <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">edit</li>
+        <% end %>
+        <%= link_to(new_team_invite_path(@team, @invest)) do %>
+          <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">invite members</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<div class="w-full-card">
+  <div class="w-full pr-4">
+    <h3 class="w-full border-b-2 border-grey-light mb-2"><%= @team.name %></h3>
+    <p><%= @team.description %></p>
+  </div>
+</div>
+
+<div class="w-full-card w-auto bg-white">
+  <div class="m-0 p-0">
+    <h3 class="float-left p-1 mx-1">owner of team</h3>
+  </div>
+</div>
+
+<%= link_to user_path(@team.owner) do %>
+  <div class="w-full-card hover-grow">
+    <div class="w-full pr-4">
+      <h3 class="w-full"><%= @team.owner.username %></h3>
+    </div>
+  </div>
+<% end %>
+
+<div class="w-full-card w-auto bg-white">
+  <div class="m-0 p-0">
+    <h3 class="float-left p-1 mx-1">members of team</h3>
+  </div>
+</div>
+
+<% @team.members.each do |member| %>
+  <%= link_to user_path(member) do %>
+    <div class="w-full-card hover-grow">
+      <div class="w-full pr-4">
+        <h3 class="w-full"><%= member.username %></h3>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -10,18 +10,12 @@ class InvestsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def create
     if @invest.save
       redirect_to root_url
     else
       render :new
     end
-  end
-
-  def edit
   end
 
   def update

@@ -1,0 +1,64 @@
+<div class="w-full-card w-auto">
+  <div class="m-0 p-0">
+    <ul class="list-reset float-none">
+      <%= link_to(team_path(@team)) do %>
+        <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">cancel</li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="w-full-card">
+  <div class="w-full">
+    <%= simple_form_for @invite, url: team_invites_path do |f| %>
+      <div class="my-2">
+        <p class="text-sm">email:</p>
+      </div>
+      <div class="text-field my-2">
+        <%= f.input :member_email, input_html: { class: 'w-full-input' }, label: false %>
+      </div>
+      <div class="submit-field my-4 text-center">
+        <%= f.button :submit, class: 'btn-default mx-auto px-8' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="w-full-card w-auto bg-white">
+  <div class="m-0 p-0">
+    <h3 class="float-left p-1 mx-1">pending invites</h3>
+  </div>
+</div>
+
+<% @team.activity_invites.pending.try(:each) do |invitee| %>
+  <%= link_to user_path(invitee.user) do %>
+    <div class="w-full-card hover-grow">
+      <div class="w-2/3 pr-4">
+        <h3 class="w-full"><%= invitee.user.username %></h3>
+      </div>
+      <div class="w-1/3 pr-4">
+        <h3 class="w-full">
+          <%= link_to 'X', team_invite_path(@team, invitee),
+                      data: {confirm: 'Are you sure you want to revoke this invite?'},
+                      method: :delete %>
+        </h3>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="w-full-card w-auto bg-white">
+  <div class="m-0 p-0">
+    <h3 class="float-left p-1 mx-1">members of team</h3>
+  </div>
+</div>
+
+<% @team.members.try(:each) do |member| %>
+  <%= link_to user_path(member) do %>
+    <div class="w-full-card hover-grow">
+      <div class="w-full pr-4">
+        <h3 class="w-full"><%= member.username %></h3>
+      </div>
+    </div>
+  <% end %>
+<% end %>

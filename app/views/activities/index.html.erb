@@ -1,0 +1,8 @@
+<div class="w-full-card w-auto bg-white">
+  <div class="m-0 p-0">
+    <h3 class="float-left p-1 mx-1">pending invitations</h3>
+  </div>
+</div>
+<% @invitations.pending.try(:each) do |invite| %>
+  <%= render 'activities/shared/invite_list', invite: invite %>
+<% end %>
