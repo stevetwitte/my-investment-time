@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get 'activities/index'
   root to: 'invests#index'
 
   resources :invests do
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
   resources :teams do
     resources :invites, controller: "activities/invites"
   end
+
+  resource :activites, controller: "activities", only: [:index]
 
   resources :users, controller: "users", only: [:create, :show] do
     resource :password,

@@ -6,7 +6,7 @@ module Activities
     def new
       @invite = Activity::Invite.new(team: @team)
 
-      render "activites/invites/new"
+      render :new
     end
 
     def create
@@ -33,12 +33,35 @@ module Activities
         flash[:notice] = "#{invite_params[:member_email]} has been invited to the team"
         redirect_to new_team_invite_path(@team)
       else
-        render "activites/invites/new"
+        render :new
       end
     end
 
     def update
+      @invite = Activity::Invite.find(params[:id])
 
+      unless @invite.user == current_user
+        raise CanCan::AccessDenied
+      end
+
+      @invite.status = params[:status]
+
+      if @invite.save && @invite.status == "accepted"
+        @invite.accept
+        flash[:notice] = "you are now a member of team: #{@invite.team.name}"
+        redirect_to activities_index_path
+      elsif @invite.save && @invite.status == "rejected"
+        flash[:notice] = "you have dismissed the invitation to join team: #{@invite.team.name}"
+        redirect_to activities_index_path
+      else
+        flash[:notice] = "there was a problem accepting the invitation"
+
+        puts @invite.errors.each do |i|
+          puts i
+        end
+
+        redirect_to activities_index_path
+      end
     end
 
     def destroy
@@ -56,7 +79,8 @@ module Activities
     private
 
     def invite_params
-      params.require(:activity_invite).permit(:member_email)
+      params.require(:activity_invite).permit(:member_email,
+                                              :status)
     end
 
     def load_and_authorize_team

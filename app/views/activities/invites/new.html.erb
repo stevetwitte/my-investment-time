@@ -30,7 +30,7 @@
   </div>
 </div>
 
-<% @team.activity_invites.each do |invitee| %>
+<% @team.activity_invites.pending.try(:each) do |invitee| %>
   <%= link_to user_path(invitee.user) do %>
     <div class="w-full-card hover-grow">
       <div class="w-2/3 pr-4">
@@ -53,7 +53,7 @@
   </div>
 </div>
 
-<% @team.members.each do |member| %>
+<% @team.members.try(:each) do |member| %>
   <%= link_to user_path(member) do %>
     <div class="w-full-card hover-grow">
       <div class="w-full pr-4">
