@@ -11,6 +11,8 @@ RSpec.describe Team, type: :model do
     it { is_expected.to belong_to :owner }
 
     it { is_expected.to have_many :members }
+
+    it { is_expected.to have_many(:activity_invites) }
   end
 
   describe 'validations' do

@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :team_members
   has_many :teams, through: :team_members
+  has_many :activity_invites, :class_name => 'Activity::Invite'
 
   before_save :downcase_fields
   after_create :create_profile

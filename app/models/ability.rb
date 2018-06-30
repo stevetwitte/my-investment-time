@@ -11,6 +11,7 @@ class Ability
       can :create, Status
       can [:index, :show], Team
       can [:update, :create], Team, owner: user
+      can [:create, :update], Activity::Invite
     end
 
     # Public abilities
