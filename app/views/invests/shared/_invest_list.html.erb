@@ -1,9 +1,13 @@
-<div class="w-full-card hover-grow">
-  <div class="w-3/4 pr-4">
-    <h3 class="w-full border-b-2 border-grey-light mb-2"><%= invest.title %></h3>
-    <p><%= truncate invest.body, length: 200, separator: /\w+/ %></p>
-  </div>
-  <div class="w-1/4 border-l-2 border-grey-light pl-4">
-    <p><%= invest.user.username %></p>
+<div class="col s12 hover-grow">
+  <div class="card horizontal">
+    <div class="card-stacked">
+      <div class="card-content">
+        <span class="card-title"><%= invest.title %></span>
+        <p><%= truncate invest.body, length: 200, separator: /\w+/ %></p>
+      </div>
+      <div class="card-action">
+        <p><%= invest.user.username %></p>
+      </div>
+    </div>
   </div>
 </div>

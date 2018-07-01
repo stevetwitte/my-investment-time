@@ -1,0 +1,62 @@
+@import "tachyons.min";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "materialize/components/color-variables";
+
+$primary-color: color("blue-grey", "darken-1");
+$primary-color-light: lighten($primary-color, 15%);
+$primary-color-dark: darken($primary-color, 15%);
+
+$secondary-color: color("blue-grey", "darken-3");
+$success-color: color("green", "base");
+$error-color: color("red", "darken-4");
+$link-color: color("teal", "darken-4");
+
+@import 'materialize';
+
+body {
+  background-color: lighten($secondary-color, 60%);
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+p, .no-color-link {
+  color: rgb(0,0,0);
+}
+
+a {
+  text-decoration: underline;
+}
+
+.likes-icon {
+  font-size: 20px;
+}
+
+.likes {
+  font-size: 28px;
+  margin-left: 5px;
+}
+
+nav ul a:hover {
+  background-color: $primary-color-dark;
+}
+
+.dropdown-content {
+  top: -65px;
+  background-color: $primary-color;
+}
+
+.hover-grow {
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.hover-grow:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+

@@ -14,8 +14,9 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery3
+//= require materialize
 //= require_tree .
 
-function toggleMenu() {
-    $('#mainMenu').toggleClass('menu-hidden');
-}
+$( document ).on('turbolinks:load', function() {
+    $(".dropdown-trigger").dropdown();
+});
