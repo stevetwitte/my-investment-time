@@ -1,12 +1,12 @@
 <ul id="mainMenu" class="dropdown-content">
-  <li><%= link_to t("menu.search"), root_path, class: 'no-underline' %></li>
+  <li><%= link_to t("menu.search"), root_path, class: 'no-underline black-text' %></li>
   <% if signed_in? -%>
-    <li><%= link_to t("menu.teams"), teams_path, class: 'no-underline' %></li>
-    <li><%= link_to t("menu.settings"), edit_settings_account_path, class: 'no-underline' %></li>
+    <li><%= link_to t("menu.teams"), teams_path, class: 'no-underline black-text' %></li>
+    <li><%= link_to t("menu.settings"), edit_settings_account_path, class: 'no-underline black-text' %></li>
     <li class="divider"></li>
-    <li><%= link_to t("menu.log_out"), sign_out_path, method: :delete, class: 'no-underline' %></li>
+    <li><%= link_to t("menu.log_out"), sign_out_path, method: :delete, class: 'no-underline black-text' %></li>
   <% else -%>
     <li class="divider"></li>
-    <li><%= link_to t("menu.log_in"), sign_in_path, class: 'no-underline' %></li>
+    <li><%= link_to t("menu.log_in"), sign_in_path, class: 'no-underline black-text' %></li>
   <% end -%>
 </ul>

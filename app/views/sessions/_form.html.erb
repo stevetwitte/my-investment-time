@@ -1,20 +1,13 @@
 <%= form_for :session, url: session_path do |form| %>
-  <div class="text-field my-2">
-    <%= form.text_field :email, type: 'email', class: 'w-full-input', placeholder: t("forms.email_address") %>
+  <div class="input-field">
+    <label for="email" class="light-color">email</label>
+    <%= form.text_field :email, type: 'email', class: 'validate light-color' %>
   </div>
 
-  <div class="password-field my-2">
-    <%= form.password_field :password, class: 'w-full-input', placeholder: t("forms.password") %>
+  <div class="input-field">
+    <label for="session_password" class="light-color">password</label>
+    <%= form.password_field :password, class: 'validate light-color' %>
   </div>
 
-  <div class="submit-field my-4 text-center">
-    <%= form.submit class: 'btn-default mx-auto px-8' %>
-  </div>
-
-  <div class="other-links mt-4 mx-auto text-center">
-    <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t(".sign_up"), sign_up_path, class: 'mr-2' %>
-    <% end %>
-    <%= link_to t(".forgot_password"), new_password_path %>
-  </div>
+  <%= form.submit class: 'btn black-text pointer' %>
 <% end %>

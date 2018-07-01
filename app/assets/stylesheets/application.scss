@@ -6,8 +6,8 @@ $primary-color: color("blue-grey", "darken-1");
 $primary-color-light: lighten($primary-color, 15%);
 $primary-color-dark: darken($primary-color, 15%);
 
-$secondary-color: color("blue-grey", "darken-3");
-$success-color: color("green", "base");
+$secondary-color: color("blue-grey", "lighten-3");
+$success-color: color("blue-grey", "lighten-4");
 $error-color: color("red", "darken-4");
 $link-color: color("teal", "darken-4");
 
@@ -18,6 +18,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  font-family: "Roboto", sans-serif;
 }
 
 main {
@@ -32,6 +33,44 @@ a {
   text-decoration: underline;
 }
 
+input.light-color {
+  color: lighten($success-color, 25%);
+}
+
+label.light-color {
+  color: $success-color;
+}
+
+.btn-dark {
+  background-color: $primary-color-dark;
+  &:hover {
+    background-color: lighten($primary-color-dark, 20%);
+  }
+}
+
+.flash-item {
+  z-index: 5;
+  position: fixed;
+  margin: auto;
+  min-width: 300px;
+  width: 70%;
+  background-color: $primary-color-dark;
+  color: white;
+  top: 60px;
+  left: auto;
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+}
+
+.card-action a {
+  color: lighten($secondary-color, 50%) !important;
+}
+
+.head-logo {
+  margin: 3px 0 0 20px;
+}
+
 .likes-icon {
   font-size: 20px;
 }
@@ -41,13 +80,8 @@ a {
   margin-left: 5px;
 }
 
-nav ul a:hover {
-  background-color: $primary-color-dark;
-}
-
 .dropdown-content {
   top: -65px;
-  background-color: $primary-color;
 }
 
 .hover-grow {

@@ -20,10 +20,10 @@
   </header>
 
   <main>
-    <div class="container pt4">
+    <div class="container pt5">
       <div id="flash">
         <% flash.each do |key, value| -%>
-          <div id="flash_<%= key %>" class="z-20 w-1/2 mx-auto p-2 bg-grey-darkest text-grey-light"><%= h value %></div>
+          <div id="flash_<%= key %>" class="flash-item"><%= h value %></div>
         <% end %>
       </div>
       <%= yield %>
