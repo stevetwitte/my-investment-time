@@ -14,7 +14,7 @@ $link-color: color("teal", "darken-4");
 @import 'materialize';
 
 body {
-  background-color: lighten($secondary-color, 60%);
+  background-color: lighten($secondary-color, 20%);
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -34,11 +34,25 @@ a {
 }
 
 input.light-color {
-  color: lighten($success-color, 25%);
+  color: #e4e4e4 !important;;
 }
 
 label.light-color {
   color: $success-color;
+}
+
+abbr {
+  display: none;
+}
+
+.textarea-main {
+  min-height: 200px;
+  border: 0;
+  border-bottom: 1px solid grey;
+}
+
+.white-text {
+  color: #e4e4e4 !important;
 }
 
 .btn-dark {
@@ -51,20 +65,19 @@ label.light-color {
 .flash-item {
   z-index: 5;
   position: fixed;
-  margin: auto;
-  min-width: 300px;
-  width: 70%;
+  width: 400px;
   background-color: $primary-color-dark;
   color: white;
   top: 60px;
-  left: auto;
+  left: 50%;
+  margin: 0 0 0 -200px;
   text-align: center;
   padding: 20px;
   font-size: 16px;
 }
 
 .card-action a {
-  color: lighten($secondary-color, 50%) !important;
+  color: #e4e4e4 !important;
 }
 
 .head-logo {
@@ -94,3 +107,7 @@ label.light-color {
   transform: scale(1.05);
 }
 
+.error {
+  color: black;
+  font-size: 14px;
+}

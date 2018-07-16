@@ -1,26 +1,29 @@
-<div class="text-field my-2">
-  <%= form.text_field :email, type: 'email', class: 'w-full-input', placeholder: t("forms.email_address") %>
+<div class="input-field">
+  <label for="email" class="light-color">email</label>
+  <%= form.text_field :email, type: 'email', class: 'validate light-color' %>
   <div class="error">
     <% @user.errors.messages[:email].each do |i| %>
-      email <%= i %>
+      email <%= i %><br>
     <% end %>
   </div>
 </div>
 
-<div class="text-field my-2">
-  <%= form.text_field :username, class: 'w-full-input', placeholder: t("forms.username") %>
+<div class="input-field">
+  <label for="user_username" class="light-color">username</label>
+  <%= form.text_field :username, class: 'validate light-color' %>
   <div class="error">
     <% @user.errors.messages[:username].each do |i| %>
-      username <%= i %>
+      username <%= i %><br>
     <% end %>
   </div>
 </div>
 
-<div class="password-field my-2">
-  <%= form.password_field :password, class: 'w-full-input', placeholder: t("forms.password") %>
+<div class="input-field">
+  <label for="user_password" class="light-color">password</label>
+  <%= form.password_field :password, class: 'validate light-color' %>
   <div class="error">
     <% @user.errors.messages[:password].each do |i| %>
-      password <%= i %>
+      password <%= i %><br>
     <% end %>
   </div>
 </div>
