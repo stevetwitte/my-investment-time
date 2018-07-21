@@ -45,10 +45,16 @@ abbr {
   display: none;
 }
 
+.input-field {
+  margin-top: 1.5rem;
+}
+
 .textarea-main {
-  min-height: 200px;
   border: 0;
+  outline: none;
   border-bottom: 1px solid grey;
+  padding-top: 15px;
+  padding-left: 0;
 }
 
 .white-text {
@@ -74,6 +80,24 @@ abbr {
   text-align: center;
   padding: 20px;
   font-size: 16px;
+}
+
+.settings-ul {
+  li {
+    border-bottom: 1px solid #e4e4e4;
+  }
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.bg-dark {
+  background-color: $primary-color;
+}
+
+.right-inner-card {
+  padding: 1rem !important;
 }
 
 .card-action a {
@@ -108,6 +132,17 @@ abbr {
 }
 
 .error {
-  color: black;
-  font-size: 14px;
+  color: #000000;
+  margin-top: -6px !important;
+  padding-top: 0;
+  font-weight: 600;
+  font-variant: all-small-caps;
+}
+
+.error-text {
+  color: $error-color;
+  margin-top: -6px !important;
+  padding-top: 0;
+  font-weight: 600;
+  font-variant: all-small-caps;
 }

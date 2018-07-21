@@ -12,7 +12,7 @@
 
           <%= simple_form_for @invest do |f| %>
             <%= f.input :title, input_html: { class: 'validate' } %>
-            <%= f.input :body, input_html: { class: 'validate textarea-main' } %>
+            <%= f.input :body, input_html: { class: 'materialize-textarea validate textarea-main' } %>
 
             <%= f.simple_fields_for :links, OpenStruct.new(@invest.links) do |link| %>
                 <%= link.input :homepage, input_html: { class: 'validate' } %>

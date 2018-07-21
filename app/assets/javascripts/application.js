@@ -19,4 +19,6 @@
 
 $( document ).on('turbolinks:load', function() {
     $(".dropdown-trigger").dropdown();
+    M.updateTextFields();
+    M.textareaAutoResize($(".textarea-main"));
 });

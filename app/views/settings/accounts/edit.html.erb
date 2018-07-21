@@ -1,33 +1,37 @@
-<div id="clearance" class="password-reset flex w-full mx-auto bg-grey-lighter">
-  <div class="w-1/4 py-8 bg-grey">
-    <ul class="list-reset">
-      <li class="p-6 bg-grey-light">account</li>
-      <%= link_to edit_settings_profile_path, class: 'no-underline' do %>
-        <li class="p-6 hover:bg-grey-lighter cursor-pointer">profile</li>
-      <% end %>
-      <%= link_to edit_settings_password_path, class: 'no-underline' do %>
-        <li class="p-6 hover:bg-grey-lighter cursor-pointer">password</li>
-      <% end %>
-    </ul>
-  </div>
-  <div class="w-3/4 p-8">
-    <h2 class="mb-6"><%= t(".title") %></h2>
-    <%= simple_form_for @user, url: settings_account_url, method: :patch do |f| %>
-      <div class="my-2">
-        <p class="text-sm">email address:</p>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-stacked">
+        <div class="card-content bg-dark">
+
+          <div class="row no-margin">
+
+            <div class="col s3">
+              <ul class="list-reset settings-ul">
+                <li class="pa2 white-text">account</li>
+                <%= link_to edit_settings_profile_path, class: 'no-underline' do %>
+                  <li class="pa2 white-text cursor-pointer">profile</li>
+                <% end %>
+                <%= link_to edit_settings_password_path, class: 'no-underline' do %>
+                  <li class="pa2 white-text cursor-pointer">password</li>
+                <% end %>
+              </ul>
+            </div>
+
+            <div class="col s9 bg-white right-inner-card">
+              <h3 class="mt0 mb4"><%= t(".title") %></h3>
+              <%= simple_form_for @user, url: settings_account_url, method: :patch do |f| %>
+                <%= f.input :email, input_html: { class: 'validate' }, label: 'email address' %>
+                <%= f.input :username, input_html: { class: 'validate' }, label: 'username' %>
+                <%= f.button :submit, value: 'update account', class: 'btn-dark' %>
+              <% end %>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
-      <div class="text-field my-2">
-        <%= f.input :email, input_html: { class: 'w-full-input' }, label: false %>
-      </div>
-      <div class="my-2">
-        <p class="text-sm">username:</p>
-      </div>
-      <div class="text-field my-2">
-        <%= f.input :username, input_html: { class: 'w-full-input' }, label: false %>
-      </div>
-      <div class="submit-field my-4 text-center">
-        <%= f.button :submit, value: 'update account', class: 'btn-default mx-auto px-8' %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
