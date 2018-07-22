@@ -1,11 +1,17 @@
-<div class="w-full-card">
-  <div class="w-3/4 pr-4">
-    <h3 class="w-full border-b-2 border-grey-light mb-2">You have been invited to join the team: <%= invite.team.name %></h3>
-  </div>
-  <div class="w-1/4 border-l-2 border-grey-light pl-4">
-    <%= link_to 'dismiss', team_invite_path(invite.team, invite, status: 'rejected'),
-                method: :put %>
-    <%= link_to 'accept', team_invite_path(invite.team, invite, status: 'accepted'),
-                method: :put %>
+<div class="card">
+  <div class="card-stacked">
+    <div class="card-content">
+      <div class="row no-margin">
+        <div class="col s8">
+          <h6>You have been invited to join the team: <%= invite.team.name %></h6>
+        </div>
+        <div class="col s4 tr">
+          <%= link_to 'dismiss', team_invite_path(invite.team, invite, status: 'rejected'),
+                      method: :put, class: 'waves-effect waves-light btn btn-dark mr4' %>
+          <%= link_to 'accept', team_invite_path(invite.team, invite, status: 'accepted'),
+                      method: :put, class: 'waves-effect waves-light btn btn-dark' %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

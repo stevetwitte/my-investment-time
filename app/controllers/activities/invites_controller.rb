@@ -15,7 +15,7 @@ module Activities
         redirect_to new_team_invite_path(@team) and return
       end
 
-      unless Activity::Invite.where(user: @invitee).blank?
+      unless Activity::Invite.where(user: @invitee).where.not(status: 'rejected').blank?
         flash[:notice] = "this user has already been invited to the team"
         redirect_to new_team_invite_path(@team) and return
       end

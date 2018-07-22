@@ -14,11 +14,13 @@
         <div class="card-content overflow-auto">
           <h5><%= @team.name %></h5>
           <h6>owner: <%= link_to @team.owner.username, user_path(@team.owner) %></h6>
-          <% if @team.links["homepage"] %>
-            <p>homepage: <%= link_to @team.links["homepage"], @team.links["homepage"] %></p>
-          <% end %>
-          <% if @team.links["github"] %>
-            <p>github: <%= link_to @team.links["github"], @team.links["github"] %></p>
+          <% if @team.links %>
+            <% unless @team.links["homepage"].blank? %>
+              <p>homepage: <%= link_to @team.links["homepage"], @team.links["homepage"] %></p>
+            <% end %>
+            <% unless @team.links["github"].blank? %>
+              <p>github: <%= link_to @team.links["github"], @team.links["github"] %></p>
+            <% end %>
           <% end %>
           <br>
           <p><%= @team.description %></p>
