@@ -17,8 +17,25 @@
 //= require materialize
 //= require_tree .
 
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#avatarPreview').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
 $( document ).on('turbolinks:load', function() {
     $(".dropdown-trigger").dropdown();
     M.updateTextFields();
     M.textareaAutoResize($(".textarea-main"));
+
+    $("#avatar-file").change(function() {
+        readURL(this);
+    });
 });

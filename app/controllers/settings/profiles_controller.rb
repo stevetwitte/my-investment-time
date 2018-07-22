@@ -20,6 +20,7 @@ module Settings
     def profile_params
       params.require(:profile).permit(:full_name,
                                       :bio,
+                                      :avatar,
                                       links: [:homepage,
                                               :github])
     end

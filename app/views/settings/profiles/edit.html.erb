@@ -21,6 +21,16 @@
             <div class="col s9 bg-white right-inner-card">
               <h3 class="mt0 mb4"><%= t(".title") %></h3>
               <%= simple_form_for @profile, url: settings_profile_url, method: :patch do |f| %>
+                <div>
+                  <label>avatar image:</label>
+                  <br>
+                  <% if @profile.avatar.attached? %>
+                    <%= image_tag @profile.avatar, alt: 'Placeholder Avatar', class: 'avatar-preview', id: 'avatarPreview' %>
+                  <% else %>
+                    <%= image_tag 'avatar_placeholder.png', alt: 'Placeholder Avatar', class: 'avatar-preview', id: 'avatarPreview' %>
+                  <% end %>
+                  <%= f.input :avatar, input_html: { id: 'avatar-file', class: 'validate mb2 mt-20' }, label: false %>
+                </div>
                 <%= f.input :full_name, input_html: { class: 'validate' }, label: 'full name' %>
                 <%= f.input :bio, input_html: { class: 'materialize-textarea validate textarea-main' }, label: 'bio' %>
 
