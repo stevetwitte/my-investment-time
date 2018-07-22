@@ -1,51 +1,49 @@
 <% if @team.owner == current_user %>
-  <div class="w-full-card w-auto">
-    <div class="m-0 p-0">
-      <ul class="list-reset float-none">
-        <%= link_to(edit_team_path(@team)) do %>
-          <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">edit</li>
-        <% end %>
-        <%= link_to(new_team_invite_path(@team, @invest)) do %>
-          <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">invite members</li>
-        <% end %>
-      </ul>
+  <div class="row">
+    <div class="col s12">
+      <%= link_to 'edit', edit_team_path(@team), class: 'waves-effect waves-light btn btn-dark' %>
+      <%= link_to 'invite members', new_team_invite_path(@team), class: 'waves-effect waves-light btn btn-dark' %>
     </div>
   </div>
 <% end %>
 
-<div class="w-full-card">
-  <div class="w-full pr-4">
-    <h3 class="w-full border-b-2 border-grey-light mb-2"><%= @team.name %></h3>
-    <p><%= @team.description %></p>
-  </div>
-</div>
-
-<div class="w-full-card w-auto bg-white">
-  <div class="m-0 p-0">
-    <h3 class="float-left p-1 mx-1">owner of team</h3>
-  </div>
-</div>
-
-<%= link_to user_path(@team.owner) do %>
-  <div class="w-full-card hover-grow">
-    <div class="w-full pr-4">
-      <h3 class="w-full"><%= @team.owner.username %></h3>
-    </div>
-  </div>
-<% end %>
-
-<div class="w-full-card w-auto bg-white">
-  <div class="m-0 p-0">
-    <h3 class="float-left p-1 mx-1">members of team</h3>
-  </div>
-</div>
-
-<% @team.members.each do |member| %>
-  <%= link_to user_path(member) do %>
-    <div class="w-full-card hover-grow">
-      <div class="w-full pr-4">
-        <h3 class="w-full"><%= member.username %></h3>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-stacked">
+        <div class="card-content overflow-auto">
+          <h5><%= @team.name %></h5>
+          <h6>owner: <%= link_to @team.owner.username, user_path(@team.owner) %></h6>
+          <% if @team.links["homepage"] %>
+            <p>homepage: <%= link_to @team.links["homepage"], @team.links["homepage"] %></p>
+          <% end %>
+          <% if @team.links["github"] %>
+            <p>github: <%= link_to @team.links["github"], @team.links["github"] %></p>
+          <% end %>
+          <br>
+          <p><%= @team.description %></p>
+        </div>
       </div>
     </div>
-  <% end %>
-<% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-stacked">
+        <div class="card-content overflow-auto">
+          <h5 class="float-left p-1 mx-1">members of team</h5>
+          <% @team.members.each do |member| %>
+            <%= link_to user_path(member) do %>
+              <div class="team-user-list">
+                <h6><%= member.username %></h6>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

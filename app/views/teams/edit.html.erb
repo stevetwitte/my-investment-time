@@ -1,58 +1,30 @@
-<div class="w-full-card w-auto">
-  <div class="m-0 p-0">
-    <ul class="list-reset float-none">
-      <%= link_to(team_path(@team)) do %>
-        <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">cancel</li>
-      <% end %>
+<div class="row">
+  <div class="col s12">
+    <%= link_to 'cancel', team_path(@team), class: 'waves-effect waves-light btn btn-dark' %>
     </ul>
   </div>
 </div>
-<div class="w-full-card">
-  <div class="w-full p-4 pb-0">
-    <h2 class="mb-6"><%= t(".title") %></h2>
-  </div>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-stacked">
+        <div class="card-content">
+          <span class="card-title"><%= t(".title") %></span>
+          <%= simple_form_for @team do |f| %>
+            <%= f.input :name, input_html: { class: 'validate' }, label: "name" %>
+            <%= f.input :slug, input_html: { class: 'validate' }, label: "slug (your team page will live at myinvestmenttime.com/teams/slug)" %>
+            <%= f.input :description, input_html: { class: 'materialize-textarea validate textarea-main' }, label: "description" %>
 
-  <div class="w-full p-4 pt-0">
-    <%= simple_form_for @team do |f| %>
-      <div class="my-2">
-        <p class="text-sm">name:</p>
-      </div>
-      <div class="text-field my-2">
-        <%= f.input :name, input_html: { class: 'w-full-input' }, label: false %>
-      </div>
-      <div class="my-2">
-        <p class="text-sm">url:</p>
-      </div>
-      <div class="text-field my-2">
-        <%= f.input :slug, input_html: { class: 'w-full-input' }, label: false %>
-      </div>
-      <div class="my-2">
-        <p class="text-sm">description:</p>
-      </div>
-      <div class="text-field my-2">
-        <%= f.input :description, input_html: { class: 'w-full-input' }, label: false %>
-      </div>
+            <%= f.simple_fields_for :links, OpenStruct.new(@team.links) do |link| %>
+              <%= link.input :homepage, input_html: { class: 'validate' }, label: "homepage" %>
+              <%= link.input :github, input_html: { class: 'validate' }, label: "github" %>
+            <% end %>
 
-      <%= f.simple_fields_for :links, OpenStruct.new(@team.links) do |link| %>
-        <div class="my-2">
-          <p class="text-sm">homepage:</p>
+            <%= f.button :submit, class: 'btn-dark' %>
+          <% end %>
         </div>
-        <div class="text-field my-2">
-          <%= link.input :homepage, input_html: { class: 'w-full-input' }, label: false %>
-        </div>
-
-        <div class="my-2">
-          <p class="text-sm">github:</p>
-        </div>
-        <div class="text-field my-2">
-          <%= link.input :github, input_html: { class: 'w-full-input' }, label: false %>
-        </div>
-      <% end %>
-
-      <div class="submit-field my-4 text-center">
-        <%= f.button :submit, class: 'btn-default mx-auto px-8' %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
 
