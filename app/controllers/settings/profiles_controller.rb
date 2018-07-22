@@ -7,7 +7,7 @@ module Settings
     def update
       @profile = current_user.profile
 
-      @profile.update!(only_new_params(profile_params, current_user))
+      @profile.update!(profile_params)
       flash[:notice] = 'successfully updated profile'
       redirect_to edit_settings_profile_path
 
