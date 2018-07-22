@@ -1,15 +1,17 @@
-<div id="clearance" class="password-reset w-1/2 mx-auto bg-grey-lighter p-8">
-  <h2 class="mb-6"><%= t(".title") %></h2>
+<div class="w-60-l w-80-m w-100-s ml-auto mr-auto">
+  <div class="card blue-grey darken-1">
+    <div class="card-content white-text">
+      <span class="card-title pb3"><%= t(".title") %></span>
+      <p class="white-text pb4"><%= t(".description") %></p>
 
-  <p><%= t(".description") %></p>
+      <%= form_for :password, url: passwords_path do |form| %>
+        <div class="input-field">
+          <label for="email" class="light-color">email</label>
+          <%= form.text_field :email, type: 'email', class: 'validate light-color' %>
+        </div>
 
-  <%= form_for :password, url: passwords_path do |form| %>
-    <div class="text-field my-2">
-      <%= form.text_field :email, type: 'email', class: 'w-full-input', placeholder: t("forms.email_address") %>
+        <%= form.submit class: 'btn black-text pointer' %>
+      <% end %>
     </div>
-
-    <div class="submit-field my-4 text-center">
-      <%= form.submit class: 'btn-default mx-auto px-8' %>
-    </div>
-  <% end %>
+  </div>
 </div>

@@ -1,27 +1,35 @@
-<div class="fixed z-20 pin-t pin-l pin-r flex justify-between bg-grey-lighter border-b-2 border-grey-light">
-  <div class="p-4">
-    <a class="text-black-darker lowercase no-underline" href="/"><%= image_tag 'header-logo.svg', class: 'header-logo' %></h4></a>
-  </div>
-  <div class="flex-grow max-w-sm">
-    <%= form_tag(invests_path, :method => 'get', id: 'search-form', class: 'flex justify-between items-center flex-wrap bg-grey-lighter m-2') do %>
-      <div class="flex-grow mr-4">
-        <%= text_field_tag :search, params[:search], placeholder: "Find an investment...", class: 'w-full-input p-2' %>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <div class="flex justify-between">
+        <div class="w-30">
+          <a href="/" class="brand-logo w-30 left no-underline head-logo"><%= image_tag 'header-logo.svg', class: 'pt3' %></a>
+        </div>
+        <div class="w-40">
+          <%= form_tag(invests_path, :method => 'get') do %>
+            <div class="input-field bg-black-10">
+              <%= search_field_tag :search, params[:search] %>
+              <label class="label-icon" for="search"><i class="material-icons white-text">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          <% end %>
+        </div>
+        <div class="w-15">
+          <ul class="right">
+            <li>
+              <%= link_to new_invest_path, class: 'no-underline' do %>
+                <i class="material-icons white-text">library_add</i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to activities_index_path, class: 'no-underline' do %>
+                <i class="material-icons white-text">mail_outline</i>
+              <% end %>
+            </li>
+            <li><a class="dropdown-trigger no-underline" href="#!" data-target="mainMenu"><i class="material-icons white-text">menu</i></a></li>
+          </ul>
+        </div>
       </div>
-    <% end %>
-  </div>
-  <div>
-    <%= link_to new_invest_path do %>
-    <div class="float-left p-2 m-2 bg-grey-light cursor-pointer">
-        <i class="fas fa-plus"></i>
     </div>
-    <% end %>
-    <%= link_to activities_index_path do %>
-      <div class="float-left p-2 m-2 bg-grey-light cursor-pointer">
-        <i class="fas fa-bell"></i>
-      </div>
-    <% end %>
-    <div class="float-left p-2 m-2 bg-grey-light cursor-pointer" onclick="toggleMenu()">
-      <i class="fas fa-bars"></i>
-    </div>
-  </div>
+  </nav>
 </div>

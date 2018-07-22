@@ -1,15 +1,17 @@
-<div id="clearance" class="sign-in w-1/2 mx-auto bg-grey-lighter p-8">
-  <h2 class="mb-6"><%= t(".title") %></h2>
+<div class="w-60-l w-80-m w-100-s ml-auto mr-auto">
+  <div class="card blue-grey darken-1">
+    <div class="card-content white-text">
+      <span class="card-title pb3"><%= t(".title") %></span>
 
-  <%= form_for @user do |form| %>
-    <%= render partial: '/users/form', object: form %>
+      <%= form_for @user do |form| %>
+        <%= render partial: '/users/form', object: form %>
 
-    <div class="submit-field my-4 text-center">
-      <%= form.submit class: 'btn-default mx-auto px-8' %>
+        <%= form.submit class: 'btn black-text pointer' %>
+      <% end %>
     </div>
-
-    <div class="other-links mt-4 mx-auto text-center">
+    <div class="card-action">
       <%= link_to t(".sign_in"), sign_in_path %>
+      <%= link_to t(".forgot_password"), new_password_path %>
     </div>
-  <% end %>
+  </div>
 </div>

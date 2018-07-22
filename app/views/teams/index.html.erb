@@ -1,31 +1,31 @@
-<div class="w-full-card w-auto">
-  <div class="m-0 p-0">
-    <ul class="list-reset float-none">
-      <%= link_to(new_team_path) do %>
-        <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">new team</li>
+<div class="row">
+  <div class="col s12">
+    <%= link_to 'new team', new_team_path, class: 'waves-effect waves-light btn btn-dark' %>
+  </div>
+</div>
+
+<div class="w-100-s ml-auto mr-auto">
+  <div class="card blue-grey darken-1">
+    <div class="card-content white-text">
+      <span class="card-title">owner of teams</span>
+      <% @owned_teams.try(:each) do |team| %>
+        <%= link_to team, class: 'no-underline' do %>
+          <%= render 'teams/shared/team_list', team: team %>
+        <% end %>
       <% end %>
-    </ul>
+    </div>
   </div>
 </div>
 
-<div class="w-full-card w-auto bg-white">
-  <div class="m-0 p-0">
-    <h3 class="float-left p-1 mx-1">owner of teams</h3>
+<div class="w-100-s ml-auto mr-auto">
+  <div class="card blue-grey darken-1">
+    <div class="card-content white-text">
+      <span class="card-title">member of teams</span>
+      <% @member_teams.try(:each) do |team| %>
+        <%= link_to team, class: 'no-underline' do %>
+          <%= render 'teams/shared/team_list', team: team %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
-<% @owned_teams.try(:each) do |team| %>
-  <%= link_to team, class: 'no-underline' do %>
-    <%= render 'teams/shared/team_list', team: team %>
-  <% end %>
-<% end %>
-
-<div class="w-full-card w-auto bg-white">
-  <div class="m-0 p-0">
-    <h3 class="float-left p-1 mx-1">member of teams</h3>
-  </div>
-</div>
-<% @member_teams.try(:each) do |team| %>
-  <%= link_to team, class: 'no-underline' do %>
-    <%= render 'teams/shared/team_list', team: team %>
-  <% end %>
-<% end %>

@@ -1,43 +1,42 @@
-<div class="w-full-card w-auto">
-  <div class="m-0 p-0">
-    <ul class="list-reset float-none">
-      <%= link_to(invest_path(@invest)) do %>
-        <li class="float-left p-4 bg-grey-light mx-1 hover:bg-grey-lightest">cancel</li>
-      <% end %>
-    </ul>
+<div class="row">
+  <div class="col s12">
+    <%= link_to 'cancel', invest_path(@invest), class: 'waves-effect waves-light btn btn-dark' %>
   </div>
 </div>
-<div class="w-full-card">
-  <div class="w-full">
-    <h3 class="w-full border-b-2 border-grey-light mb-2">history</h3>
-    <% @invest.statuses.try(:each) do |i| %>
-      <div style="clear: both">
-        <h4 class="pb-4 float-left"><%= i.title %>:</h4>
-        <p class="pb-4 float-left ml-4"><%= i.detail %></p>
-        <p class="pb-4 float-right ml-4"><%= i.created_at.strftime('%H:%M - %b %e %Y') %></p>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-stacked">
+        <div class="card-content overflow-auto">
+          <span class="card-title pb3">history</span>
+          <% @invest.statuses.try(:each) do |i| %>
+            <div class="clearfix">
+              <p class="pb4 fl"><%= i.title %>:</p>
+              <p class="pb4 fl ml-4"><%= i.detail %></p>
+              <p class="pb4 fr ml-4"><%= i.created_at.strftime('%H:%M - %b %e %Y') %></p>
+            </div>
+          <% end %>
+        </div>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
-<div class="w-full-card">
-  <div class="w-full">
-    <h3 class="w-full border-b-2 border-grey-light mb-2">new</h3>
-    <%= simple_form_for @status, url: invest_statuses_path do |f| %>
-      <div class="my-2">
-        <p class="text-sm">title:</p>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-stacked">
+        <div class="card-content">
+          <span class="card-title">new</span>
+
+          <%= simple_form_for @status, url: invest_statuses_path do |f| %>
+              <%= f.input :title, input_html: { class: 'validate' }, label: 'title' %>
+              <%= f.input :detail, input_html: { class: 'materialize-textarea validate textarea-main' }, label: 'detail' %>
+
+              <%= f.button :submit, class: 'btn-dark' %>
+          <% end %>
+
+        </div>
       </div>
-      <div class="text-field my-2">
-        <%= f.input :title, input_html: { class: 'w-full-input' }, label: false %>
-      </div>
-      <div class="my-2">
-        <p class="text-sm">detail:</p>
-      </div>
-      <div class="text-field my-2">
-        <%= f.input :detail, input_html: { class: 'w-full-input' }, label: false %>
-      </div>
-      <div class="submit-field my-4 text-center">
-        <%= f.button :submit, class: 'btn-default mx-auto px-8' %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>

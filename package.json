@@ -2,8 +2,7 @@
   "name": "MyTime",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.4",
-    "tailwindcss": "^0.5.2"
+    "@rails/webpacker": "3.4"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

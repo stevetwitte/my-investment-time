@@ -1,33 +1,37 @@
-<div id="clearance" class="password-reset flex w-full mx-auto bg-grey-lighter">
-  <div class="w-1/4 py-8 bg-grey">
-    <ul class="list-reset">
-      <%= link_to edit_settings_account_path, class: 'no-underline' do %>
-        <li class="p-6 hover:bg-grey-lighter cursor-pointer">account</li>
-      <% end %>
-      <%= link_to edit_settings_profile_path, class: 'no-underline' do %>
-        <li class="p-6 hover:bg-grey-lighter cursor-pointer">profile</li>
-      <% end %>
-      <li class="p-6 bg-grey-light">password</li>
-    </ul>
-  </div>
-  <div class="w-3/4 p-8">
-    <h2 class="mb-6"><%= t(".title") %></h2>
-    <%= simple_form_for @user, url: settings_password_url, method: :patch do |f| %>
-      <div class="my-2">
-        <p class="text-sm">current password:</p>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-stacked">
+        <div class="card-content bg-dark">
+
+          <div class="row no-margin">
+
+            <div class="col s3">
+              <ul class="list-reset settings-ul">
+                <%= link_to edit_settings_account_path, class: 'no-underline' do %>
+                  <li class="pa2 white-text cursor-pointer">account</li>
+                <% end %>
+                <%= link_to edit_settings_profile_path, class: 'no-underline' do %>
+                  <li class="pa2 white-text cursor-pointer">profile</li>
+                <% end %>
+                <li class="pa2 white-text">password</li>
+              </ul>
+            </div>
+
+            <div class="col s9 bg-white right-inner-card">
+              <h3 class="mt0 mb4"><%= t(".title") %></h3>
+              <%= simple_form_for @user, url: settings_password_url, method: :patch do |f| %>
+                <%= f.input :current_password, input_html: { class: 'validate' }, label: 'current password' %>
+                <%= f.input :new_password, input_html: { class: 'w-full-input' }, label: 'new password' %>
+                <%= f.button :submit, value: 'update password', class: 'btn-dark' %>
+              <% end %>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
-      <div class="text-field my-2">
-        <%= f.input :current_password, input_html: { class: 'w-full-input' }, label: false %>
-      </div>
-      <div class="my-2">
-        <p class="text-sm">new password:</p>
-      </div>
-      <div class="text-field my-2">
-        <%= f.input :new_password, input_html: { class: 'w-full-input' }, label: false %>
-      </div>
-      <div class="submit-field my-4 text-center">
-        <%= f.button :submit, value: 'update password', class: 'btn-default mx-auto px-8' %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>

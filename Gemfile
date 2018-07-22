@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'figaro'
 gem 'sidekiq'
 gem 'kaminari'
+gem 'materialize-sass', '~> 1.0.0.rc2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
