@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.0] - 2018-7-22
+### Added
+- User can upload an avatar image
+
 ## [0.2.0] - 2018-7-22
 ### Added
 - User can like and unlike an Invest
