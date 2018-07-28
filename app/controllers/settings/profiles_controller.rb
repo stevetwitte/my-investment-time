@@ -7,12 +7,12 @@ module Settings
     def update
       @profile = current_user.profile
 
-      @profile.update!(profile_params)
-      flash[:notice] = 'successfully updated profile'
-      redirect_to edit_settings_profile_path
-
-    rescue ActiveRecord::RecordInvalid => e
-      render :edit
+      if @profile.update(profile_params)
+        flash[:notice] = 'successfully updated profile'
+        redirect_to edit_settings_profile_path
+      else
+        render :edit
+      end
     end
 
     private
@@ -20,6 +20,7 @@ module Settings
     def profile_params
       params.require(:profile).permit(:full_name,
                                       :bio,
+                                      :avatar,
                                       links: [:homepage,
                                               :github])
     end

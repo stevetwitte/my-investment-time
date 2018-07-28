@@ -6,6 +6,7 @@ en:
     search: "search"
     teams: "teams"
     settings: "settings"
+    profile: "profile"
     log_in: "sign in"
     log_out: "log out"
   forms:
