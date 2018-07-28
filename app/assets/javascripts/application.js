@@ -36,6 +36,11 @@ $( document ).on('turbolinks:load', function() {
     M.textareaAutoResize($(".textarea-main"));
 
     $("#avatar-file").change(function() {
+        console.log(this);
         readURL(this);
+    });
+
+    $("#replaceImage").click(function () {
+        $("#avatar-file").trigger("click");
     });
 });

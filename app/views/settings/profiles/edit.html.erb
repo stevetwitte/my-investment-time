@@ -24,12 +24,15 @@
                 <div>
                   <label>avatar image:</label>
                   <br>
-                  <% if @profile.avatar.attached? %>
+                  <% if @profile.avatar.attached? && @profile.avatar.try(:image?) %>
                     <%= image_tag @profile.avatar, alt: 'Placeholder Avatar', class: 'avatar-preview', id: 'avatarPreview' %>
                   <% else %>
                     <%= image_tag 'avatar_placeholder.png', alt: 'Placeholder Avatar', class: 'avatar-preview', id: 'avatarPreview' %>
                   <% end %>
-                  <%= f.input :avatar, input_html: { id: 'avatar-file', class: 'validate mb2 mt-20' }, accept: 'image/*', label: false %>
+                  <div>
+                    <a id="replaceImage" class="btn btn-dark btn-small mt1 mb4">REPLACE IMAGE</a>
+                  </div>
+                  <%= f.input :avatar, input_html: { id: 'avatar-file', class: 'validate dn' }, label: false %>
                 </div>
                 <%= f.input :full_name, input_html: { class: 'validate' }, label: 'full name' %>
                 <%= f.input :bio, input_html: { class: 'materialize-textarea validate textarea-main' }, label: 'bio' %>
