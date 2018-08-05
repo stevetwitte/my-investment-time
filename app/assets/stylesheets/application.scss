@@ -2,19 +2,22 @@
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "materialize/components/color-variables";
 
-$primary-color: color("blue-grey", "darken-1");
+$primary-color: color("blue-grey", "base");
 $primary-color-light: lighten($primary-color, 15%);
-$primary-color-dark: darken($primary-color, 15%);
+$primary-color-dark: darken($primary-color, 5%);
 
-$secondary-color: color("blue-grey", "lighten-3");
-$success-color: color("blue-grey", "lighten-4");
+$secondary-color: color("blue-grey", "lighten-1");
+$success-color: color("blue-grey", "lighten-3");
 $error-color: color("red", "darken-4");
 $link-color: color("teal", "darken-4");
+
+$light-input-color: #e4e4e4;
+$white-color: #f7f7f7;
 
 @import 'materialize';
 
 body {
-  background-color: lighten($secondary-color, 20%);
+  background-color: lighten($secondary-color, 25%);
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -34,11 +37,11 @@ a {
 }
 
 input.light-color {
-  color: #e4e4e4 !important;;
+  color: $light-input-color !important;;
 }
 
 label.light-color {
-  color: $success-color;
+  color: $success-color !important;;
 }
 
 abbr {
@@ -58,11 +61,11 @@ abbr {
 }
 
 .white-text {
-  color: #e4e4e4 !important;
+  color: $light-input-color !important;
 }
 
 .white-bg {
-  background-color: #fff !important;
+  background-color: $white-color !important;
 }
 
 .btn-dark {
@@ -88,7 +91,7 @@ abbr {
 
 .settings-ul {
   li {
-    border-bottom: 1px solid #e4e4e4;
+    border-bottom: 1px solid $light-input-color;
   }
 }
 
@@ -105,7 +108,11 @@ abbr {
 }
 
 .card-action a {
-  color: #e4e4e4 !important;
+  color: $light-input-color !important;
+}
+
+.card {
+  background-color: $white-color;
 }
 
 .head-logo {
