@@ -4,7 +4,7 @@
       <div class="card-stacked">
         <div class="card-content">
           <div class="ma1">
-            <% if @user.profile.avatar.attached? && @user.profile.avatar.try(:image?) %>
+            <% if @user.profile.avatar.attached? %>
               <%= image_tag @user.profile.avatar, alt: 'Placeholder Avatar' %>
             <% else %>
               <%= image_tag 'avatar_placeholder.png', alt: 'Placeholder Avatar' %>
