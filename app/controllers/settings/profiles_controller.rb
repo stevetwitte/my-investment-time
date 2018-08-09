@@ -1,14 +1,13 @@
 module Settings
   class ProfilesController < ApplicationController
+    before_action :load_resource
+
     def edit
-      @profile = current_user.profile
     end
 
     def update
-      @profile = current_user.profile
-
       if @profile.update(profile_params)
-        flash[:notice] = 'successfully updated profile'
+        flash[:notice] = "successfully updated profile"
         redirect_to edit_settings_profile_path
       else
         render :edit
@@ -31,6 +30,10 @@ module Settings
           parameters.delete(k)
         end
       end
+    end
+
+    def load_resource
+      @profile = current_user.profile
     end
   end
 end
