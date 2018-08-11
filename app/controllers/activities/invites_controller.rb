@@ -39,34 +39,28 @@ module Activities
     end
 
     def update
-      @invite = Activity::Invite.find(params[:id])
-
-      unless @invite.user == current_user
-        raise CanCan::AccessDenied
-      end
+      @invite = current_user.activity_invites.find(params[:id])
 
       @invite.status = params[:status]
 
       if @invite.save && @invite.status == "accepted"
         @invite.accept
         flash[:notice] = "you are now a member of team: #{@invite.team.name}"
-        redirect_to activities_index_path
       elsif @invite.save && @invite.status == "rejected"
         flash[:notice] = "you have dismissed the invitation to join team: #{@invite.team.name}"
-        redirect_to activities_index_path
       else
         flash[:notice] = "there was a problem accepting the invitation"
-
-        puts @invite.errors.each do |i|
-          puts i
-        end
-
-        redirect_to activities_index_path
       end
+
+      redirect_to activities_index_path
     end
 
     def destroy
-      @invite = Activity::Invite.find(params[:id])
+      @invite = Activity::Invite.find_by(id: params[:id])
+
+      unless @invite.team.owner == current_user
+        raise CanCan::AccessDenied
+      end
 
       if @invite.destroy
         flash[:notice] = "invite has been revoked"
