@@ -38,6 +38,7 @@ $( document ).on('turbolinks:load', function() {
         M.textareaAutoResize($(".textarea-main"));
     }
 
+    // Avatar preview on profile in settings
     $("#avatar-file").change(function() {
         console.log(this);
         readURL(this);
@@ -45,5 +46,29 @@ $( document ).on('turbolinks:load', function() {
 
     $("#replaceImage").click(function () {
         $("#avatar-file").trigger("click");
+    });
+
+    $("#addLikeButton").on("click", function(event){
+        $.ajax({
+            type: "POST",
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            url: "/invests/20/likes",
+            success: function(response) {
+                console.log(response);
+            }
+        });
+        event.preventDefault();
+    });
+
+    $("#removeLikeButton").on("click", function(event){
+        $.ajax({
+            type: "DELETE",
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            url: "/invests/20/likes/22",
+            success: function(response) {
+                console.log(response);
+            }
+        });
+        event.preventDefault();
     });
 });
