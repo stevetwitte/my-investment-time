@@ -4,12 +4,14 @@ class LikesController < ApplicationController
   def create
     if current_user.likes.where(invest: @invest).blank?
       Like.create!(user: current_user, invest: @invest)
+    else
+      Like.where(user: current_user, invest: @invest).destroy_all
     end
 
     respond_to do |format|
       format.json do
         render json: { invest_likes: @invest.likes.length },
-               status: :ok, location: @user
+               status: :ok
       end
     end
   end
@@ -22,7 +24,7 @@ class LikesController < ApplicationController
     respond_to do |format|
       format.json do
         render json: { invest_likes: @invest.likes.length },
-               status: :ok, location: @user
+               status: :ok
       end
     end
   end
