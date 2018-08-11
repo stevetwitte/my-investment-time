@@ -2,10 +2,10 @@
   <div class="card-stacked">
     <div class="card-content">
       <div class="row no-margin">
-        <div class="col s8">
-          <h6>You have been invited to join the team: <%= invite.team.name %></h6>
+        <div class="col s6">
+          <h6 class="no-margin">You have been invited to join the team: <%= invite.team.name %></h6>
         </div>
-        <div class="col s4 tr">
+        <div class="col s6 tr">
           <%= link_to 'dismiss', team_invite_path(invite.team, invite, status: 'rejected'),
                       method: :put, class: 'waves-effect waves-light btn btn-dark mr4' %>
           <%= link_to 'accept', team_invite_path(invite.team, invite, status: 'accepted'),

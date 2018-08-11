@@ -31,9 +31,12 @@ function readURL(input) {
 }
 
 $( document ).on('turbolinks:load', function() {
+    // Add materialcss javascript to fields and menu
     $(".dropdown-trigger").dropdown();
     M.updateTextFields();
-    M.textareaAutoResize($(".textarea-main"));
+    if ($(".textarea-main").length > 0) {
+        M.textareaAutoResize($(".textarea-main"));
+    }
 
     $("#avatar-file").change(function() {
         console.log(this);

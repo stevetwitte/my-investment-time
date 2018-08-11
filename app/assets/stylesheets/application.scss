@@ -13,11 +13,12 @@ $link-color: color("teal", "darken-4");
 
 $light-input-color: #e4e4e4;
 $white-color: #f7f7f7;
+$background-color: #f5f5f5;
 
 @import 'materialize';
 
 body {
-  background-color: lighten($secondary-color, 25%);
+  background-color: $background-color;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -72,6 +73,13 @@ abbr {
   background-color: $primary-color-dark;
   &:hover {
     background-color: lighten($primary-color-dark, 20%);
+  }
+}
+
+.btn-light {
+  background-color: $success-color;
+  &:hover {
+    background-color: lighten($success-color, 10%);
   }
 }
 

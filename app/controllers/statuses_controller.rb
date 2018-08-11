@@ -1,14 +1,12 @@
 class StatusesController < ApplicationController
   before_action :authorize_status
+  before_action :load_resources
+
   def new
-    @invest = Invest.find_by_id!(params["invest_id"])
-    @status = Status.new()
     @status.invest = @invest
   end
 
   def create
-    @invest = Invest.find_by_id!(params["invest_id"])
-    @status = Status.new()
     @status.invest = @invest
     @status.title = status_params[:title]
     @status.detail = status_params[:detail]
@@ -31,5 +29,10 @@ class StatusesController < ApplicationController
     unless Invest.find_by_id!(params["invest_id"]).user == current_user
       raise CanCan::AccessDenied
     end
+  end
+
+  def load_resources
+    @invest = Invest.find_by_id!(params["invest_id"])
+    @status = Status.new
   end
 end

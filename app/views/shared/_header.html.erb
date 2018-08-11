@@ -23,7 +23,7 @@
             </li>
             <li>
               <%= link_to activities_index_path, class: 'no-underline' do %>
-                <i class="material-icons white-text">mail_outline</i>
+                <i class="material-icons white-text"><%= current_user&.notifications&.any? ? "notifications_active" : "notifications_none" %></i>
               <% end %>
             </li>
             <li><a class="dropdown-trigger no-underline" href="#!" data-target="mainMenu"><i class="material-icons white-text">menu</i></a></li>

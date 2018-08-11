@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
 
   before_action :require_login
 
+  private
+
   def not_authorized
     redirect_to sign_in_path
   end

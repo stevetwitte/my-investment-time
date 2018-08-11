@@ -4,10 +4,10 @@ class InvestsController < ApplicationController
 
   def index
     if params[:search]
-      @invests = @invests.where('LOWER(title) LIKE ?', "%#{params[:search].downcase}%").order('created_at DESC').page(params[:page])
-    else
-      @invests = @invests.order('created_at DESC').page(params[:page])
+      @invests = @invests.where("LOWER(title) LIKE ?", "%#{params[:search].downcase}%")
     end
+
+    @invests = @invests.order("created_at DESC").page(params[:page])
   end
 
   def create
@@ -20,7 +20,7 @@ class InvestsController < ApplicationController
 
   def update
     if @invest.update(invest_params)
-      flash[:notice] = 'successfully updated investment'
+      flash[:notice] = "successfully updated investment"
       redirect_to invest_path(@invest)
     else
       render :edit
