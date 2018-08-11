@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :team_members
   has_many :teams, through: :team_members
-  has_many :activity_invites, :class_name => 'Activity::Invite'
+  has_many :activity_invites, class_name: "Activity::Invite"
 
   before_save :downcase_fields
   after_create :create_profile
@@ -29,11 +29,16 @@ class User < ApplicationRecord
             presence: true,
             uniqueness: { case_sensitive: false },
             format: { with: /\A[a-zA-Z0-9\.\-\_]+\Z/,
-                      message: "only allows letters, numbers, underscores, periods and dashes" },
+                      message: "only allows letters, numbers, " +
+                        "underscores, periods and dashes" },
             if: -> { new_record? || username.present? }
 
   def to_param
     username
+  end
+
+  def notifications
+    activity_invites.pending
   end
 
   private
@@ -43,7 +48,7 @@ class User < ApplicationRecord
   end
 
   def downcase_fields
-    self.email.downcase!
-    self.username.downcase!
+    email.downcase!
+    username.downcase!
   end
 end

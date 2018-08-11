@@ -1,3 +1,4 @@
+# TODO: Refactor, this controller is doing too much
 module Activities
   class InvitesController < ApplicationController
     before_action :load_and_authorize_team, only: [:new, :create, :destroy]
@@ -69,11 +70,11 @@ module Activities
 
       if @invite.destroy
         flash[:notice] = "invite has been revoked"
-        redirect_to new_team_invite_path(@team)
       else
         flash[:notice] = "there was a problem revoking the invite"
-        redirect_to new_team_invite_path(@team)
       end
+
+      redirect_to new_team_invite_path(@team)
     end
 
     private
