@@ -16,11 +16,10 @@
             <h6><%= link_to @invest.user.username, user_url(@invest.user) %></h6>
           </div>
           <div class="right">
-            <% if current_user.likes.where(invest: @invest).blank? %>
-              <h6 class="pl2"><%= link_to invest_likes_path(@invest), class: 'no-underline likes', method: :post do %><i class="material-icons likes-icon">thumb_up</i> <%= @invest.likes.length %><% end %></h6>
-            <% else %>
-              <h6 class="pl2"><%= link_to invest_like_path(@invest, Like.find_by(user: current_user, invest: @invest)), class: 'no-underline likes', method: :delete do %><i class="material-icons likes-icon">thumb_up</i> <%= @invest.likes.length %><% end %></h6>
-            <% end %>
+            <h6 class="pl2 pointer" id="likeButton">
+              <i class="material-icons likes-icon">thumb_up</i>
+              <span id="likeCount" class="like-button"><%= @invest.likes.length %></span>
+            </h6>
           </div>
           <div class="cl divider w-100"></div>
           <div class="pt2">

@@ -4,9 +4,16 @@ class LikesController < ApplicationController
   def create
     if current_user.likes.where(invest: @invest).blank?
       Like.create!(user: current_user, invest: @invest)
+    else
+      Like.where(user: current_user, invest: @invest).destroy_all
     end
 
-    redirect_to invest_path(params[:invest_id])
+    respond_to do |format|
+      format.json do
+        render json: { invest_likes: @invest.likes.length },
+               status: :ok
+      end
+    end
   end
 
   def destroy
@@ -14,7 +21,12 @@ class LikesController < ApplicationController
       Like.where(user: current_user, invest: @invest).destroy_all
     end
 
-    redirect_to invest_path(params[:invest_id])
+    respond_to do |format|
+      format.json do
+        render json: { invest_likes: @invest.likes.length },
+               status: :ok
+      end
+    end
   end
 
   private

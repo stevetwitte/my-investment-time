@@ -32,7 +32,7 @@ class StatusesController < ApplicationController
   end
 
   def load_resources
-    @invest = Invest.find_by_id!(params["invest_id"])
+    @invest = current_user.invests.find_by_id!(params["invest_id"])
     @status = Status.new
   end
 end

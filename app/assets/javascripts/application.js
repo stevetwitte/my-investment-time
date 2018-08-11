@@ -23,14 +23,14 @@ function readURL(input) {
         var reader = new FileReader();
 
         reader.onload = function(e) {
-            $('#avatarPreview').attr('src', e.target.result);
+            $("#avatarPreview").attr("src", e.target.result);
         }
 
         reader.readAsDataURL(input.files[0]);
     }
 }
 
-$( document ).on('turbolinks:load', function() {
+$( document ).on("turbolinks:load", function() {
     // Add materialcss javascript to fields and menu
     $(".dropdown-trigger").dropdown();
     M.updateTextFields();
@@ -38,12 +38,26 @@ $( document ).on('turbolinks:load', function() {
         M.textareaAutoResize($(".textarea-main"));
     }
 
+    // Avatar preview on profile in settings
     $("#avatar-file").change(function() {
-        console.log(this);
         readURL(this);
     });
 
     $("#replaceImage").click(function () {
         $("#avatar-file").trigger("click");
+    });
+
+    // Toggle likes on click
+    $("#likeButton").on("click", function(event){
+        $.ajax({
+            type: "POST",
+            beforeSend: function(xhr) {xhr.setRequestHeader("X-CSRF-Token", $("meta[name="csrf-token"]").attr("content"))},
+            url: "/invests/20/likes",
+            success: function(response) {
+                $("#likeCount")[0].innerText = response["invest_likes"];
+            },
+            error: function(error) {}
+        });
+        event.preventDefault();
     });
 });
