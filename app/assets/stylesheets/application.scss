@@ -17,7 +17,7 @@ $white-color: #f7f7f7;
 @import 'materialize';
 
 body {
-  background-color: lighten($secondary-color, 25%);
+  background-color: lighten($secondary-color, 35%);
   display: flex;
   min-height: 100vh;
   flex-direction: column;
