@@ -16,7 +16,7 @@
             <h6><%= link_to @invest.user.username, user_url(@invest.user) %></h6>
           </div>
           <div class="right">
-            <h6 class="pl2 pointer" id="likeButton">
+            <h6 class="pl2 pointer" id="likeButton" data-invest-id="<%= @invest.id %>">
               <i class="material-icons likes-icon">thumb_up</i>
               <span id="likeCount" class="like-button"><%= @invest.likes.length %></span>
             </h6>
