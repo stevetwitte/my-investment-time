@@ -46,20 +46,4 @@ $( document ).on("turbolinks:load", function() {
     $("#replaceImage").click(function () {
         $("#avatar-file").trigger("click");
     });
-
-    // Toggle likes on click
-    $("#likeButton").on("click", function(event){
-        let investId = $(this).data('investId');
-
-        $.ajax({
-            type: "POST",
-            beforeSend: function(xhr) {xhr.setRequestHeader("X-CSRF-Token", $("meta[name='csrf-token']").attr("content"))},
-            url: "/invests/"+ investId + "/likes",
-            success: function(response) {
-                $("#likeCount")[0].innerText = response["invest_likes"];
-            },
-            error: function(error) {}
-        });
-        event.preventDefault();
-    });
 });

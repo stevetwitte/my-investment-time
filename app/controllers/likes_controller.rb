@@ -8,12 +8,8 @@ class LikesController < ApplicationController
       Like.where(user: current_user, invest: @invest).destroy_all
     end
 
-    respond_to do |format|
-      format.json do
-        render json: { invest_likes: @invest.likes.length },
-               status: :ok
-      end
-    end
+    render json: { invest_likes: @invest.likes.length },
+           status: :ok
   end
 
   def destroy
@@ -21,12 +17,8 @@ class LikesController < ApplicationController
       Like.where(user: current_user, invest: @invest).destroy_all
     end
 
-    respond_to do |format|
-      format.json do
-        render json: { invest_likes: @invest.likes.length },
-               status: :ok
-      end
-    end
+    render json: { invest_likes: @invest.likes.length },
+           status: :ok
   end
 
   private

@@ -16,10 +16,11 @@
             <h6><%= link_to @invest.user.username, user_url(@invest.user) %></h6>
           </div>
           <div class="right">
-            <h6 class="pl2 pointer" id="likeButton" data-invest-id="<%= @invest.id %>">
-              <i class="material-icons likes-icon">thumb_up</i>
-              <span id="likeCount" class="like-button"><%= @invest.likes.length %></span>
-            </h6>
+            <%= content_tag :div,
+                            id: 'likeContainer',
+                            data: { likes: @invest.likes.length,
+                                    investid: @invest.id } do %>
+            <% end %>
           </div>
           <div class="cl divider w-100"></div>
           <div class="pt2">
@@ -65,3 +66,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag 'LikeComponent' %>
