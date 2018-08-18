@@ -5,6 +5,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- React has been added to the code base for real time components
+
+### Changed
+- Slight color changes to styling
+- Liking an Invest is now handled through a React component
+
+### Fixed
+- Error caused by not having a profile image
+
+### Security
+- Sprockets was updated to fix a security vulnerability   
 
 ## [0.3.0] - 2018-7-22
 ### Added
