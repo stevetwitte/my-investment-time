@@ -11,7 +11,8 @@ class FollowsController < ApplicationController
       is_following = false
     end
 
-    render json: { is_following: is_following },
+    render json: { is_following: is_following,
+                   number_following: @invest.follows.length },
            status: :ok
   end
 
