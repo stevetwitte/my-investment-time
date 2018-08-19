@@ -4,7 +4,8 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :invests, dependent: :destroy
   has_many :statuses
-  has_many :likes
+  has_many :likes, dependent: :destroy
+  has_many :liked_invests, through: :likes, source: "invest"
   has_many :team_members
   has_many :teams, through: :team_members
   has_many :activity_invites, class_name: "Activity::Invite"
