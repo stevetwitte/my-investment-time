@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
   resources :invests do
     resources :statuses, only: [:new, :create]
-    resources :likes, controller: "likes", only: [:create, :destroy]
+    resources :likes, controller: "likes", only: [:create]
+    resources :follows, controller: "follows", only: [:create]
   end
 
   namespace :settings do
