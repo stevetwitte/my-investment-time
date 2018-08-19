@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :team_members
   has_many :teams, through: :team_members
   has_many :activity_invites, class_name: "Activity::Invite"
+  has_many :follows, dependent: :destroy
+  has_many :following_invests, through: :follows, source: "invest"
 
   before_save :downcase_fields
   after_create :create_profile

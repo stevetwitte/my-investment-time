@@ -4,6 +4,8 @@ class Invest < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   has_many :likes
+  has_many :follows, dependent: :destroy
+  has_many :following_users, through: :follows, source: "user"
 
   before_save :process_tags
   after_create :create_initial_status

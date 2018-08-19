@@ -19,6 +19,10 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:teams) }
 
     it { is_expected.to have_many(:activity_invites) }
+
+    it { is_expected.to have_many(:follows) }
+
+    it { is_expected.to have_many(:following_invests) }
   end
 
   describe "validations" do
