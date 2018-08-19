@@ -5,11 +5,14 @@ class LikesController < ApplicationController
   def create
     if current_user.likes.where(invest: @invest).blank?
       Like.create!(user: current_user, invest: @invest)
+      is_liked = true
     else
       Like.where(user: current_user, invest: @invest).destroy_all
+      is_liked = false
     end
 
-    render json: { invest_likes: @invest.likes.length },
+    render json: { is_liked: is_liked,
+                   invest_likes: @invest.likes.length },
            status: :ok
   end
 
