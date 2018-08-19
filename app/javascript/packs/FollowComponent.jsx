@@ -2,16 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Axios from 'axios'
 
-class LikeComponent extends React.Component {
+class FollowComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {likes: props.likes,
+        this.state = {isFollowing: props.isFollowing,
             investId: props.investId};
 
-        this.likeClicked = this.likeClicked.bind(this);
+        this.followClicked = this.followClicked.bind(this);
     }
 
-    likeClicked() {
+    followClicked() {
         // TODO: move this config somewhere else
         const tokenDom = document.querySelector("meta[name=csrf-token]");
         if (tokenDom) {
@@ -21,10 +21,10 @@ class LikeComponent extends React.Component {
         }
         Axios.defaults.headers.common["Content-Type"] = "application/json";
 
-        Axios.post("/invests/" + this.state.investId + "/likes")
+        Axios.post("/invests/" + this.state.investId + "/follows")
             .then((response) => {
                 console.log(response);
-                this.setState({likes: response.data["invest_likes"]});
+                this.setState({isFollowing: response.data["is_following"]});
             })
             .catch((error) =>{
                 console.log(error);
@@ -33,21 +33,21 @@ class LikeComponent extends React.Component {
 
     render() {
         return (
-            <h6 className="pl2 pointer" onClick={this.likeClicked}>
+            <h6 className="pl2 pointer" onClick={this.followClicked}>
                 <i className="material-icons likes-icon">thumb_up</i>
-                <span id="likeCount" className="like-button">{ this.state.likes }</span>
+                <span id="likeCount" className="like-button">{ this.state.isFollowing.toString() }</span>
             </h6>
         );
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const dataTag = document.getElementById('likeContainer');
-    const likes = dataTag.getAttribute("data-likes");
+    const dataTag = document.getElementById('followContainer');
+    const isFollowing = dataTag.getAttribute("data-isfollowing");
     const investId = dataTag.getAttribute("data-investid");
 
     ReactDOM.render(
-        <LikeComponent investId={investId} likes={likes} />,
-        document.getElementById('likeContainer').appendChild(document.createElement('div')),
+        <FollowComponent investId={investId} isFollowing={isFollowing} />,
+        document.getElementById('followContainer').appendChild(document.createElement('div')),
     );
 });

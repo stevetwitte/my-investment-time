@@ -17,6 +17,11 @@
           </div>
           <div class="right">
             <%= content_tag :div,
+                            id: 'followContainer',
+                            data: { isfollowing: following?(user: current_user, invest: @invest),
+                                    investid: @invest.id } do %>
+            <% end %>
+            <%= content_tag :div,
                             id: 'likeContainer',
                             data: { likes: @invest.likes.length,
                                     investid: @invest.id } do %>
@@ -68,3 +73,4 @@
 </div>
 
 <%= javascript_pack_tag 'LikeComponent' %>
+<%= javascript_pack_tag 'FollowComponent' %>
