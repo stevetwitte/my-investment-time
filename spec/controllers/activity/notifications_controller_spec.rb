@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Activities::NotificationsController, type: :controller do
-  describe "DELETE #destroy" do
+  describe "UPDATE #update" do
     let!(:user) { create :user }
     let!(:invest) { create :invest }
     let!(:activity_notification) do
@@ -10,7 +10,7 @@ RSpec.describe Activities::NotificationsController, type: :controller do
 
     before :each do
       sign_in_as user
-      delete :destroy, params: { id: activity_notification.id }
+      post :update, params: { id: activity_notification.id, status: "dismissed" }
     end
 
     it "returns http found" do
