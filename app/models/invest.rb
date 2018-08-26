@@ -9,6 +9,7 @@ class Invest < ApplicationRecord
 
   before_save :process_tags
   after_create :create_initial_status
+  after_update :process_notifications
 
   validates :user,
             presence: true
@@ -31,8 +32,14 @@ class Invest < ApplicationRecord
 
   private
 
+  def process_notifications
+    NotificationService.process_invest(self)
+  end
+
   def create_initial_status
-    self.statuses << Status.create!(title: 'Investment Started', user: self.user, invest: self)
+    statuses << Status.create!(title: "Investment Started",
+                               user: user,
+                               invest: self)
   end
 
   def process_tags

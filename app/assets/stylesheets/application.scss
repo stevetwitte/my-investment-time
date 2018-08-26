@@ -125,6 +125,9 @@ abbr {
 
 .head-logo {
   margin: 3px 0 0 20px;
+  img {
+    max-width: 450px;
+  }
 }
 
 .likes-icon {
@@ -138,6 +141,7 @@ abbr {
 
 .dropdown-content {
   top: -65px;
+  min-width: 200px;
 }
 
 .hover-grow {

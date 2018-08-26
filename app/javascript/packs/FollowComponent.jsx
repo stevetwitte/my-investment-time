@@ -48,14 +48,16 @@ class FollowComponent extends React.Component {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
     const dataTag = document.getElementById('followContainer');
-    const isFollowing = JSON.parse(dataTag.getAttribute("data-isfollowing"));
-    const numberFollowing = JSON.parse(dataTag.getAttribute("data-numfollowing"));
-    const investId = JSON.parse(dataTag.getAttribute("data-investid"));
+    if (dataTag) {
+        const isFollowing = JSON.parse(dataTag.getAttribute("data-isfollowing"));
+        const numberFollowing = JSON.parse(dataTag.getAttribute("data-numfollowing"));
+        const investId = JSON.parse(dataTag.getAttribute("data-investid"));
 
-    ReactDOM.render(
-        <FollowComponent investId={investId} numberFollowing={numberFollowing} isFollowing={isFollowing} />,
-        document.getElementById('followContainer').appendChild(document.createElement('span')),
-    );
+        ReactDOM.render(
+            <FollowComponent investId={investId} numberFollowing={numberFollowing} isFollowing={isFollowing}/>,
+            document.getElementById('followContainer').appendChild(document.createElement('span')),
+        );
+    }
 });

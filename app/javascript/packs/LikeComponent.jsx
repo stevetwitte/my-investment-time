@@ -48,14 +48,16 @@ class LikeComponent extends React.Component {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
     const dataTag = document.getElementById('likeContainer');
-    const likes = JSON.parse(dataTag.getAttribute("data-likes"));
-    const isLiked = JSON.parse(dataTag.getAttribute("data-isliked"));
-    const investId = JSON.parse(dataTag.getAttribute("data-investid"));
+    if (dataTag) {
+        const likes = JSON.parse(dataTag.getAttribute("data-likes"));
+        const isLiked = JSON.parse(dataTag.getAttribute("data-isliked"));
+        const investId = JSON.parse(dataTag.getAttribute("data-investid"));
 
-    ReactDOM.render(
-        <LikeComponent investId={investId} likes={likes} isLiked={isLiked} />,
-        document.getElementById('likeContainer').appendChild(document.createElement('span')),
-    );
+        ReactDOM.render(
+            <LikeComponent investId={investId} likes={likes} isLiked={isLiked} />,
+            document.getElementById('likeContainer').appendChild(document.createElement('span')),
+        );
+    }
 });

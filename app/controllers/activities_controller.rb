@@ -5,5 +5,6 @@ class ActivitiesController < ApplicationController
 
   def load_activities
     @invitations = current_user.activity_invites
+    @notifications = current_user.activity_notifications
   end
 end

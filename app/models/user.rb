@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :team_members
   has_many :teams, through: :team_members
   has_many :activity_invites, class_name: "Activity::Invite"
+  has_many :activity_notifications, class_name: "Activity::Notification"
   has_many :follows, dependent: :destroy
   has_many :following_invests, through: :follows, source: "invest"
 
@@ -41,7 +42,7 @@ class User < ApplicationRecord
   end
 
   def notifications
-    activity_invites.pending
+    activity_invites.pending + activity_notifications.pending
   end
 
   private
