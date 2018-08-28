@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-stacked">
+    <div class="card-content">
+      <div class="row no-margin">
+        <div class="col s6">
+          <h6 class="no-margin"><%= notification.invest.title %> has been updated.</h6>
+        </div>
+        <div class="col s6 tr">
+          <%= link_to 'dismiss', activities_notification_path(notification, status: 'dismissed'),
+                      method: :put, class: 'waves-effect waves-light btn btn-dark mr4' %>
+          <%= link_to 'view', activities_notification_path(notification, {status: 'dismissed', view: 'true'}),
+                      method: :put, class: 'waves-effect waves-light btn btn-dark' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

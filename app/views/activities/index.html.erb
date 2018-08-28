@@ -1,14 +1,27 @@
 <div class="row">
   <div class="col s12">
-    <div class="card blue-grey darken-1">
-      <div class="card-stacked">
+      <div class="card blue-grey">
         <div class="card-content">
-          <span class="card-title white-text">pending invitations</span>
-          <% @invitations.pending.try(:each) do |invite| %>
-            <%= render 'activities/shared/invite_list', invite: invite %>
+          <span class="card-title white-text">notifications</span>
+        </div>
+        <div class="card-stacked">
+          <% unless @invitations.pending.blank? %>
+            <div class="card-content">
+              <span class="card-title white-text">invitations</span>
+              <% @invitations.pending.try(:each) do |invite| %>
+                <%= render 'activities/shared/invite_list', invite: invite %>
+              <% end %>
+            </div>
+          <% end %>
+          <% unless @notifications.pending.blank? %>
+            <div class="card-content">
+              <span class="card-title white-text">investment updates</span>
+              <% @notifications.pending.try(:each) do |notification| %>
+                <%= render 'activities/shared/notification_list', notification: notification %>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
-    </div>
   </div>
 </div>

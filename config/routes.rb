@@ -1,12 +1,13 @@
-require 'sidekiq/web'
+require "sidekiq/web"
 
 Rails.application.routes.draw do
-  get 'activities/index'
-  root to: 'invests#index'
+  root to: "invests#index"
+  get "activities/index"
 
   resources :invests do
     resources :statuses, only: [:new, :create]
-    resources :likes, controller: "likes", only: [:create, :destroy]
+    resources :likes, controller: "likes", only: [:create]
+    resources :follows, controller: "follows", only: [:create]
   end
 
   namespace :settings do
@@ -19,7 +20,9 @@ Rails.application.routes.draw do
     resources :invites, controller: "activities/invites"
   end
 
-  resource :activites, controller: "activities", only: [:index]
+  resource :activities, controller: "activities", only: [:index] do
+    resources :notifications, controller: "activities/notifications", only: [:update]
+  end
 
   resources :users, controller: "users", only: [:create, :show] do
     resource :password,

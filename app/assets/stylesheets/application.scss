@@ -125,10 +125,13 @@ abbr {
 
 .head-logo {
   margin: 3px 0 0 20px;
+  img {
+    max-width: 450px;
+  }
 }
 
 .likes-icon {
-  font-size: 20px;
+  font-size: 11px !important;
 }
 
 .likes {
@@ -138,6 +141,7 @@ abbr {
 
 .dropdown-content {
   top: -65px;
+  min-width: 200px;
 }
 
 .hover-grow {
@@ -188,4 +192,34 @@ abbr {
 
 .like-button {
   font-size: 2.3rem;
+}
+
+.number-button {
+  width: 130px;
+  text-align: left;
+  padding-right: 0;
+  span {
+    float: right;
+    width: 30px;
+    text-align: center;
+    border-left: 1px solid $white-color;
+    margin-left: 5px;
+  }
+}
+
+.number-button-large {
+  width: 165px;
+  text-align: left;
+  padding-right: 0;
+  span {
+    float: right;
+    width: 30px;
+    text-align: center;
+    border-left: 1px solid $white-color;
+    margin-left: 5px;
+  }
+}
+
+.options-container {
+  display: inline-block;
 }

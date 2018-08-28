@@ -1,7 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Activities::InvitesController, type: :controller do
-
   describe "GET #new" do
     let!(:user) { create :user }
     let!(:team) { create :team, owner: user }

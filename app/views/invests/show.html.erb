@@ -12,15 +12,26 @@
     <div class="card">
       <div class="card-stacked">
         <div class="card-content">
-          <div class="left">
-            <h6><%= link_to @invest.user.username, user_url(@invest.user) %></h6>
-          </div>
-          <div class="right">
-            <%= content_tag :div,
-                            id: 'likeContainer',
-                            data: { likes: @invest.likes.length,
-                                    investid: @invest.id } do %>
-            <% end %>
+          <div class="row">
+            <div class="col s4">
+              <h6><%= link_to @invest.user.username, user_url(@invest.user) %></h6>
+            </div>
+            <div class="col s8 tr">
+              <%= content_tag :div,
+                              id: 'followContainer',
+                              class: 'options-container',
+                              data: { isfollowing: following?(user: current_user, invest: @invest),
+                                      numfollowing: @invest.follows.length,
+                                      investid: @invest.id } do %>
+              <% end %>
+              <%= content_tag :div,
+                              id: 'likeContainer',
+                              class: 'options-container',
+                              data: { likes: @invest.likes.length,
+                                      isliked: liked?(user: current_user, invest: @invest),
+                                      investid: @invest.id } do %>
+              <% end %>
+            </div>
           </div>
           <div class="cl divider w-100"></div>
           <div class="pt2">
@@ -66,5 +77,3 @@
     </div>
   </div>
 </div>
-
-<%= javascript_pack_tag 'LikeComponent' %>

@@ -1,13 +1,13 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Invest, type: :model do
   subject { build :invest }
 
-  it 'has a valid factory' do
-    expect(build :invest).to be_valid
+  it "has a valid factory" do
+    expect(build(:invest)).to be_valid
   end
 
-  describe 'associations' do
+  describe "associations" do
     it { is_expected.to belong_to(:user) }
 
     it { is_expected.to have_many(:tags) }
@@ -15,11 +15,15 @@ RSpec.describe Invest, type: :model do
     it { is_expected.to have_many(:statuses) }
 
     it { is_expected.to have_many(:likes) }
+
+    it { is_expected.to have_many(:follows) }
+
+    it { is_expected.to have_many(:following_users) }
   end
 
-  describe 'validations' do
-    it { is_expected.to validate_presence_of(:title)}
+  describe "validations" do
+    it { is_expected.to validate_presence_of(:title) }
 
-    it { is_expected.to validate_presence_of(:body)}
+    it { is_expected.to validate_presence_of(:body) }
   end
 end

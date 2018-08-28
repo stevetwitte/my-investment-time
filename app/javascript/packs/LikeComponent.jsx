@@ -1,11 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Axios from 'axios'
+import React from "react";
+import ReactDOM from "react-dom";
+import Axios from "axios";
 
 class LikeComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {likes: props.likes,
+            isLiked: props.isLiked,
             investId: props.investId};
 
         this.likeClicked = this.likeClicked.bind(this);
@@ -15,7 +16,6 @@ class LikeComponent extends React.Component {
         // TODO: move this config somewhere else
         const tokenDom = document.querySelector("meta[name=csrf-token]");
         if (tokenDom) {
-            console.log(tokenDom);
             const csrfToken = tokenDom.content;
             Axios.defaults.headers.common["X-CSRF-Token"] = csrfToken;
         }
@@ -23,31 +23,41 @@ class LikeComponent extends React.Component {
 
         Axios.post("/invests/" + this.state.investId + "/likes")
             .then((response) => {
-                console.log(response);
-                this.setState({likes: response.data["invest_likes"]});
+                this.setState({
+                    likes: response.data["invest_likes"],
+                    isLiked: response.data["is_liked"]
+                });
             })
-            .catch((error) =>{
-                console.log(error);
+            .catch((error) => {
+                // TODO: handle this error in some way
             });
+
     }
 
     render() {
         return (
-            <h6 className="pl2 pointer" id="likeButton" onClick={this.likeClicked}>
-                <i className="material-icons likes-icon">thumb_up</i>
-                <span id="likeCount" className="like-button">{ this.state.likes }</span>
-            </h6>
+            <button onClick={this.likeClicked} className="waves-effect waves-light btn btn-small btn-dark number-button">
+                <i className="material-icons likes-icon">thumb_up</i>&nbsp;&nbsp;
+                {this.state.isLiked ? "unlike" : "like" }<span>{ this.state.likes }</span>
+            </button>
         );
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const dataTag = document.getElementById('likeContainer');
-    const likes = dataTag.getAttribute("data-likes");
-    const investId = dataTag.getAttribute("data-investid");
+document.addEventListener("turbolinks:load", () => {
+    const dataTag = document.getElementById("likeContainer");
+    if (dataTag) {
+        const likes = JSON.parse(dataTag.getAttribute("data-likes"));
+        const isLiked = JSON.parse(dataTag.getAttribute("data-isliked"));
+        const investId = JSON.parse(dataTag.getAttribute("data-investid"));
 
-    ReactDOM.render(
-        <LikeComponent investId={investId} likes={likes} />,
-        document.getElementById('likeContainer').appendChild(document.createElement('div')),
-    );
+        ReactDOM.render(
+            <LikeComponent investId={investId} likes={likes} isLiked={isLiked} />,
+            document.getElementById("likeContainer"),
+        );
+    }
 });
+
+document.addEventListener("turbolinks:before-render", () => {
+    ReactDOM.unmountComponentAtNode(document.getElementById("likeContainer"));
+}); 
