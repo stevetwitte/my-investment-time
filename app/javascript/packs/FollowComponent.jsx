@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Axios from 'axios'
+import React from "react";
+import ReactDOM from "react-dom";
+import Axios from "axios";
 
 class FollowComponent extends React.Component {
     constructor(props) {
@@ -9,8 +9,6 @@ class FollowComponent extends React.Component {
             numberFollowing: props.numberFollowing,
             investId: props.investId};
 
-        console.log(this.state);
-
         this.followClicked = this.followClicked.bind(this);
     }
 
@@ -18,7 +16,6 @@ class FollowComponent extends React.Component {
         // TODO: move this config somewhere else
         const tokenDom = document.querySelector("meta[name=csrf-token]");
         if (tokenDom) {
-            console.log(tokenDom);
             const csrfToken = tokenDom.content;
             Axios.defaults.headers.common["X-CSRF-Token"] = csrfToken;
         }
@@ -26,15 +23,13 @@ class FollowComponent extends React.Component {
 
         Axios.post("/invests/" + this.state.investId + "/follows")
             .then((response) => {
-                console.log(response);
                 this.setState({
                     isFollowing: response.data["is_following"],
                     numberFollowing: response.data["number_following"]
                 });
-                console.log(this.state);
             })
-            .catch((error) =>{
-                console.log(error);
+            .catch((error) => {
+                // TODO: handle this error in some way
             });
     }
 
@@ -42,14 +37,14 @@ class FollowComponent extends React.Component {
         return (
             <button onClick={this.followClicked} className="waves-effect waves-light btn btn-small btn-dark number-button-large">
                 <i className="material-icons likes-icon">remove_red_eye</i>&nbsp;&nbsp;
-                {this.state.isFollowing ? 'unfollow' : 'follow' }<span>{ this.state.numberFollowing }</span>
+                {this.state.isFollowing ? "unfollow" : "follow" }<span>{ this.state.numberFollowing }</span>
             </button>
         );
     }
 }
 
-document.addEventListener('turbolinks:load', () => {
-    const dataTag = document.getElementById('followContainer');
+document.addEventListener("turbolinks:load", () => {
+    const dataTag = document.getElementById("followContainer");
     if (dataTag) {
         const isFollowing = JSON.parse(dataTag.getAttribute("data-isfollowing"));
         const numberFollowing = JSON.parse(dataTag.getAttribute("data-numfollowing"));
@@ -57,7 +52,11 @@ document.addEventListener('turbolinks:load', () => {
 
         ReactDOM.render(
             <FollowComponent investId={investId} numberFollowing={numberFollowing} isFollowing={isFollowing}/>,
-            document.getElementById('followContainer').appendChild(document.createElement('span')),
+            document.getElementById("followContainer"),
         );
     }
 });
+
+document.addEventListener("turbolinks:before-render", () => {
+    ReactDOM.unmountComponentAtNode(document.getElementById("followContainer"));
+}); 
