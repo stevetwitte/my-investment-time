@@ -1,9 +1,9 @@
 <% @invests.try(:each) do |invest| %>
-  <%= link_to invest, class: 'no-color-link no-underline' do %>
+  <%= link_to invest, class: 'black hover-black no-underline' do %>
     <%= render 'invests/shared/invest_list', invest: invest %>
   <% end %>
 <% end %>
 
-<div class="center">
+<div>
   <%= paginate @invests %>
 </div>

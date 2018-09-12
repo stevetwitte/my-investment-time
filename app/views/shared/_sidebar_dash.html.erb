@@ -1,5 +1,5 @@
-<div class="bg-light-gray pa3 br2 fixed w-28">
-  <% if current_user %>
+<div class="bg-white pa3 br2 fixed w-28 mw5 main-shadow">
+  <% if signed_in? %>
     <div class="fl w-30">
     <% if current_user.profile.avatar.attached? && current_user.profile.avatar.try(:image?) %>
       <%= image_tag current_user.profile.avatar, alt: 'User Avatar' %>
