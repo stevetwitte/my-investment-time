@@ -1,35 +1,33 @@
-<div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper">
-      <div class="flex justify-between">
-        <div class="w-30">
-          <a href="/" class="brand-logo w-30 left no-underline head-logo"><%= image_tag 'header-logo.svg', class: 'pt3' %></a>
-        </div>
-        <div class="w-40">
-          <%= form_tag(invests_path, :method => 'get') do %>
-            <div class="input-field bg-black-10">
-              <%= search_field_tag :search, params[:search] %>
-              <label class="label-icon" for="search"><i class="material-icons white-text">search</i></label>
-              <i class="material-icons">close</i>
-            </div>
+<div class="fixed top-0 left-0 bg-near-black w-100 flex items-center justify-between ph4 pv1 z-999">
+  <div>
+    <a href="/"><%= image_tag 'header-logo.svg', class: 'w4 header-logo-top-fix' %></a>
+  </div>
+  <div class="flex-grow-2 tc">
+    <%= form_tag(invests_path, :method => 'get') do %>
+        <%= search_field_tag :search, params[:search],
+                             placeholder: 'search for an investment...',
+                             class: 'input-reset f5 h2 ph2 br1 b--moon-gray w-80' %>
+    <% end %>
+  </div>
+  <div>
+    <ul class="list inline-flex ma0">
+      <li class="ph3">
+        <%= link_to new_invest_path do %>
+          <i class="f3 far fa-plus-square light-gray"></i>
+        <% end %>
+      </li>
+      <li class="ph3">
+        <%= link_to activities_index_path do %>
+          <% if current_user&.notifications&.any? %>
+            <i class="f3 fas fa-bell light-gray"></i>
+          <% else %>
+            <i class="f3 far fa-bell light-gray"></i>
           <% end %>
-        </div>
-        <div class="w-15">
-          <ul class="right">
-            <li>
-              <%= link_to new_invest_path, class: 'no-underline' do %>
-                <i class="material-icons white-text">library_add</i>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to activities_index_path, class: 'no-underline' do %>
-                <i class="material-icons white-text"><%= current_user&.notifications&.any? ? "notifications_active" : "notifications_none" %></i>
-              <% end %>
-            </li>
-            <li><a class="dropdown-trigger no-underline" href="#!" data-target="mainMenu"><i class="material-icons white-text">menu</i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </nav>
+        <% end %>
+      </li>
+      <li class="ph3">
+        <a href="#!" id="mainMenuTrigger"><i class="f3 fas fa-bars light-gray"></i></a>
+      </li>
+    </ul>
+  </div>
 </div>

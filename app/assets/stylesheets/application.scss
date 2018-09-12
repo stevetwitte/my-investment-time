@@ -1,225 +1,44 @@
-@import "tachyons.min";
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
-@import "materialize/components/color-variables";
+@import "fonts";
+@import "tachyons";
 
-$primary-color: color("blue-grey", "base");
-$primary-color-light: lighten($primary-color, 15%);
-$primary-color-dark: darken($primary-color, 5%);
-
-$secondary-color: color("blue-grey", "lighten-1");
-$success-color: color("blue-grey", "lighten-3");
-$error-color: color("red", "darken-4");
-$link-color: color("teal", "darken-4");
-
-$light-input-color: #e4e4e4;
-$white-color: #f7f7f7;
-$background-color: #f5f5f5;
-
-@import 'materialize';
-
-body {
-  background-color: $background-color;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  font-family: "Roboto", sans-serif;
+// Font Families
+.h-font {
+  font-family: 'Ranga', cursive;
 }
 
-main {
-  flex: 1 0 auto;
+.p-font {
+  font-family: 'Roboto', sans-serif;
 }
 
-p, .no-color-link {
-  color: rgb(0,0,0);
+input {
+  font-family: 'Roboto', sans-serif !important;
+  border: none;
 }
 
-a {
-  text-decoration: underline;
+// Heights
+.h1p5 {
+  height: 1.5rem;
 }
 
-input.light-color {
-  color: $light-input-color !important;;
+// Flex Box
+.flex-grow-2 {
+  flex-grow: 2;
 }
 
-label.light-color {
-  color: $success-color !important;;
+// Lists
+
+// Header
+.header-logo-top-fix {
+  padding-top: 4px;
 }
 
-abbr {
-  display: none;
+.header-menu {
+  transition: all 200ms ease-in-out;
+  top: -300px;
+  right: 2rem;
+  padding: 60px 30px 20px;
 }
 
-.input-field {
-  margin-top: 1.5rem;
-}
-
-.textarea-main {
-  border: 0;
-  outline: none;
-  border-bottom: 1px solid grey;
-  padding-top: 15px;
-  padding-left: 0;
-}
-
-.white-text {
-  color: $light-input-color !important;
-}
-
-.white-bg {
-  background-color: $white-color !important;
-}
-
-.btn-dark {
-  background-color: $primary-color-dark;
-  &:hover {
-    background-color: lighten($primary-color-dark, 20%);
-  }
-}
-
-.btn-light {
-  background-color: $success-color;
-  &:hover {
-    background-color: lighten($success-color, 10%);
-  }
-}
-
-.flash-item {
-  z-index: 5;
-  position: fixed;
-  width: 400px;
-  background-color: $primary-color-dark;
-  color: white;
-  top: 60px;
-  left: 50%;
-  margin: 0 0 0 -200px;
-  text-align: center;
-  padding: 20px;
-  font-size: 16px;
-}
-
-.settings-ul {
-  li {
-    border-bottom: 1px solid $light-input-color;
-  }
-}
-
-.no-margin {
-  margin: 0 !important;
-}
-
-.bg-dark {
-  background-color: $primary-color;
-}
-
-.right-inner-card {
-  padding: 1rem !important;
-}
-
-.card-action a {
-  color: $light-input-color !important;
-}
-
-.card {
-  background-color: $white-color;
-}
-
-.head-logo {
-  margin: 3px 0 0 20px;
-  img {
-    max-width: 450px;
-  }
-}
-
-.likes-icon {
-  font-size: 11px !important;
-}
-
-.likes {
-  font-size: 28px;
-  margin-left: 5px;
-}
-
-.dropdown-content {
-  top: -65px;
-  min-width: 200px;
-}
-
-.hover-grow {
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
-}
-
-.hover-grow:hover {
-  -webkit-transform: scale(1.03);
-  transform: scale(1.03);
-}
-
-.error {
-  color: #000000;
-  margin-top: -6px !important;
-  padding-top: 0;
-  font-weight: 600;
-  font-variant: all-small-caps;
-}
-
-.error-text {
-  color: $error-color;
-  margin-top: -6px !important;
-  padding-top: 0;
-  font-weight: 600;
-  font-variant: all-small-caps;
-}
-
-.team-user-list {
-  border-top: 1px solid $primary-color-dark;
-}
-
-.light-weight {
-  font-weight: 300;
-}
-
-.avatar-preview {
-  max-height: 200px;
-}
-
-.tiny-text {
-  font-size: 10px;
-}
-
-.mt-20 {
-  margin-bottom: 30px;
-}
-
-.like-button {
-  font-size: 2.3rem;
-}
-
-.number-button {
-  width: 130px;
-  text-align: left;
-  padding-right: 0;
-  span {
-    float: right;
-    width: 30px;
-    text-align: center;
-    border-left: 1px solid $white-color;
-    margin-left: 5px;
-  }
-}
-
-.number-button-large {
-  width: 165px;
-  text-align: left;
-  padding-right: 0;
-  span {
-    float: right;
-    width: 30px;
-    text-align: center;
-    border-left: 1px solid $white-color;
-    margin-left: 5px;
-  }
-}
-
-.options-container {
-  display: inline-block;
+.header-menu.shown {
+  top: 0;
 }

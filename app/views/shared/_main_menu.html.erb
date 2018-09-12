@@ -1,13 +1,11 @@
-<ul id="mainMenu" class="dropdown-content">
-  <li><%= link_to t("menu.search"), root_path, class: 'no-underline black-text' %></li>
+<ul id="mainMenu" class="fixed header-menu bg-moon-gray list br2">
+  <li class="mb2 bb"><%= link_to t("menu.search"), root_path, class: 'no-underline near-black hover-light-gray h-font f3 ttu' %></li>
   <% if signed_in? -%>
-    <li><%= link_to t("menu.teams"), teams_path, class: 'no-underline black-text' %></li>
-    <li><%= link_to t("menu.profile"), user_path(current_user), class: 'no-underline black-text' %></li>
-    <li><%= link_to t("menu.settings"), edit_settings_account_path, class: 'no-underline black-text' %></li>
-    <li class="divider"></li>
-    <li><%= link_to t("menu.log_out"), sign_out_path, method: :delete, class: 'no-underline black-text' %></li>
+    <li class="mb2 bb"><%= link_to t("menu.teams"), teams_path, class: 'no-underline near-black hover-light-gray h-font f3 ttu' %></li>
+    <li class="mb2 bb"><%= link_to t("menu.profile"), user_path(current_user), class: 'no-underline near-black hover-light-gray h-font f3 ttu' %></li>
+    <li class="mb2 bb"><%= link_to t("menu.settings"), edit_settings_account_path, class: 'no-underline near-black hover-light-gray h-font f3 ttu' %></li>
+    <li class="mb2 bb"><%= link_to t("menu.log_out"), sign_out_path, method: :delete, class: 'no-underline near-black hover-light-gray h-font f3 ttu' %></li>
   <% else -%>
-    <li class="divider"></li>
-    <li><%= link_to t("menu.log_in"), sign_in_path, class: 'no-underline black-text' %></li>
+    <li class="mb2 bb"><%= link_to t("menu.log_in"), sign_in_path, class: 'no-underline near-black hover-light-gray h-font f3 ttu' %></li>
   <% end -%>
 </ul>

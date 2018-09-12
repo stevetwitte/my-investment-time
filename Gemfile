@@ -19,7 +19,6 @@ gem "simple_form"
 gem "figaro"
 gem "sidekiq"
 gem "kaminari"
-gem "materialize-sass", "~> 1.0.0.rc2"
 gem "aws-sdk-s3", require: false
 
 group :development, :test do

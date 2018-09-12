@@ -14,7 +14,6 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery3
-//= require materialize
 //= require_tree .
 
 function readURL(input) {
@@ -24,20 +23,13 @@ function readURL(input) {
 
         reader.onload = function(e) {
             $("#avatarPreview").attr("src", e.target.result);
-        }
+        };
 
         reader.readAsDataURL(input.files[0]);
     }
 }
 
 $( document ).on("turbolinks:load", function() {
-    // Add materialcss javascript to fields and menu
-    $(".dropdown-trigger").dropdown();
-    M.updateTextFields();
-    if ($(".textarea-main").length > 0) {
-        M.textareaAutoResize($(".textarea-main"));
-    }
-
     // Avatar preview on profile in settings
     $("#avatar-file").change(function() {
         readURL(this);
@@ -45,5 +37,11 @@ $( document ).on("turbolinks:load", function() {
 
     $("#replaceImage").click(function () {
         $("#avatar-file").trigger("click");
+    });
+
+    // Menu Bar hide show
+    $("#mainMenuTrigger").click(function(e) {
+        e.preventDefault();
+        $("#mainMenu").toggleClass("shown");
     });
 });
