@@ -1,17 +1,14 @@
-<div class="w-60-l w-80-m w-100-s ml-auto mr-auto">
-  <div class="card blue-grey">
-    <div class="card-content white-text">
-      <span class="card-title pb3"><%= t(".title") %></span>
-
+<div class="dark-card-container mw5p5 center">
+  <div class="dark-card-body pb3">
+    <h2 class="dark-card-header"><%= t(".title") %></h2>
       <%= form_for @user do |form| %>
         <%= render partial: '/users/form', object: form %>
-
-        <%= form.submit class: 'btn btn-light black-text pointer' %>
+        <%= form.submit class: 'dark-button mt2' %>
       <% end %>
-    </div>
-    <div class="card-action">
-      <%= link_to t(".sign_in"), sign_in_path %>
-      <%= link_to t(".forgot_password"), new_password_path %>
+  </div>
+  <div class="dark-card-footer-small">
+      <%= link_to t(".sign_in"), sign_in_path, class: 'dark-card-footer-link' %>
+      <%= link_to t(".forgot_password"), new_password_path, class: 'dark-card-footer-link' %>
     </div>
   </div>
 </div>

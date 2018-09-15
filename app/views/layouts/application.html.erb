@@ -27,17 +27,7 @@
       </div>
       <div class="mw8 center ph3-ns">
         <div class="cf ph2-ns">
-          <% if signed_in? %>
-            <div class="fl w-100 w-third-ns pa3 pr4">
-              <%= render 'shared/sidebar_dash' %>
-            </div>
-            <div class="fl w-100 w-two-thirds-ns pa3">
-          <% else %>
-            <div class="fl w-100 pa3">
-          <% end %>
-            <%= yield %>
-          </div>
-          </div>
+          <%= yield %>
         </div>
       </div>
     </main>

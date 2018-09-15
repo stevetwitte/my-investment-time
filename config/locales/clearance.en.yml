@@ -31,7 +31,7 @@ en:
       session:
         submit: sign in
       user:
-        create: Sign up
+        create: sign up
   layouts:
     application:
       sign_in: sign in

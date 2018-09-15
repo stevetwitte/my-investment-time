@@ -1,9 +1,9 @@
-<div class="bg-white main-shadow mb4 pa0">
-  <div class="ph3 pt3">
-    <h2 class="h-font pt0 mt0 bb b--moon-gray"><%= invest.title %></h2>
+<div class="light-card-container">
+  <div class="light-card-body">
+    <h2 class="light-card-header"><%= invest.title %></h2>
     <p><%= truncate invest.body, length: 200, separator: /\w+/ %></p>
   </div>
-  <div class="ph3 pv1 bg-near-black">
+  <div class="light-card-footer-small">
     <p class="pa0 ma0 near-white"><%= invest.user.username %></p>
   </div>
 </div>

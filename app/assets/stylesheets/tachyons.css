@@ -345,7 +345,7 @@ img { max-width: 100%; }
 .b--moon-gray { border-color: #b1bcc8; }
 .b--light-gray { border-color: #d7d7d7; }
 .b--near-white { border-color: #e6ecf0; }
-.b--white { border-color: #fefefe; }
+.b--white { border-color: #fff; }
 .b--white-90 { border-color: rgba( 255, 255, 255, .9 ); }
 .b--white-80 { border-color: rgba( 255, 255, 255, .8 ); }
 .b--white-70 { border-color: rgba( 255, 255, 255, .7 ); }
@@ -1099,7 +1099,7 @@ code, .code { font-family: Consolas, monaco, monospace; }
 .moon-gray { color: #b1bcc8; }
 .light-gray { color: #d7d7d7; }
 .near-white { color: #e6ecf0; }
-.white { color: #fefefe; }
+.white { color: #fff; }
 .dark-red { color: #e7040f; }
 .red { color: #ff4136; }
 .light-red { color: #ff725c; }
@@ -1156,7 +1156,7 @@ code, .code { font-family: Consolas, monaco, monospace; }
 .bg-moon-gray { background-color: #b1bcc8; }
 .bg-light-gray { background-color: #d7d7d7; }
 .bg-near-white { background-color: #e6ecf0; }
-.bg-white { background-color: #fefefe; }
+.bg-white { background-color: #fff; }
 .bg-transparent { background-color: transparent; }
 .bg-dark-red { background-color: #e7040f; }
 .bg-red { background-color: #ff4136; }
@@ -1212,8 +1212,8 @@ code, .code { font-family: Consolas, monaco, monospace; }
 .hover-light-gray:focus { color: #d7d7d7; }
 .hover-near-white:hover { color: #e6ecf0; }
 .hover-near-white:focus { color: #e6ecf0; }
-.hover-white:hover { color: #fefefe; }
-.hover-white:focus { color: #fefefe; }
+.hover-white:hover { color: #fff; }
+.hover-white:focus { color: #fff; }
 .hover-black-90:hover { color: rgba( 0, 0, 0, .9 ); }
 .hover-black-90:focus { color: rgba( 0, 0, 0, .9 ); }
 .hover-black-80:hover { color: rgba( 0, 0, 0, .8 ); }
@@ -1271,8 +1271,8 @@ code, .code { font-family: Consolas, monaco, monospace; }
 .hover-bg-light-gray:focus { background-color: #d7d7d7; }
 .hover-bg-near-white:hover { background-color: #e6ecf0; }
 .hover-bg-near-white:focus { background-color: #e6ecf0; }
-.hover-bg-white:hover { background-color: #fefefe; }
-.hover-bg-white:focus { background-color: #fefefe; }
+.hover-bg-white:hover { background-color: #fff; }
+.hover-bg-white:focus { background-color: #fff; }
 .hover-bg-transparent:hover { background-color: transparent; }
 .hover-bg-transparent:focus { background-color: transparent; }
 .hover-bg-black-90:hover { background-color: rgba( 0, 0, 0, .9 ); }

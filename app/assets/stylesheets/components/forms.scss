@@ -1,0 +1,25 @@
+input {
+  @extend .input-reset;
+  font-family: 'Roboto', sans-serif;
+  border: none;
+}
+
+.form-error {
+  @extend .bl, .br, .bb, .ba, .mt1, .b--near-black, .pa1, .bg-light-gray, .near-black, .p-font, .f6;
+}
+
+.full-width-form-group {
+  @extend .w-100, .mv2;
+}
+
+.main-label {
+  @extend .p-font, .f6, .small-caps;
+}
+
+.main-input {
+  @extend .f5, .h2, .ph2, .br1, .b--moon-gray;
+}
+
+.dark-button {
+  @extend .bg-near-black, .near-white, .pv2, .ph3, .p-font, .f6, .ttu;
+}

@@ -1,3 +1,11 @@
+<% if signed_in? %>
+  <div class="fl w-100 w-third-ns pa3 pr4">
+    <%= render 'shared/sidebar_dash' %>
+  </div>
+  <div class="fl w-100 w-two-thirds-ns pa3">
+<% else %>
+  <div class="fl w-100 pa3">
+<% end %>
 <% @invests.try(:each) do |invest| %>
   <%= link_to invest, class: 'black hover-black no-underline' do %>
     <%= render 'invests/shared/invest_list', invest: invest %>
@@ -5,5 +13,9 @@
 <% end %>
 
 <div>
+</div>
+</div>
+</div>
+<div class="center">
   <%= paginate @invests %>
 </div>

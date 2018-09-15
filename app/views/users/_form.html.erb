@@ -1,29 +1,45 @@
-<div class="input-field">
-  <label for="email" class="light-color">email</label>
-  <%= form.text_field :email, type: 'email', class: 'validate light-color' %>
-  <div class="error">
-    <% @user.errors.messages[:email].each do |i| %>
-      email <%= i %><br>
-    <% end %>
-  </div>
+<div class="full-width-form-group">
+  <label for="email" class="main-label">email</label>
+  <br />
+  <%= form.text_field :email,
+                      type: 'email',
+                      class: 'main-input w-100',
+                      placeholder: 'email@address.com' %>
+  <% unless @user.errors.messages[:email].blank? %>
+    <div class="form-error">
+      <% @user.errors.messages[:email].each do |i| %>
+        email <%= i %><br>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
-<div class="input-field">
-  <label for="user_username" class="light-color">username</label>
-  <%= form.text_field :username, class: 'validate light-color' %>
-  <div class="error">
-    <% @user.errors.messages[:username].each do |i| %>
-      username <%= i %><br>
-    <% end %>
-  </div>
+<div class="full-width-form-group">
+  <label for="user_username" class="main-label">username</label>
+  <br />
+  <%= form.text_field :username,
+                      class: 'main-input w-100',
+                      placeholder: 'unique-username' %>
+  <% unless @user.errors.messages[:username].blank? %>
+    <div class="form-error">
+      <% @user.errors.messages[:username].each do |i| %>
+        username <%= i %><br>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
-<div class="input-field">
-  <label for="user_password" class="light-color">password</label>
-  <%= form.password_field :password, class: 'validate light-color' %>
-  <div class="error">
-    <% @user.errors.messages[:password].each do |i| %>
-      password <%= i %><br>
-    <% end %>
-  </div>
+<div class="full-width-form-group">
+  <label for="session_password" class="main-label">password</label>
+  <br />
+  <%= form.password_field :password,
+                          class: 'main-input w-100',
+                          placeholder: '••••••••••••••••' %>
+  <% unless @user.errors.messages[:password].blank? %>
+    <div class="form-error">
+      <% @user.errors.messages[:password].each do |i| %>
+        password <%= i %><br>
+      <% end %>
+    </div>
+  <% end %>
 </div>

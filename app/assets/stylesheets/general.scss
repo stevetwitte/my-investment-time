@@ -1,0 +1,54 @@
+// Font Families
+.h-font {
+  font-family: 'Ranga', cursive;
+  font-weight: 300;
+}
+
+.p-font {
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+}
+
+// Links
+a {
+  color: #100f34;
+}
+
+a:hover {
+  color: #424051;
+}
+
+// Heights
+.h1p5 {
+  height: 1.5rem;
+}
+
+// Widths
+.w-28 {
+  width: 28%;
+}
+
+.mw5p5 {
+  max-width: 24rem;
+}
+
+// Flex Box
+.flex-grow-2 {
+  flex-grow: 2;
+}
+
+// Shadow
+.main-shadow {
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+.main-shadow-dark {
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
+}
