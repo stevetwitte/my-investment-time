@@ -1,17 +1,24 @@
-<div class="w-60-l w-80-m w-100-s ml-auto mr-auto">
-  <div class="card blue-grey">
-    <div class="card-content white-text">
-      <span class="card-title pb3"><%= t(".title") %></span>
-      <p class="white-text pb4"><%= t(".description") %></p>
+<div class="dark-card-container mw5p5 center">
+  <div class="dark-card-body pb3">
+    <h2 class="dark-card-header"><%= t(".title") %></h2>
+    <p><%= t(".description") %></p>
 
-      <%= form_for :password, url: passwords_path do |form| %>
-        <div class="input-field">
-          <label for="email" class="light-color">email</label>
-          <%= form.text_field :email, type: 'email', class: 'validate light-color' %>
-        </div>
+    <%= form_for :password, url: passwords_path do |form| %>
+      <div class="full-width-form-group">
+        <label for="email" class="main-label">email</label>
+        <br />
+        <%= form.text_field :email,
+                            type: 'email',
+                            class: 'main-input w-100',
+                            placeholder: 'email@address.com' %>
+      </div>
 
-        <%= form.submit class: 'btn btn-light black-text pointer' %>
-      <% end %>
-    </div>
+      <%= form.submit class: 'dark-button mt2' %>
+    <% end %>
+  </div>
+  <div class="dark-card-footer-small">
+    <%= link_to t(".sign_up"), sign_up_path, class: 'dark-card-footer-link' %>
+    <%= link_to t(".sign_in"), sign_in_path, class: 'dark-card-footer-link' %>
   </div>
 </div>
+

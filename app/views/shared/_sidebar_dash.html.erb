@@ -12,7 +12,7 @@
       <h3 class="ma2 ml0 white-text light-weight p-font"><%= current_user.username %></h3>
     </div>
     <div class="cb mt6">
-      <h3 class="bb h-font mb0">RECENT INVESTMENTS</h3>
+      <h3 class="bb r-font mb0">RECENT INVESTMENTS</h3>
       <ul class="list pl3">
         <% current_user.invests.recent.each do |i| %>
           <li class="pt2"><h4 class="ma0 pa0 p-font"><%= link_to i.title, i %></h4></li>
@@ -20,7 +20,7 @@
       </ul>
     </div>
     <div class="mt4">
-      <h3 class="bb h-font mb0">FOLLOWING INVESTMENTS</h3>
+      <h3 class="bb r-font mb0">FOLLOWING INVESTMENTS</h3>
       <ul class="list pl3">
         <% current_user.following_invests.recent.each do |i| %>
           <li class="pt2"><h4 class="ma0 pa0 p-font"><%= link_to i.title, i %></h4></li>
@@ -28,7 +28,7 @@
       </ul>
     </div>
     <div class="mt4">
-      <h3 class="bb h-font mb0">YOUR TEAMS</h3>
+      <h3 class="bb r-font mb0">YOUR TEAMS</h3>
       <ul class="list pl3">
         <% current_user.all_teams.each do |i| %>
           <li class="pt2"><h4 class="ma0 pa0 p-font"><%= link_to i.name, i %></h4></li>

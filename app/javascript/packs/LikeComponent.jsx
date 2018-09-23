@@ -35,12 +35,21 @@ class LikeComponent extends React.Component {
     }
 
     render() {
-        return (
-            <button onClick={this.likeClicked} className="waves-effect waves-light btn btn-small btn-dark number-button">
-                <i className="material-icons likes-icon">thumb_up</i>&nbsp;&nbsp;
-                {this.state.isLiked ? "unlike" : "like" }<span>{ this.state.likes }</span>
-            </button>
-        );
+        if (this.state.isLiked) {
+            return (
+                <button onClick={this.likeClicked} className="main-shadow-alt bg-near-white near-black ph2 pv1 f6 ttu p-font bw0 mr3 pointer">
+                    <i className="fas fa-heart mr2 pl0 ml0"></i>
+                    likes <span className="bl b--near-black tr pl2 pr0 ml1 pl1">{ this.state.likes }</span>
+                </button>
+            );
+        } else {
+            return (
+                <button onClick={this.likeClicked} className="main-shadow-alt bg-near-white near-black ph2 pv1 f6 ttu p-font bw0 mr3 pointer">
+                    <i className="far fa-heart mr2 pl0 ml0"></i>
+                    likes <span className="bl b--near-black tr pl2 pr0 ml1 pl1">{ this.state.likes }</span>
+                </button>
+            );
+        }
     }
 }
 

@@ -68,7 +68,7 @@ SimpleForm.setup do |config|
     b.use :html5
     b.use :input
     b.use :label
-    b.use :error, wrap_with: { tag: "p" , class: "error-text"}
+    b.use :error, wrap_with: { tag: "div" , class: "form-error"}
   end
 
 

@@ -1,79 +1,60 @@
 <% if @invest.user == current_user %>
-  <div class="row">
-    <div class="col s12">
-      <%= link_to 'edit', edit_invest_path(@invest), class: 'waves-effect waves-light btn btn-dark' %>
-      <%= link_to 'update history', new_invest_status_path(@invest), class: 'waves-effect waves-light btn btn-dark' %>
+  <div class="dark-card-container center">
+    <div class="dark-card-body pb3">
+      <%= link_to 'edit', edit_invest_path(@invest), class: 'dark-button' %>
+      <%= link_to 'update history', new_invest_status_path(@invest), class: 'ml2 dark-button' %>
     </div>
   </div>
 <% end %>
 
-<div class="row">
-  <div class="col s12">
-    <div class="card">
-      <div class="card-stacked">
-        <div class="card-content">
-          <div class="row">
-            <div class="col s4">
-              <h6><%= link_to @invest.user.username, user_url(@invest.user) %></h6>
-            </div>
-            <div class="col s8 tr">
-              <%= content_tag :div,
-                              id: 'followContainer',
-                              class: 'options-container',
-                              data: { isfollowing: following?(user: current_user, invest: @invest),
-                                      numfollowing: @invest.follows.length,
-                                      investid: @invest.id } do %>
-              <% end %>
-              <%= content_tag :div,
-                              id: 'likeContainer',
-                              class: 'options-container',
-                              data: { likes: @invest.likes.length,
-                                      isliked: liked?(user: current_user, invest: @invest),
-                                      investid: @invest.id } do %>
-              <% end %>
-            </div>
-          </div>
-          <div class="cl divider w-100"></div>
-          <div class="pt2">
-            <h4 class="mt1"><%= @invest.title %></h4>
-            <p><%= @invest.body %></p>
-          </div>
-        </div>
+<div class="light-card-container center">
+  <div class="bg-near-black near-white">
+    <div class="pv2 ph3">
+      <div class="fl tl">
+        <%= link_to @invest.user.username, user_url(@invest.user), class: 'dark-card-footer-link' %>
+      </div>
+      <div class="tr">
+        <%= content_tag :div,
+                        id: 'followContainer',
+                        data: { isfollowing: following?(user: current_user, invest: @invest),
+                                numfollowing: @invest.follows.length,
+                                investid: @invest.id } do %>
+        <% end %>
+        <%= content_tag :div,
+                        id: 'likeContainer',
+                        data: { likes: @invest.likes.length,
+                                isliked: liked?(user: current_user, invest: @invest),
+                                investid: @invest.id } do %>
+        <% end %>
       </div>
     </div>
   </div>
-</div>
-
-<div class="row">
-  <div class="col s12">
-    <div class="card">
-      <div class="card-stacked">
-        <div class="card-content">
-          <span class="card-title">links</span>
-          <% @invest.links.try(:each) do |i| %>
-            <a href="<%= i.to_a[1] %>"><h6 class="pb-4"><%= i.to_a[0] + ': ' + i.to_a[1] %></h6></a>
-          <% end %>
-        </div>
-      </div>
-    </div>
+  <div class="light-card-body pb3">
+    <h2 class="light-card-header"><%= @invest.title %></h2>
+    <p><%= @invest.body %></p>
   </div>
 </div>
 
-<div class="row">
-  <div class="col s12">
-    <div class="card">
-      <div class="card-stacked">
-        <div class="card-content">
-          <span class="card-title">history</span>
-          <% @invest.statuses.try(:each) do |i| %>
-            <div class="cl overflow-auto p4">
-              <p class="left"><%= i.title %>:</p>
-              <p class="left ml4"><%= i.detail %></p>
-              <p class="right ml4"><%= i.created_at.strftime('%H:%M - %b %e %Y') %></p>
-            </div>
-          <% end %>
-        </div>
+<div class="light-card-container center">
+  <div class="light-card-body pb3">
+    <h2 class="light-card-header r-font">links</h2>
+    <% @invest.links.try(:each) do |i| %>
+      <p class="ma1"><a href="<%= i.to_a[1] %>"><span class="f5"><%= '[' + i.to_a[0] + '] ' %> </span><%= i.to_a[1] %></a></p>
+    <% end %>
+  </div>
+</div>
+
+<div class="light-card-container center">
+  <div class="light-card-body pb3">
+    <h2 class="light-card-header r-font">history</h2>
+    <% @invest.statuses.try(:each) do |i| %>
+      <div class="cl overflow-auto">
+        <p class="fl ma1">• <%= i.created_at.strftime('%H:%M - %b %e %Y') %></p>
+        <p class="fl ma1 ml2"><%= i.title %></p>
+        <% unless i.detail.blank? %>
+          <p class="fl ma1 ml4"><%= i.detail %></p>
+        <% end %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

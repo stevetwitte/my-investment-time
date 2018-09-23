@@ -1,7 +1,10 @@
 // Font Families
 .h-font {
-  font-family: 'Ranga', cursive;
-  font-weight: 300;
+  font-family: 'Quattrocentro Sans', sans-serif;
+}
+
+.r-font {
+  font-family: 'Ranga', sans-serif;
 }
 
 .p-font {
@@ -10,6 +13,9 @@
 
 p {
   font-family: 'Roboto', sans-serif;
+  line-height: 1.8rem;
+  font-weight: 300;
+  font-size: 1.2rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -39,6 +45,11 @@ a:hover {
   max-width: 24rem;
 }
 
+// Margins
+.mt5p5 {
+  margin-top: 5rem;
+}
+
 // Flex Box
 .flex-grow-2 {
   flex-grow: 2;
@@ -51,4 +62,8 @@ a:hover {
 
 .main-shadow-dark {
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
+}
+
+.main-shadow-alt {
+  box-shadow: 2px 2px 0 rgba(255, 255, 255, 0.3);
 }

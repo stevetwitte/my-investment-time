@@ -4,6 +4,22 @@ input {
   border: none;
 }
 
+input::placeholder {
+  @extend .gray;
+}
+
+textarea {
+  @extend .input-reset, .pv2;
+  font-family: 'Roboto', sans-serif;
+  border-style: none;
+  resize: vertical;
+  height: 12rem !important;
+}
+
+textarea::placeholder {
+  @extend .gray;
+}
+
 .form-error {
   @extend .bl, .br, .bb, .ba, .mt1, .b--near-black, .pa1, .bg-light-gray, .near-black, .p-font, .f6;
 }
@@ -18,8 +34,4 @@ input {
 
 .main-input {
   @extend .f5, .h2, .ph2, .br1, .b--moon-gray;
-}
-
-.dark-button {
-  @extend .bg-near-black, .near-white, .pv2, .ph3, .p-font, .f6, .ttu;
 }

@@ -42,6 +42,7 @@ en:
         contains instructions for changing your password.
     edit:
       description: Choose a new password below.
+      details: (Passwords must be at least 8 characters in length)
       title: Change your password
     new:
       description: To be emailed a link to reset your password, please enter
