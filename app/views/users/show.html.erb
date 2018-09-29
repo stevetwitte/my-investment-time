@@ -1,55 +1,11 @@
-<div class="row">
-  <div class="col s4">
-    <div class="card blue-grey">
-      <div class="card-stacked">
-        <div class="card-content">
-          <div class="ma1">
-            <% if @user.profile.avatar.attached? && @user.profile.avatar.try(:image?) %>
-              <%= image_tag @user.profile.avatar, alt: 'Placeholder Avatar' %>
-            <% else %>
-              <%= image_tag 'avatar_placeholder.png', alt: 'Placeholder Avatar' %>
-            <% end %>
-            <h5 class="ma2 ml0 white-text light-weight"><%= @user.profile.try(:full_name) %></h5>
-            <h5 class="ma2 ml0 white-text light-weight"><%= @user.username %></h5>
-            <% if @user.profile.bio %>
-              <br>
-              <div class="team-user-list">
-                <br>
-                <p class="ma2 ml0 white-text light-weight"><%= @user.profile.try(:bio) %></p>
-              </div>
-            <% end %>
-            <% if @user.profile.try(:links) %>
-              <br>
-              <div class="team-user-list">
-                <br>
-                <% @user.profile.links.each do |i| %>
-                  <% unless i[1].blank? %>
-                    <a href="<%= i[1] %>">
-                      <p class="ma2 ml0 white-text light-weight"><%= i[0] %></p>
-                      <p class="ma2 ml0 white-text light-weight tiny-text"><%='(' + i[1] + ')' %></p>
-                    </a>
-                    <br>
-                  <% end %>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col s8">
-    <div class="card blue-grey">
-      <div class="card-stacked">
-        <div class="card-content">
-          <span class="card-title white-text"><%= t('profile.recent') %></span>
-          <% @user.invests[0...3].try(:each) do |invest| %>
-            <%= link_to invest, class: 'no-underline' do %>
-              <%= render 'invests/shared/invest_small', invest: invest %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="fl w-100 w-third-ns pa3 pr4 mt0-ns mt4-m mt4-l">
+<%= render 'shared/sidebar_dash', user: @user %>
+</div>
+<div class="fl w-100 w-two-thirds-ns pa3">
+  <h3 class="bb r-font mb3 mt0 ttu"><%= t('profile.all_invests') %></h3>
+  <% @user.invests[0...3].try(:each) do |invest| %>
+    <%= link_to invest, class: 'black hover-black no-underline' do %>
+      <%= render 'invests/shared/invest_small', invest: invest %>
+    <% end %>
+  <% end %>
 </div>

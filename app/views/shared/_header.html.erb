@@ -1,22 +1,22 @@
-<div class="fixed top-0 left-0 bg-near-black w-100 flex items-center justify-between ph4 pv1 z-999 main-shadow">
-  <div>
+<div class="fixed top-0 left-0 bg-near-black w-100 flex items-center justify-between ph1 ph3-m ph4-l pv1 z-999 main-shadow">
+  <div class="dn db-m db-l">
     <a href="/"><%= image_tag 'header-logo.svg', class: 'w4 header-logo-top-fix' %></a>
   </div>
-  <div class="flex-grow-2 tc">
+  <div class="flex-grow-2 tc pl1 pl0-m pl0-l">
     <%= form_tag(invests_path, :method => 'get') do %>
         <%= search_field_tag :search, params[:search],
                              placeholder: 'search for an investment...',
-                             class: 'f5 h2 ph2 br1 b--moon-gray w-80' %>
+                             class: 'f5 h2 ph2 br1 b--moon-gray w-100 w-80-m w-80-l tl' %>
     <% end %>
   </div>
   <div>
     <ul class="list inline-flex ma0">
-      <li class="ph3">
+      <li class="ph2">
         <%= link_to new_invest_path do %>
           <i class="f3 far fa-plus-square light-gray"></i>
         <% end %>
       </li>
-      <li class="ph3">
+      <li class="ph2">
         <%= link_to activities_index_path do %>
           <% if current_user&.notifications&.any? %>
             <i class="f3 fas fa-bell light-gray"></i>
@@ -25,7 +25,7 @@
           <% end %>
         <% end %>
       </li>
-      <li class="ph3">
+      <li class="ph2">
         <a href="#!" id="mainMenuTrigger"><i class="f3 fas fa-bars light-gray"></i></a>
       </li>
     </ul>
