@@ -3,7 +3,7 @@
   <% if signed_in? -%>
     <li class="mb2 bb"><%= link_to t("menu.teams"), teams_path, class: 'no-underline near-black hover-black-50 r-font f3 ttu' %></li>
     <li class="mb2 bb"><%= link_to t("menu.profile"), user_path(current_user), class: 'no-underline near-black hover-black-50 r-font f3 ttu' %></li>
-    <li class="mb2 bb"><%= link_to t("menu.settings"), edit_settings_account_path, class: 'no-underline near-black hover-black-50 r-font f3 ttu' %></li>
+    <li class="mb2 bb"><%= link_to t("menu.settings"), edit_settings_profile_path, class: 'no-underline near-black hover-black-50 r-font f3 ttu' %></li>
     <li class="mb2 bb"><%= link_to t("menu.log_out"), sign_out_path, method: :delete, class: 'no-underline near-black hover-black-50 r-font f3 ttu' %></li>
   <% else -%>
     <li class="mb2 bb"><%= link_to t("menu.log_in"), sign_in_path, class: 'no-underline near-black hover-black-50 r-font f3 ttu' %></li>

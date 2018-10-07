@@ -1,56 +1,54 @@
-<div class="row">
-  <div class="col s12">
-    <div class="card">
-      <div class="card-stacked">
-        <div class="card-content bg-dark">
-
-          <div class="row no-margin">
-
-            <div class="col s3">
-              <ul class="list-reset settings-ul">
-                <%= link_to edit_settings_account_path, class: 'no-underline' do %>
-                  <li class="pa2 white-text">account</li>
-                <% end %>
-                <li class="pa2 white-text">profile</li>
-                <%= link_to edit_settings_password_path, class: 'no-underline' do %>
-                  <li class="pa2 white-text cursor-pointer">password</li>
-                <% end %>
-              </ul>
+<%= render 'settings/shared/settings_menu' %>
+<div class="dark-card-container mw7 center">
+  <div class="dark-card-body pb3">
+    <h2 class="dark-card-header"><%= t(".title") %></h2>
+    <%= simple_form_for @profile, url: settings_profile_url, method: :patch do |f| %>
+      <div class="mw9 center ph3-ns">
+        <div class="cf ph2-ns">
+          <div class="fl w-100 w-50-ns pa2 mt2 tc">
+            <%= f.label :avatar, 'avatar image', class: 'main-label' %>
+            <br>
+            <% if @profile.avatar.attached? && @profile.avatar.try(:image?) %>
+              <%= image_tag @profile.avatar, alt: 'Placeholder Avatar', class: 'image-preview', id: 'avatarPreview' %>
+            <% else %>
+              <%= image_tag 'avatar_placeholder.png', alt: 'Placeholder Avatar', class: 'image-preview', id: 'avatarPreview' %>
+            <% end %>
+            <div class="mt2">
+              <a id="replaceImage" class="dark-button f7">REPLACE IMAGE</a>
             </div>
-
-            <div class="col s9 bg-white right-inner-card">
-              <h3 class="mt0 mb4"><%= t(".title") %></h3>
-              <%= simple_form_for @profile, url: settings_profile_url, method: :patch do |f| %>
-                <div>
-                  <label>avatar image:</label>
-                  <br>
-                  <% if @profile.avatar.attached? && @profile.avatar.try(:image?) %>
-                    <%= image_tag @profile.avatar, alt: 'Placeholder Avatar', class: 'avatar-preview', id: 'avatarPreview' %>
-                  <% else %>
-                    <%= image_tag 'avatar_placeholder.png', alt: 'Placeholder Avatar', class: 'avatar-preview', id: 'avatarPreview' %>
-                  <% end %>
-                  <div>
-                    <a id="replaceImage" class="btn btn-dark btn-small mt1 mb4">REPLACE IMAGE</a>
-                  </div>
-                  <%= f.input :avatar, input_html: { id: 'avatar-file', class: 'validate dn' }, label: false %>
-                </div>
-                <%= f.input :full_name, input_html: { class: 'validate' }, label: 'full name' %>
-                <%= f.input :bio, input_html: { class: 'materialize-textarea validate textarea-main' }, label: 'bio' %>
-
-                <%= f.simple_fields_for :links, OpenStruct.new(@profile.links) do |link| %>
-                    <%= link.input :homepage, input_html: { class: 'validate' }, label: 'homepage' %>
-                    <%= link.input :github, input_html: { class: 'validate' }, label: 'github' %>
-                <% end %>
-
-                <%= f.button :submit, value: 'update account', class: 'btn-dark' %>
-              <% end %>
-            </div>
-
+            <%= f.input :avatar, input_html: { id: 'avatar-file', class: 'dn' }, label: false %>
           </div>
-
+          <div class="fl w-100 w-50-ns pa2">
+            <div class="full-width-form-group">
+              <%= f.label :full_name, 'full name', class: 'main-label' %>
+              <%= f.input :full_name, input_html: { class: 'main-input w-100' }, label: false %>
+            </div>
+            <div class="full-width-form-group">
+              <%= f.label :bio, 'bio', class: 'main-label' %>
+              <%= f.input :bio,
+                          input_html: { class: 'main-input w-100',
+                                        placeholder: 'Tell us something about yourself...'},
+                          label: false %>
+            </div>
+            <%= f.simple_fields_for :links, OpenStruct.new(@profile.links) do |link| %>
+              <div class="full-width-form-group">
+                <%= link.label :homepage, 'homepage', class: 'main-label' %>
+                <%= link.input :homepage, input_html: { class: 'main-input w-100',
+                                                        placeholder: 'http://www.yourpage.com'}, label: false %>
+              </div>
+              <div class="full-width-form-group">
+                <%= link.label :github, 'github', class: 'main-label' %>
+                <%= link.input :github, input_html: { class: 'main-input w-100',
+                                                      placeholder: 'http://github.com/username/repo' }, label: false %>
+              </div>
+            <% end %>
+            <div class="tr">
+              <%= f.button :submit, class: 'dark-button mt2' %>
+            </div>
+          </div>
         </div>
-
       </div>
-    </div>
+    <% end %>
+
   </div>
 </div>

@@ -3,6 +3,7 @@
 }
 
 .header-menu {
+  @extend .ba;
   transition: all 200ms ease-in-out;
   top: -300px;
   right: 2rem;

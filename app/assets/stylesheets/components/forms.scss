@@ -35,3 +35,7 @@ textarea::placeholder {
 .main-input {
   @extend .f5, .h2, .ph2, .br1, .b--moon-gray;
 }
+
+.image-preview {
+  max-height: 210px;
+}
