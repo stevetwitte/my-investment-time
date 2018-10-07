@@ -27,6 +27,7 @@ group :development, :test do
   gem "rubocop"
   gem "pry"
   gem "pry-rails"
+  gem "foreman"
 end
 
 group :development do
