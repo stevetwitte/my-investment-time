@@ -1,12 +1,6 @@
-<div class="row hover-grow">
-  <div class="col s12">
-    <div class="card">
-      <div class="card-stacked">
-        <div class="card-content">
-          <span class="card-title pb1"><%= team.name %></span>
-          <p><%= truncate team.description, length: 200, separator: /\w+/ %></p>
-        </div>
-      </div>
-    </div>
+<div class="dark-card-container mw7 center">
+  <div class="dark-card-body pb3">
+    <h3 class="h-font ma0"><%= team.name %></h3>
+    <p class="p-font f5 ma0"><%= truncate team.description, length: 200, separator: /\w+/ %></p>
   </div>
 </div>

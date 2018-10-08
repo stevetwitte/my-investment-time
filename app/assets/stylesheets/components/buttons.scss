@@ -1,0 +1,11 @@
+.dark-button {
+  @extend .bg-near-black, .near-white, .pv2, .ph3, .p-font, .f6, .ttu, .link;
+}
+
+.dark-button:hover {
+  @extend .light-gray;
+}
+
+.light-button {
+  @extend .bg-near-white, .black, .pv2, .ph3, .p-font, .f6, .ttu, .link;
+}

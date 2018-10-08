@@ -19,7 +19,6 @@ gem "simple_form"
 gem "figaro"
 gem "sidekiq"
 gem "kaminari"
-gem "materialize-sass", "~> 1.0.0.rc2"
 gem "aws-sdk-s3", require: false
 
 group :development, :test do
@@ -28,6 +27,7 @@ group :development, :test do
   gem "rubocop"
   gem "pry"
   gem "pry-rails"
+  gem "foreman"
 end
 
 group :development do

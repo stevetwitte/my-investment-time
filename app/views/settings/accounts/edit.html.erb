@@ -1,37 +1,19 @@
-<div class="row">
-  <div class="col s12">
-    <div class="card">
-      <div class="card-stacked">
-        <div class="card-content bg-dark">
-
-          <div class="row no-margin">
-
-            <div class="col s3">
-              <ul class="list-reset settings-ul">
-                <li class="pa2 white-text">account</li>
-                <%= link_to edit_settings_profile_path, class: 'no-underline' do %>
-                  <li class="pa2 white-text cursor-pointer">profile</li>
-                <% end %>
-                <%= link_to edit_settings_password_path, class: 'no-underline' do %>
-                  <li class="pa2 white-text cursor-pointer">password</li>
-                <% end %>
-              </ul>
-            </div>
-
-            <div class="col s9 bg-white right-inner-card">
-              <h3 class="mt0 mb4"><%= t(".title") %></h3>
-              <%= simple_form_for @user, url: settings_account_url, method: :patch do |f| %>
-                <%= f.input :email, input_html: { class: 'validate' }, label: 'email address' %>
-                <%= f.input :username, input_html: { class: 'validate' }, label: 'username' %>
-                <%= f.button :submit, value: 'update account', class: 'btn-dark' %>
-              <% end %>
-            </div>
-
-          </div>
-
-        </div>
-
+<%= render 'settings/shared/settings_menu' %>
+<div class="dark-card-container mw7 center">
+  <div class="dark-card-body pb3">
+    <h2 class="dark-card-header"><%= t(".title") %></h2>
+    <%= simple_form_for @user, url: settings_account_url, method: :patch do |f| %>
+      <div class="full-width-form-group">
+        <%= f.label :email, 'email address', class: 'main-label' %>
+        <%= f.input :email, input_html: { class: 'main-input w-100' }, label: false %>
       </div>
-    </div>
+      <div class="full-width-form-group">
+        <%= f.label :username, 'username', class: 'main-label' %>
+        <%= f.input :username, input_html: { class: 'main-input w-100' }, label: false %>
+      </div>
+      <div class="tr">
+        <%= f.button :submit, class: 'dark-button mt2' %>
+      </div>
+    <% end %>
   </div>
 </div>

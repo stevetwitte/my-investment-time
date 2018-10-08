@@ -1,0 +1,41 @@
+input {
+  @extend .input-reset;
+  font-family: 'Roboto', sans-serif;
+  border: none;
+}
+
+input::placeholder {
+  @extend .gray;
+}
+
+textarea {
+  @extend .input-reset, .pv2;
+  font-family: 'Roboto', sans-serif;
+  border-style: none;
+  resize: vertical;
+  height: 12rem !important;
+}
+
+textarea::placeholder {
+  @extend .gray;
+}
+
+.form-error {
+  @extend .bl, .br, .bb, .ba, .mt1, .b--near-black, .pa1, .bg-light-gray, .near-black, .p-font, .f6;
+}
+
+.full-width-form-group {
+  @extend .w-100, .mv2;
+}
+
+.main-label {
+  @extend .p-font, .f6, .small-caps;
+}
+
+.main-input {
+  @extend .f5, .h2, .ph2, .br1, .b--moon-gray;
+}
+
+.image-preview {
+  max-height: 210px;
+}

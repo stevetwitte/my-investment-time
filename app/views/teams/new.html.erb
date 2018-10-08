@@ -1,24 +1,46 @@
-<div class="row">
-  <div class="col s12">
-    <div class="card">
-      <div class="card-stacked">
-        <div class="card-content">
-          <span class="card-title"><%= t(".title") %></span>
+<div class="dark-card-container center">
+  <div class="dark-card-body pb3">
+    <h2 class="dark-card-header"><%= t(".title") %></h2>
 
-          <%= simple_form_for @team do |f| %>
-              <%= f.input :name, input_html: { class: 'validate' }, label: "name" %>
-              <%= f.input :slug, input_html: { class: 'validate' }, label: "slug (your team page will live at myinvestmenttime.com/teams/slug)" %>
-              <%= f.input :description, input_html: { class: 'materialize-textarea validate textarea-main' }, label: "description" %>
-
-            <%= f.simple_fields_for :links, OpenStruct.new(@team.links) do |link| %>
-                <%= link.input :homepage, input_html: { class: 'validate' }, label: "homepage" %>
-                <%= link.input :github, input_html: { class: 'validate' }, label: "github" %>
-            <% end %>
-
-            <%= f.button :submit, class: 'btn-dark' %>
-          <% end %>
-        </div>
+    <%= simple_form_for @team do |f| %>
+      <div class="full-width-form-group">
+        <%= f.label :name, 'team name', class: 'main-label' %>
+        <%= f.input :name,
+                    input_html: { class: 'main-input w-100',
+                                  placeholder: 'Team Name'},
+                    label: false %>
       </div>
-    </div>
+
+      <div class="full-width-form-group">
+        <%= f.label :slug, 'slug (your team page will live at myinvestmenttime.com/teams/slug)', class: 'main-label' %>
+        <%= f.input :slug,
+                    input_html: { class: 'main-input w-100',
+                                  placeholder: 'An html safe string please.'},
+                    label: false %>
+      </div>
+
+      <div class="full-width-form-group">
+        <%= f.label :description, 'description', class: 'main-label' %>
+        <%= f.input :description,
+                    input_html: { class: 'main-input w-100',
+                                  placeholder: 'Write a brief description of your team.'},
+                    label: false %>
+      </div>
+
+      <%= f.simple_fields_for :links, OpenStruct.new(@team.links) do |link| %>
+        <div class="full-width-form-group">
+          <%= link.label :homepage, 'homepage', class: 'main-label' %>
+          <%= link.input :homepage, input_html: { class: 'main-input w-100',
+                                                  placeholder: 'http://www.yourpage.com'}, label: false %>
+        </div>
+        <div class="full-width-form-group">
+          <%= link.label :github, 'github', class: 'main-label' %>
+          <%= link.input :github, input_html: { class: 'main-input w-100',
+                                                placeholder: 'http://github.com/username/repo' }, label: false %>
+        </div>
+      <% end %>
+
+      <%= f.button :submit, class: 'dark-button mt2' %>
+    <% end %>
   </div>
 </div>

@@ -4,7 +4,8 @@ class InvestsController < ApplicationController
 
   def index
     if params[:search]
-      @invests = @invests.where("LOWER(title) LIKE ?", "%#{params[:search].downcase}%")
+      @invests = @invests.where("LOWER(title) LIKE ?",
+                                "%#{params[:search].downcase}%")
     end
 
     @invests = @invests.order("created_at DESC").page(params[:page])

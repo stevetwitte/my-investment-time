@@ -20,6 +20,8 @@ class Invest < ApplicationRecord
   validates :body,
             presence: true
 
+  scope :recent, -> { order(created_at: :desc).limit(5) }
+
   def set_tags(names)
     self.tags = names.split(",").map do |name|
       Tag.where(name: name.strip.downcase).first_or_create!

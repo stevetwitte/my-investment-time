@@ -5,10 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Gothic+A1:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application' %>
@@ -16,29 +13,27 @@
     <%= javascript_pack_tag 'FollowComponent', 'data-turbolinks-eval': false, defer: true %>
   </head>
 
-  <body>
-  <header>
-    <%= render 'shared/header' %>
-    <%= render 'shared/main_menu' %>
-  </header>
+  <body class="bg-near-white">
+    <header>
+      <%= render 'shared/header' %>
+      <%= render 'shared/main_menu' %>
+    </header>
 
-  <main>
-    <div class="container pt5">
+    <main class="mt5p5 minhc">
       <div id="flash">
         <% flash.each do |key, value| -%>
-          <div id="flash_<%= key %>" class="flash-item"><%= h value %></div>
+          <div class="fixed z-9999 bg-light-gray ph4 pv3 flash-position br2" id="flash_<%= key %>"><%= h value %></div>
         <% end %>
       </div>
-      <%= yield %>
-    </div>
-  </main>
-
-  <footer class="page-footer">
-    <div class="footer-copyright">
-      <div class="container">
-        © 2018 myInvestmentTime.com
+      <div class="mw8 center ph3-ns">
+        <div class="cf ph2-ns">
+          <%= yield %>
+        </div>
       </div>
-    </div>
-  </footer>
+    </main>
+
+    <footer>
+      <%= render 'shared/footer' %>
+    </footer>
   </body>
 </html>

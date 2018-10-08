@@ -45,6 +45,10 @@ class User < ApplicationRecord
     activity_invites.pending + activity_notifications.pending
   end
 
+  def all_teams
+    Team.where(owner: self) + teams
+  end
+
   private
 
   def create_profile

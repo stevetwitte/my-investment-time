@@ -1,0 +1,38 @@
+.light-card-container {
+  @extend .bg-white, .main-shadow, .mb4, .pa0;
+}
+
+.light-card-header {
+  @extend .h-font, .pt0, .mt0, .bb, .b--moon-gray;
+}
+
+.light-card-body {
+  @extend .ph3, .pt3;
+}
+
+.light-card-footer-small {
+  @extend .ph3, .pv1, .bg-near-black;
+}
+
+.dark-card-container {
+  @extend .bg-moon-gray, .main-shadow-dark, .mb4, .pa0;
+}
+
+.dark-card-header {
+  @extend .h-font, .pt0, .mt0, .bb, .b--near-black, .near-black;
+}
+
+.dark-card-body {
+  @extend .ph3, .pt3;
+}
+
+.dark-card-footer-small {
+  @extend .ph3, .pv1, .bg-near-black;
+}
+
+.dark-card-footer-link {
+  @extend .near-white, .h-font, .f4, .mr3, .ttl;
+  &:hover {
+    @extend .white;
+  }
+}

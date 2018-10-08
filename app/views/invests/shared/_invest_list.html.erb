@@ -1,13 +1,9 @@
-<div class="col s12 hover-grow">
-  <div class="card horizontal">
-    <div class="card-stacked">
-      <div class="card-content">
-        <span class="card-title"><%= invest.title %></span>
-        <p><%= truncate invest.body, length: 200, separator: /\w+/ %></p>
-      </div>
-      <div class="card-action">
-        <p><%= invest.user.username %></p>
-      </div>
-    </div>
+<div class="light-card-container">
+  <div class="light-card-body">
+    <h2 class="light-card-header"><%= invest.title %></h2>
+    <p><%= truncate invest.body, length: 200, separator: /\w+/ %></p>
+  </div>
+  <div class="light-card-footer-small">
+    <p class="pa0 ma0 near-white"><%= invest.user.username %></p>
   </div>
 </div>

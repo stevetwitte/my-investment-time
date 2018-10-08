@@ -1,0 +1,21 @@
+.header-logo-top-fix {
+  padding-top: 4px;
+}
+
+.header-menu {
+  @extend .ba;
+  transition: all 200ms ease-in-out;
+  top: -300px;
+  right: 2rem;
+  padding: 60px 30px 20px;
+}
+
+.header-menu.shown {
+  top: 0;
+}
+
+.flash-position {
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+}

@@ -1,13 +1,20 @@
 <%= form_for :session, url: session_path do |form| %>
-  <div class="input-field">
-    <label for="email" class="light-color">email</label>
-    <%= form.text_field :email, type: 'email', class: 'validate light-color' %>
+  <div class="full-width-form-group">
+    <label for="email" class="main-label">email</label>
+    <br />
+    <%= form.text_field :email,
+                        type: 'email',
+                        class: 'main-input w-100',
+                        placeholder: 'email@address.com' %>
   </div>
 
-  <div class="input-field">
-    <label for="session_password" class="light-color">password</label>
-    <%= form.password_field :password, class: 'validate light-color' %>
+  <div class="full-width-form-group">
+    <label for="session_password" class="main-label">password</label>
+    <br />
+    <%= form.password_field :password,
+                            class: 'main-input w-100',
+                            placeholder: '••••••••••••••••' %>
   </div>
 
-  <%= form.submit class: 'btn btn-light black-text pointer' %>
+  <%= form.submit class: 'dark-button mt2' %>
 <% end %>

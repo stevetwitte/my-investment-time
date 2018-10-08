@@ -1,12 +1,10 @@
-<div class="w-60-l w-80-m w-100-s ml-auto mr-auto">
-  <div class="card blue-grey">
-    <div class="card-content white-text">
-      <span class="card-title pb3"><%= t(".title") %></span>
-      <%= render partial: '/sessions/form' %>
-    </div>
-    <div class="card-action">
-      <%= link_to t(".sign_up"), sign_up_path %>
-      <%= link_to t(".forgot_password"), new_password_path %>
-    </div>
+<div class="dark-card-container mw5p5 center">
+  <div class="dark-card-body pb3">
+    <h2 class="dark-card-header"><%= t(".title") %></h2>
+    <%= render partial: '/sessions/form' %>
+  </div>
+  <div class="dark-card-footer-small">
+    <%= link_to t(".sign_up"), sign_up_path, class: 'dark-card-footer-link' %>
+    <%= link_to t(".forgot_password"), new_password_path, class: 'dark-card-footer-link' %>
   </div>
 </div>

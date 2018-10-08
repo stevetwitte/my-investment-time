@@ -16,6 +16,7 @@ en:
     password: "password"
   profile:
     recent: "recent investments"
+    all_invests: "investments"
   invests:
     new:
       title: "new investment"

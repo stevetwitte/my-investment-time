@@ -34,12 +34,21 @@ class FollowComponent extends React.Component {
     }
 
     render() {
-        return (
-            <button onClick={this.followClicked} className="waves-effect waves-light btn btn-small btn-dark number-button-large">
-                <i className="material-icons likes-icon">remove_red_eye</i>&nbsp;&nbsp;
-                {this.state.isFollowing ? "unfollow" : "follow" }<span>{ this.state.numberFollowing }</span>
-            </button>
-        );
+        if (this.state.isFollowing) {
+            return (
+                <button onClick={this.followClicked} className="main-shadow-alt bg-near-white near-black ph2 pv1 f6 ttu p-font bw0 fr pointer">
+                    <i className="far fa-check-square mr2 pl0 ml0"></i>
+                    following <span className="bl b--near-black tr pl2 pr0 ml1 pl1">{ this.state.numberFollowing }</span>
+                </button>
+            );
+        } else {
+            return (
+                <button onClick={this.followClicked} className="main-shadow-alt bg-near-white near-black ph2 pv1 f6 ttu p-font bw0 fr pointer">
+                    <i className="far fa-square mr2 pl0 ml0"></i>
+                    following <span className="bl b--near-black tr pl2 pr0 ml1 pl1">{ this.state.numberFollowing }</span>
+                </button>
+            );
+        }
     }
 }
 

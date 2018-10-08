@@ -1,19 +1,21 @@
-<div class="w-60-l w-80-m w-100-s ml-auto mr-auto">
-  <div class="card blue-grey">
-    <div class="card-content white-text">
-      <span class="card-title pb3"><%= t(".title") %></span>
-      <p class="white-text pb4"><%= t(".description") %></p>
+<div class="dark-card-container mw5p5 center">
+  <div class="dark-card-body pb3">
+    <h2 class="dark-card-header"><%= t(".title") %></h2>
+    <p class="mb1"><%= t(".description") %></p>
+    <p class="f7 mt0 pt0"><%= t(".details") %></p>
 
       <%= form_for :password_reset,
                    url: user_password_path(@user, token: @user.confirmation_token),
                    html: { method: :put } do |form| %>
-        <div class="input-field">
-          <label for="session_password" class="light-color">password</label>
-          <%= form.password_field :password, class: 'validate light-color' %>
-        </div>
 
-        <%= form.submit class: 'btn btn-light black-text pointer' %>
-      <% end %>
-    </div>
+      <div class="full-width-form-group">
+        <label for="session_password" class="main-label">password</label>
+        <%= form.password_field :password,
+                                class: 'main-input w-100',
+                                placeholder: '••••••••••••••••' %>
+      </div>
+
+      <%= form.submit class: 'dark-button mt2' %>
+    <% end %>
   </div>
 </div>
