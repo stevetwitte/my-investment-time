@@ -1,7 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Settings::PasswordsController, type: :controller do
-
   describe "GET #edit" do
     context "when signed in" do
       before :each do
@@ -35,12 +34,12 @@ RSpec.describe Settings::PasswordsController, type: :controller do
 
   describe "PATCH #update" do
     context "when signed in" do
-      let(:user) { create(:user, password: '123123123') }
+      let(:user) { create(:user, password: "123123123") }
 
       before :each do
         sign_in_as(user)
-        patch :update, params: { user: { current_password: '123123123',
-                                         new_password: 'newpassword' } }
+        patch :update, params: { user: { current_password: "123123123",
+                                         new_password: "newpassword" } }
       end
 
       it "returns http found" do
@@ -48,7 +47,7 @@ RSpec.describe Settings::PasswordsController, type: :controller do
       end
 
       it "updates the users password" do
-        expect(user.authenticated?('newpassword')).to eql(true)
+        expect(user.authenticated?("newpassword")).to eql(true)
       end
     end
   end

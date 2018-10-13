@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Settings::AccountsController, type: :controller do
 
@@ -39,8 +39,8 @@ RSpec.describe Settings::AccountsController, type: :controller do
 
       before :each do
         sign_in_as(user)
-        patch :update, params: { user: { email: 'newemail@address.com',
-                                         username: 'newusername' } }
+        patch :update, params: { user: { email: "newemail@address.com",
+                                         username: "newusername" } }
       end
 
       it "returns http found" do
@@ -48,8 +48,8 @@ RSpec.describe Settings::AccountsController, type: :controller do
       end
 
       it "updates the users email and username" do
-        expect(user.email).to eql 'newemail@address.com'
-        expect(user.username).to eql 'newusername'
+        expect(user.email).to eql "newemail@address.com"
+        expect(user.username).to eql "newusername"
       end
     end
   end
