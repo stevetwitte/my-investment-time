@@ -1,5 +1,5 @@
 class ClearanceMailer < ApplicationMailer
-  layout 'mailer'
+  layout "mailer"
 
   def change_password(user)
     @user = user
